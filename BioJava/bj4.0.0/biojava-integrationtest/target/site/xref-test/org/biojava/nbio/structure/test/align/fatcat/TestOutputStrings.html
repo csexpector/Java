@@ -1,0 +1,555 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>TestOutputStrings xref</title>
+<link type="text/css" rel="stylesheet" href="../../../../../../../stylesheet.css" />
+</head>
+<body>
+<div id="overview"><a href="../../../../../../../../testapidocs/org/biojava/nbio/structure/test/align/fatcat/TestOutputStrings.html">View Javadoc</a></div><pre>
+<a class="jxr_linenumber" name="L1" href="#L1">1</a>   <em class="jxr_comment">/*</em>
+<a class="jxr_linenumber" name="L2" href="#L2">2</a>   <em class="jxr_comment"> *                    PDB web development code</em>
+<a class="jxr_linenumber" name="L3" href="#L3">3</a>   <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L4" href="#L4">4</a>   <em class="jxr_comment"> * This code may be freely distributed and modified under the</em>
+<a class="jxr_linenumber" name="L5" href="#L5">5</a>   <em class="jxr_comment"> * terms of the GNU Lesser General Public Licence.  This should</em>
+<a class="jxr_linenumber" name="L6" href="#L6">6</a>   <em class="jxr_comment"> * be distributed with the code.  If you do not have a copy,</em>
+<a class="jxr_linenumber" name="L7" href="#L7">7</a>   <em class="jxr_comment"> * see:</em>
+<a class="jxr_linenumber" name="L8" href="#L8">8</a>   <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>   <em class="jxr_comment"> *      <a href="http://www.gnu.org/copyleft/lesser.htm" target="alexandria_uri">http://www.gnu.org/copyleft/lesser.htm</a>l</em>
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_comment"> * Copyright for this code is held jointly by the individual</em>
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_comment"> * authors.  These should be listed in @author doc comments.</em>
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>  <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>  <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>  <em class="jxr_comment"> * Created on Jul 23, 2009</em>
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>  <em class="jxr_comment"> * Created by ap3</em>
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>  <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>  <em class="jxr_comment"> */</em>
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>  
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>  <strong class="jxr_keyword">package</strong> org.biojava.nbio.structure.test.align.fatcat;
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>  
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>  
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>  <strong class="jxr_keyword">import</strong> junit.framework.TestCase;
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>  
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../../../org/biojava/nbio/structure/test/align/fatcat/TestOutputStrings.html">TestOutputStrings</a> <strong class="jxr_keyword">extends</strong> TestCase
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>  {
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>  
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>     <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String newline = System.getProperty(<span class="jxr_string">"line.separator"</span>);
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>  
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> printFirstMismatch(String s1, String s2){
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>        String[] spl1 = s1.split(newline);
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>        String[] spl2 = s2.split(newline);
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>  
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>        <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> i = 0 ; i &lt; spl1.length ; i++){
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>  
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>           String line1 = spl1[i];
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>  
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>           <strong class="jxr_keyword">if</strong> ( i &gt;= spl2.length){
+<a class="jxr_linenumber" name="L39" href="#L39">39</a>              System.err.println(<span class="jxr_string">"s2 does not contain line "</span> + (i+1));
+<a class="jxr_linenumber" name="L40" href="#L40">40</a>              <strong class="jxr_keyword">return</strong>;
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>           }
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>           String line2 = spl2[i];
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>  
+<a class="jxr_linenumber" name="L44" href="#L44">44</a>           <strong class="jxr_keyword">if</strong> ( line1.equals(line2)){
+<a class="jxr_linenumber" name="L45" href="#L45">45</a>              <strong class="jxr_keyword">continue</strong>;
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>           }
+<a class="jxr_linenumber" name="L47" href="#L47">47</a>  
+<a class="jxr_linenumber" name="L48" href="#L48">48</a>           System.err.println(<span class="jxr_string">"mismatch in line: "</span> + (i+1));
+<a class="jxr_linenumber" name="L49" href="#L49">49</a>  
+<a class="jxr_linenumber" name="L50" href="#L50">50</a>           <strong class="jxr_keyword">for</strong> ( <strong class="jxr_keyword">int</strong> j = 0 ; j &lt; line1.length();j++){
+<a class="jxr_linenumber" name="L51" href="#L51">51</a>              <strong class="jxr_keyword">char</strong> c1 = line1.charAt(j);
+<a class="jxr_linenumber" name="L52" href="#L52">52</a>  
+<a class="jxr_linenumber" name="L53" href="#L53">53</a>              <strong class="jxr_keyword">if</strong> ( j &gt;= line2.length()){
+<a class="jxr_linenumber" name="L54" href="#L54">54</a>                 System.err.println(<span class="jxr_string">"s2 is shorter than s1. length s1:"</span> + line1.length() + <span class="jxr_string">" length2:"</span> + line2.length() );
+<a class="jxr_linenumber" name="L55" href="#L55">55</a>                 <strong class="jxr_keyword">return</strong>;
+<a class="jxr_linenumber" name="L56" href="#L56">56</a>              }
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>  
+<a class="jxr_linenumber" name="L58" href="#L58">58</a>              <strong class="jxr_keyword">char</strong> c2 = line2.charAt(j);
+<a class="jxr_linenumber" name="L59" href="#L59">59</a>              <strong class="jxr_keyword">if</strong> ( c1 != c2){
+<a class="jxr_linenumber" name="L60" href="#L60">60</a>  
+<a class="jxr_linenumber" name="L61" href="#L61">61</a>                 System.err.println(<span class="jxr_string">"line1: "</span> + line1.substring(0,j+1));
+<a class="jxr_linenumber" name="L62" href="#L62">62</a>                 System.err.println(<span class="jxr_string">"line2: "</span> + line2.substring(0,j+1));
+<a class="jxr_linenumber" name="L63" href="#L63">63</a>  
+<a class="jxr_linenumber" name="L64" href="#L64">64</a>                 System.err.println(<span class="jxr_string">"mismatch at position "</span> + (j+1) + <span class="jxr_string">" c1: "</span>+ c1 + <span class="jxr_string">" "</span> + c2);
+<a class="jxr_linenumber" name="L65" href="#L65">65</a>               
+<a class="jxr_linenumber" name="L66" href="#L66">66</a>                 <strong class="jxr_keyword">return</strong>;
+<a class="jxr_linenumber" name="L67" href="#L67">67</a>              }
+<a class="jxr_linenumber" name="L68" href="#L68">68</a>           }
+<a class="jxr_linenumber" name="L69" href="#L69">69</a>  
+<a class="jxr_linenumber" name="L70" href="#L70">70</a>  
+<a class="jxr_linenumber" name="L71" href="#L71">71</a>        }
+<a class="jxr_linenumber" name="L72" href="#L72">72</a>  
+<a class="jxr_linenumber" name="L73" href="#L73">73</a>     }
+<a class="jxr_linenumber" name="L74" href="#L74">74</a>  
+<a class="jxr_linenumber" name="L75" href="#L75">75</a>     <strong class="jxr_keyword">protected</strong> <strong class="jxr_keyword">void</strong> printMismatch(String orig, String mine){
+<a class="jxr_linenumber" name="L76" href="#L76">76</a>        System.err.println(<span class="jxr_string">"The two provided strings are not identical."</span>);
+<a class="jxr_linenumber" name="L77" href="#L77">77</a>        System.err.println(<span class="jxr_string">"Original version"</span>);
+<a class="jxr_linenumber" name="L78" href="#L78">78</a>        System.err.println(orig);
+<a class="jxr_linenumber" name="L79" href="#L79">79</a>        System.err.println(<span class="jxr_string">"My version"</span>);
+<a class="jxr_linenumber" name="L80" href="#L80">80</a>        System.err.println(mine);
+<a class="jxr_linenumber" name="L81" href="#L81">81</a>     }
+<a class="jxr_linenumber" name="L82" href="#L82">82</a>  
+<a class="jxr_linenumber" name="L83" href="#L83">83</a>     
+<a class="jxr_linenumber" name="L84" href="#L84">84</a>     <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L85" href="#L85">85</a>     <em class="jxr_comment">// a bad mismatch!</em>
+<a class="jxr_linenumber" name="L86" href="#L86">86</a>     <em class="jxr_comment">// looks like a bug in the optimizer still...</em>
+<a class="jxr_linenumber" name="L87" href="#L87">87</a>     <em class="jxr_comment">// spent already too much time with figuring this out. perhaps there is no bug</em>
+<a class="jxr_linenumber" name="L88" href="#L88">88</a>     <em class="jxr_comment">// and the diff is caused by this tricky alignment and some Java/C differences...</em>
+<a class="jxr_linenumber" name="L89" href="#L89">89</a>     <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L90" href="#L90">90</a>  <em class="jxr_comment">//   public void test1a641hng(){</em>
+<a class="jxr_linenumber" name="L91" href="#L91">91</a>  <em class="jxr_comment">//      String pdb1 = "1a64";</em>
+<a class="jxr_linenumber" name="L92" href="#L92">92</a>  <em class="jxr_comment">//      String chain1 = "A";</em>
+<a class="jxr_linenumber" name="L93" href="#L93">93</a>  <em class="jxr_comment">//      String pdb2 = "1hng";</em>
+<a class="jxr_linenumber" name="L94" href="#L94">94</a>  <em class="jxr_comment">//      String chain2 ="B";</em>
+<a class="jxr_linenumber" name="L95" href="#L95">95</a>  <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L96" href="#L96">96</a>  <em class="jxr_comment">//      String originalOutput="Align 1a64A.pdb 94 with 1hngB.pdb 175" +newline +</em>
+<a class="jxr_linenumber" name="L97" href="#L97">97</a>  <em class="jxr_comment">//      "Twists 0 ini-len 72 ini-rmsd 20.93 opt-equ 55 opt-rmsd 7.78 chain-rmsd 20.93 Score 189.29 align-len 73 gaps 18 (24.66%)" +newline +</em>
+<a class="jxr_linenumber" name="L98" href="#L98">98</a>  <em class="jxr_comment">//      "P-value 9.15e-03 Afp-num 6497 Identity 4.11% Similarity 13.70%" +newline +</em>
+<a class="jxr_linenumber" name="L99" href="#L99">99</a>  <em class="jxr_comment">//      "Block  0 afp  9 score 189.29 rmsd 20.93 gap 17 (0.19%)" +newline +</em>
+<a class="jxr_linenumber" name="L100" href="#L100">100</a> <em class="jxr_comment">//      "" +newline +</em>
+<a class="jxr_linenumber" name="L101" href="#L101">101</a> <em class="jxr_comment">//      "                  .    :    .    :    .    :    .    :    .    :    .    :    .    :" +newline +</em>
+<a class="jxr_linenumber" name="L102" href="#L102">102</a> <em class="jxr_comment">//      "Chain 1:   27 IDEVRWERGSTLVAEFKR-----------KPFLKSGAFEILANGDLKIKNLTRDDSGTYNVTVYSTNGTR" +newline +</em>
+<a class="jxr_linenumber" name="L103" href="#L103">103</a> <em class="jxr_comment">//      "              111111111111111111           1111111111111111111       111111111111111" +newline +</em>
+<a class="jxr_linenumber" name="L104" href="#L104">104</a> <em class="jxr_comment">//      "Chain 2:    2 DSGTVWGALGHGINLNIPNFQMTDDIDEVRWERGSTLVAEFKRKMKPF-------LKSGAFEILANGDLK" +newline +</em>
+<a class="jxr_linenumber" name="L105" href="#L105">105</a> <em class="jxr_comment">//      "" +newline +</em>
+<a class="jxr_linenumber" name="L106" href="#L106">106</a> <em class="jxr_comment">//      "" +newline +              </em>
+<a class="jxr_linenumber" name="L107" href="#L107">107</a> <em class="jxr_comment">//      "Chain 1:   88 ILD" +newline +</em>
+<a class="jxr_linenumber" name="L108" href="#L108">108</a> <em class="jxr_comment">//      "              111" +newline +</em>
+<a class="jxr_linenumber" name="L109" href="#L109">109</a> <em class="jxr_comment">//      "Chain 2:   65 IKN" +newline +</em>
+<a class="jxr_linenumber" name="L110" href="#L110">110</a> <em class="jxr_comment">//      "" +newline +</em>
+<a class="jxr_linenumber" name="L111" href="#L111">111</a> <em class="jxr_comment">//      "Note: positions are from PDB; the numbers between alignments are block index" +newline ;</em>
+<a class="jxr_linenumber" name="L112" href="#L112">112</a> <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L113" href="#L113">113</a> <em class="jxr_comment">//      String result = MyTestHelper.compareAlignment(pdb1, chain1, pdb2, chain2, originalOutput,true);</em>
+<a class="jxr_linenumber" name="L114" href="#L114">114</a> <em class="jxr_comment">//      if (! result.equals("")){</em>
+<a class="jxr_linenumber" name="L115" href="#L115">115</a> <em class="jxr_comment">//         String msg = "the created alignment images are not identical! ";</em>
+<a class="jxr_linenumber" name="L116" href="#L116">116</a> <em class="jxr_comment">//         printMismatch(originalOutput,result);</em>
+<a class="jxr_linenumber" name="L117" href="#L117">117</a> <em class="jxr_comment">//         printFirstMismatch(result, originalOutput);</em>
+<a class="jxr_linenumber" name="L118" href="#L118">118</a> <em class="jxr_comment">//         fail(msg);</em>
+<a class="jxr_linenumber" name="L119" href="#L119">119</a> <em class="jxr_comment">//         </em>
+<a class="jxr_linenumber" name="L120" href="#L120">120</a> <em class="jxr_comment">//      }		</em>
+<a class="jxr_linenumber" name="L121" href="#L121">121</a> <em class="jxr_comment">//   }</em>
+<a class="jxr_linenumber" name="L122" href="#L122">122</a>    
+<a class="jxr_linenumber" name="L123" href="#L123">123</a> <em class="jxr_comment">// disabled since so slow...</em>
+<a class="jxr_linenumber" name="L124" href="#L124">124</a> <em class="jxr_comment">//   public void test1jbe1ord(){</em>
+<a class="jxr_linenumber" name="L125" href="#L125">125</a> <em class="jxr_comment">//      String pdb1 = "1jbe";</em>
+<a class="jxr_linenumber" name="L126" href="#L126">126</a> <em class="jxr_comment">//      String chain1 = "A";</em>
+<a class="jxr_linenumber" name="L127" href="#L127">127</a> <em class="jxr_comment">//      String pdb2 = "1ord";</em>
+<a class="jxr_linenumber" name="L128" href="#L128">128</a> <em class="jxr_comment">//      String chain2 ="A";</em>
+<a class="jxr_linenumber" name="L129" href="#L129">129</a> <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L130" href="#L130">130</a> <em class="jxr_comment">//      </em>
+<a class="jxr_linenumber" name="L131" href="#L131">131</a> <em class="jxr_comment">//      </em>
+<a class="jxr_linenumber" name="L132" href="#L132">132</a> <em class="jxr_comment">//      String originalOutput="Align 1jbeA.pdb 126 with 1ordA.pdb 730" + newline +</em>
+<a class="jxr_linenumber" name="L133" href="#L133">133</a> <em class="jxr_comment">//      "Twists 0 ini-len 72 ini-rmsd 3.09 opt-equ 101 opt-rmsd 3.03 chain-rmsd 3.09 Score 123.13 align-len 127 gaps 26 (20.47%)" + newline +</em>
+<a class="jxr_linenumber" name="L134" href="#L134">134</a> <em class="jxr_comment">//      "P-value 3.45e-01 Afp-num 30029 Identity 11.02% Similarity 22.05%" + newline +</em>
+<a class="jxr_linenumber" name="L135" href="#L135">135</a> <em class="jxr_comment">//      "Block  0 afp  9 score 123.13 rmsd  3.09 gap 53 (0.42%)" + newline +</em>
+<a class="jxr_linenumber" name="L136" href="#L136">136</a> <em class="jxr_comment">//      "" + newline +</em>
+<a class="jxr_linenumber" name="L137" href="#L137">137</a> <em class="jxr_comment">//      "                  .    :    .    :    .    :    .    :    .    :    .    :    .    :" + newline +</em>
+<a class="jxr_linenumber" name="L138" href="#L138">138</a> <em class="jxr_comment">//      "Chain 1:    3 DKELKFLVVDDFSTMRRIVRNLLKELGFNNVEEAEDGVDALNKLQAGGYGFVISDWNMPNMDGLELLKTI" + newline +</em>
+<a class="jxr_linenumber" name="L139" href="#L139">139</a> <em class="jxr_comment">//      "              11111111111   11111  111   1111111        111111111111111     11111111" + newline +</em>
+<a class="jxr_linenumber" name="L140" href="#L140">140</a> <em class="jxr_comment">//      "Chain 2:    1 SSSLKIASTQE---ARQYF--DTD---RVVVDAV--------GSDFTDVGAVIAMDY-----ETDVIDAA" + newline +</em>
+<a class="jxr_linenumber" name="L141" href="#L141">141</a> <em class="jxr_comment">//      "" + newline +</em>
+<a class="jxr_linenumber" name="L142" href="#L142">142</a> <em class="jxr_comment">//      "                  .    :    .    :    .    :    .    :    .    :    ." + newline +</em>
+<a class="jxr_linenumber" name="L143" href="#L143">143</a> <em class="jxr_comment">//      "Chain 1:   73 RAAMSALPVLMVTAEAKKENIIAAAQAGASGYVVKPFT--AATLEEKLNKIFEKLGM" + newline +</em>
+<a class="jxr_linenumber" name="L144" href="#L144">144</a> <em class="jxr_comment">//      "              11111111111111111 11111111 11111111111  111111111111 1111" + newline +</em>
+<a class="jxr_linenumber" name="L145" href="#L145">145</a> <em class="jxr_comment">//      "Chain 2:   50 DATKFGIPVFAVTKDAQ-AISADELK-KIFHIIDLENKFDATVNAREIETAVNNYED" + newline +</em>
+<a class="jxr_linenumber" name="L146" href="#L146">146</a> <em class="jxr_comment">//      "" + newline +</em>
+<a class="jxr_linenumber" name="L147" href="#L147">147</a> <em class="jxr_comment">//      "Note: positions are from PDB; the numbers between alignments are block index" + newline ;</em>
+<a class="jxr_linenumber" name="L148" href="#L148">148</a> <em class="jxr_comment">//      String result = MyTestHelper.compareAlignment(pdb1, chain1, pdb2, chain2, originalOutput,true);</em>
+<a class="jxr_linenumber" name="L149" href="#L149">149</a> <em class="jxr_comment">//      if (! result.equals("")){</em>
+<a class="jxr_linenumber" name="L150" href="#L150">150</a> <em class="jxr_comment">//         String msg = "the created alignment images are not identical! ";</em>
+<a class="jxr_linenumber" name="L151" href="#L151">151</a> <em class="jxr_comment">//         printMismatch(originalOutput,result);</em>
+<a class="jxr_linenumber" name="L152" href="#L152">152</a> <em class="jxr_comment">//         printFirstMismatch(result, originalOutput);</em>
+<a class="jxr_linenumber" name="L153" href="#L153">153</a> <em class="jxr_comment">//         fail(msg);</em>
+<a class="jxr_linenumber" name="L154" href="#L154">154</a> <em class="jxr_comment">//      }</em>
+<a class="jxr_linenumber" name="L155" href="#L155">155</a> <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L156" href="#L156">156</a> <em class="jxr_comment">//      // no point in testing flexible here, since it is identical...</em>
+<a class="jxr_linenumber" name="L157" href="#L157">157</a> <em class="jxr_comment">//   }</em>
+<a class="jxr_linenumber" name="L158" href="#L158">158</a> 
+<a class="jxr_linenumber" name="L159" href="#L159">159</a> 
+<a class="jxr_linenumber" name="L160" href="#L160">160</a>    <em class="jxr_comment">// speed up of junit tests</em>
+<a class="jxr_linenumber" name="L161" href="#L161">161</a>    <em class="jxr_comment">//exact</em>
+<a class="jxr_linenumber" name="L162" href="#L162">162</a> <em class="jxr_comment">//   public void test1buz1ali(){</em>
+<a class="jxr_linenumber" name="L163" href="#L163">163</a> <em class="jxr_comment">//      String pdb1 = "1buz";</em>
+<a class="jxr_linenumber" name="L164" href="#L164">164</a> <em class="jxr_comment">//      String chain1 = "A";</em>
+<a class="jxr_linenumber" name="L165" href="#L165">165</a> <em class="jxr_comment">//      String pdb2 = "1ali";</em>
+<a class="jxr_linenumber" name="L166" href="#L166">166</a> <em class="jxr_comment">//      String chain2 ="A";</em>
+<a class="jxr_linenumber" name="L167" href="#L167">167</a> <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L168" href="#L168">168</a> <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L169" href="#L169">169</a> <em class="jxr_comment">//      String originalOutput ="Align 1buzA.pdb 116 with 1aliA.pdb 446" + newline +</em>
+<a class="jxr_linenumber" name="L170" href="#L170">170</a> <em class="jxr_comment">//      "Twists 0 ini-len 64 ini-rmsd 5.32 opt-equ 80 opt-rmsd 3.50 chain-rmsd 5.32 Score 103.72 align-len 153 gaps 73 (47.71%)" +newline +</em>
+<a class="jxr_linenumber" name="L171" href="#L171">171</a> <em class="jxr_comment">//      "P-value 2.97e-01 Afp-num 15578 Identity 4.58% Similarity 15.03%" +newline +</em>
+<a class="jxr_linenumber" name="L172" href="#L172">172</a> <em class="jxr_comment">//      "Block  0 afp  8 score 103.72 rmsd  5.32 gap 55 (0.46%)" +newline +</em>
+<a class="jxr_linenumber" name="L173" href="#L173">173</a> <em class="jxr_comment">//      "" +newline +</em>
+<a class="jxr_linenumber" name="L174" href="#L174">174</a> <em class="jxr_comment">//      "                  .    :    .    :    .    :    .    :    .    :    .    :    .    :" +newline +</em>
+<a class="jxr_linenumber" name="L175" href="#L175">175</a> <em class="jxr_comment">//      "Chain 1:   23 HHTAETLKQKVTQSLEKDDIRHIVLNLEDLSF-------------MDSSGLGVILGRYKQIKQIGGEMVV" +newline +</em>
+<a class="jxr_linenumber" name="L176" href="#L176">176</a> <em class="jxr_comment">//      "              11111111111111 111111111111 1111             1111111111111111111111111" +newline +</em>
+<a class="jxr_linenumber" name="L177" href="#L177">177</a> <em class="jxr_comment">//      "Chain 2:  297 PTLAQMTDKAIELL-SKNEKGFFLQVEGASIDKQDHAANPCGQIGETVDLDEAVQRALEFAKKEGNTLVI" +newline +</em>
+<a class="jxr_linenumber" name="L178" href="#L178">178</a> <em class="jxr_comment">//      "" +newline +</em>
+<a class="jxr_linenumber" name="L179" href="#L179">179</a> <em class="jxr_comment">//      "                  .    :    .    :    .    :    .    :    .    :    .    :    .    :" +newline +</em>
+<a class="jxr_linenumber" name="L180" href="#L180">180</a> <em class="jxr_comment">//      "Chain 1:   80 CAISPAVKRLFDMSGL--------------------------------------FKIIRF--------EQ" +newline +</em>
+<a class="jxr_linenumber" name="L181" href="#L181">181</a> <em class="jxr_comment">//      "              1111111                                               111           11" +newline +</em>
+<a class="jxr_linenumber" name="L182" href="#L182">182</a> <em class="jxr_comment">//      "Chain 2:  366 VTADHAHASQIVAPDTKAPGLTQALNTKDGAVMVMSYGNSEEDSQENTGSQLRIAAYGPHAANVVGLTDQ" +newline +</em>
+<a class="jxr_linenumber" name="L183" href="#L183">183</a> <em class="jxr_comment">//      "" +newline +</em>
+<a class="jxr_linenumber" name="L184" href="#L184">184</a> <em class="jxr_comment">//      "                  .    :" +newline +</em>
+<a class="jxr_linenumber" name="L185" href="#L185">185</a> <em class="jxr_comment">//      "Chain 1:  104 SEQQALLTLGVAS" +newline +</em>
+<a class="jxr_linenumber" name="L186" href="#L186">186</a> <em class="jxr_comment">//      "              1111111111111" +newline +</em>
+<a class="jxr_linenumber" name="L187" href="#L187">187</a> <em class="jxr_comment">//      "Chain 2:  436 TDLFYTMKAALGL" +newline +</em>
+<a class="jxr_linenumber" name="L188" href="#L188">188</a> <em class="jxr_comment">//      "" +newline +</em>
+<a class="jxr_linenumber" name="L189" href="#L189">189</a> <em class="jxr_comment">//      "Note: positions are from PDB; the numbers between alignments are block index" + newline ;</em>
+<a class="jxr_linenumber" name="L190" href="#L190">190</a> <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L191" href="#L191">191</a> <em class="jxr_comment">//      String result = MyTestHelper.compareAlignment(pdb1, chain1, pdb2, chain2, originalOutput,true);</em>
+<a class="jxr_linenumber" name="L192" href="#L192">192</a> <em class="jxr_comment">//      if (! result.equals("")){</em>
+<a class="jxr_linenumber" name="L193" href="#L193">193</a> <em class="jxr_comment">//         String msg = "the created alignment images are not identical! ";</em>
+<a class="jxr_linenumber" name="L194" href="#L194">194</a> <em class="jxr_comment">//         printMismatch(originalOutput,result);</em>
+<a class="jxr_linenumber" name="L195" href="#L195">195</a> <em class="jxr_comment">//         printFirstMismatch(result, originalOutput);</em>
+<a class="jxr_linenumber" name="L196" href="#L196">196</a> <em class="jxr_comment">//         fail(msg);</em>
+<a class="jxr_linenumber" name="L197" href="#L197">197</a> <em class="jxr_comment">//      }</em>
+<a class="jxr_linenumber" name="L198" href="#L198">198</a> <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L199" href="#L199">199</a> <em class="jxr_comment">//   }</em>
+<a class="jxr_linenumber" name="L200" href="#L200">200</a> 
+<a class="jxr_linenumber" name="L201" href="#L201">201</a>    <em class="jxr_comment">// exact</em>
+<a class="jxr_linenumber" name="L202" href="#L202">202</a>    <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> test1buz1aliFlexible(){
+<a class="jxr_linenumber" name="L203" href="#L203">203</a> 
+<a class="jxr_linenumber" name="L204" href="#L204">204</a>       String pdb1 = <span class="jxr_string">"1buz"</span>;
+<a class="jxr_linenumber" name="L205" href="#L205">205</a>       String chain1 = <span class="jxr_string">"A"</span>;
+<a class="jxr_linenumber" name="L206" href="#L206">206</a>       String pdb2 = <span class="jxr_string">"1ali"</span>;
+<a class="jxr_linenumber" name="L207" href="#L207">207</a>       String chain2 =<span class="jxr_string">"A"</span>;
+<a class="jxr_linenumber" name="L208" href="#L208">208</a> 
+<a class="jxr_linenumber" name="L209" href="#L209">209</a>       String originalOutput =<span class="jxr_string">"Align 1buzA.pdb 116 with 1aliA.pdb 446"</span> +newline +
+<a class="jxr_linenumber" name="L210" href="#L210">210</a>       <span class="jxr_string">"Twists 1 ini-len 64 ini-rmsd 3.12 opt-equ 88 opt-rmsd 3.34 chain-rmsd 5.32 Score 103.72 align-len 199 gaps 111 (55.78%)"</span> +newline +
+<a class="jxr_linenumber" name="L211" href="#L211">211</a>       <span class="jxr_string">"P-value 3.26e-01 Afp-num 15578 Identity 3.52% Similarity 14.57%"</span> +newline +
+<a class="jxr_linenumber" name="L212" href="#L212">212</a>       <span class="jxr_string">"Block  0 afp  1 score 23.14 rmsd  0.76 gap 0 (0.00%)"</span> +newline +
+<a class="jxr_linenumber" name="L213" href="#L213">213</a>       <span class="jxr_string">"Block  1 afp  7 score 100.08 rmsd  3.32 gap 17 (0.23%)"</span> +newline +
+<a class="jxr_linenumber" name="L214" href="#L214">214</a>       <span class="jxr_string">""</span> +newline +
+<a class="jxr_linenumber" name="L215" href="#L215">215</a>       <span class="jxr_string">"                  .    :    .    :    .    :    .    :    .    :    .    :    .    :"</span> +newline +
+<a class="jxr_linenumber" name="L216" href="#L216">216</a>       <span class="jxr_string">"Chain 1:    5 DMNVKESVLCIRLTGELDH---------------------------------HTAETLKQKVTQSLEKDD"</span> +newline +
+<a class="jxr_linenumber" name="L217" href="#L217">217</a>       <span class="jxr_string">"              1 11111111111111                                    222222222222222222"</span> +newline +
+<a class="jxr_linenumber" name="L218" href="#L218">218</a>       <span class="jxr_string">"Chain 2:  246 VTEANQQKPLLGLFADGNMPVRWLGPKATYHGNIDKPAVTCTPNPQRNDSVPTLAQMTDKAIELLSKNEK"</span> +newline +
+<a class="jxr_linenumber" name="L219" href="#L219">219</a>       <span class="jxr_string">""</span> +newline +
+<a class="jxr_linenumber" name="L220" href="#L220">220</a>       <span class="jxr_string">"                  .    :    .    :    .    :    .    :    .    :    .    :    .    :"</span> +newline +
+<a class="jxr_linenumber" name="L221" href="#L221">221</a>       <span class="jxr_string">"Chain 1:   42 IRHIVLNLEDLS------------FMDSSGLGVILGRYKQIK-QIGGEMVVCAISPAVKRLFDMSGLFKI"</span> +newline +
+<a class="jxr_linenumber" name="L222" href="#L222">222</a>       <span class="jxr_string">"              222222222222            222222222222222222 2222222222222              "</span> +newline +
+<a class="jxr_linenumber" name="L223" href="#L223">223</a>       <span class="jxr_string">"Chain 2:  316 GFFLQVEGASIDKQDHAANPCGQIGETVDLDEAVQRALEFAKKEGNTLVIVTADHAHASQIVAPDTKAPG"</span> +newline +
+<a class="jxr_linenumber" name="L224" href="#L224">224</a>       <span class="jxr_string">""</span> +newline +
+<a class="jxr_linenumber" name="L225" href="#L225">225</a>       <span class="jxr_string">"                  .    :    .    :    .    :    .    :    .    :    ."</span> +newline +
+<a class="jxr_linenumber" name="L226" href="#L226">226</a>       <span class="jxr_string">"Chain 1:   99 I---------------------------------RFEQSE--------QQALLTLGVAS"</span> +newline +
+<a class="jxr_linenumber" name="L227" href="#L227">227</a>       <span class="jxr_string">"                                                22            222222 2222"</span> +newline +
+<a class="jxr_linenumber" name="L228" href="#L228">228</a>       <span class="jxr_string">"Chain 2:  386 LTQALNTKDGAVMVMSYGNSEEDSQENTGSQLRIAAYGPHAANVVGLTDQTDLFYTMKA"</span> +newline +
+<a class="jxr_linenumber" name="L229" href="#L229">229</a>       <span class="jxr_string">""</span> +newline +
+<a class="jxr_linenumber" name="L230" href="#L230">230</a>       <span class="jxr_string">"Note: positions are from PDB; the numbers between alignments are block index"</span> +newline ;
+<a class="jxr_linenumber" name="L231" href="#L231">231</a> 
+<a class="jxr_linenumber" name="L232" href="#L232">232</a>       String result = MyTestHelper.compareAlignment(pdb1, chain1, pdb2, chain2, originalOutput,false);
+<a class="jxr_linenumber" name="L233" href="#L233">233</a>       <strong class="jxr_keyword">if</strong> (! result.equals(<span class="jxr_string">""</span>)){
+<a class="jxr_linenumber" name="L234" href="#L234">234</a>          String msg = <span class="jxr_string">"the created alignment images are not identical! "</span>;
+<a class="jxr_linenumber" name="L235" href="#L235">235</a>          printMismatch(originalOutput,result);
+<a class="jxr_linenumber" name="L236" href="#L236">236</a>          printFirstMismatch(result, originalOutput);
+<a class="jxr_linenumber" name="L237" href="#L237">237</a>          fail(msg);
+<a class="jxr_linenumber" name="L238" href="#L238">238</a>       }
+<a class="jxr_linenumber" name="L239" href="#L239">239</a>    }
+<a class="jxr_linenumber" name="L240" href="#L240">240</a> 
+<a class="jxr_linenumber" name="L241" href="#L241">241</a> 
+<a class="jxr_linenumber" name="L242" href="#L242">242</a>    <em class="jxr_comment">// speed up of junit tests</em>
+<a class="jxr_linenumber" name="L243" href="#L243">243</a>    <em class="jxr_comment">//exact</em>
+<a class="jxr_linenumber" name="L244" href="#L244">244</a> <em class="jxr_comment">//   public void test4hhbs(){</em>
+<a class="jxr_linenumber" name="L245" href="#L245">245</a> <em class="jxr_comment">//      String pdb1= "4hhb";</em>
+<a class="jxr_linenumber" name="L246" href="#L246">246</a> <em class="jxr_comment">//      String pdb2 = "4hhb";</em>
+<a class="jxr_linenumber" name="L247" href="#L247">247</a> <em class="jxr_comment">//      String chain1 = "A";</em>
+<a class="jxr_linenumber" name="L248" href="#L248">248</a> <em class="jxr_comment">//      String chain2 = "B";</em>
+<a class="jxr_linenumber" name="L249" href="#L249">249</a> <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L250" href="#L250">250</a> <em class="jxr_comment">//      String originalOutput="Align 4hhbA.pdb 141 with 4hhbB.pdb 146" +newline +</em>
+<a class="jxr_linenumber" name="L251" href="#L251">251</a> <em class="jxr_comment">//      "Twists 0 ini-len 128 ini-rmsd 1.36 opt-equ 139 opt-rmsd 1.49 chain-rmsd 1.36 Score 364.84 align-len 147 gaps 8 (5.44%)" +newline +</em>
+<a class="jxr_linenumber" name="L252" href="#L252">252</a> <em class="jxr_comment">//      "P-value 0.00e+00 Afp-num 13309 Identity 40.82% Similarity 57.82%" +newline +</em>
+<a class="jxr_linenumber" name="L253" href="#L253">253</a> <em class="jxr_comment">//      "Block  0 afp 16 score 364.84 rmsd  1.36 gap 17 (0.12%)" +newline +</em>
+<a class="jxr_linenumber" name="L254" href="#L254">254</a> <em class="jxr_comment">//      "" +newline +</em>
+<a class="jxr_linenumber" name="L255" href="#L255">255</a> <em class="jxr_comment">//      "                  .    :    .    :    .    :    .    :    .    :    .    :    .    :" +newline +</em>
+<a class="jxr_linenumber" name="L256" href="#L256">256</a> <em class="jxr_comment">//      "Chain 1:    1 VLSPADKTNVKAAWGKVGAHAGEYGAEALERMFLSFPTTKTYFPHFDL------SHGSAQVKGHGKKVAD" +newline +</em>
+<a class="jxr_linenumber" name="L257" href="#L257">257</a> <em class="jxr_comment">//      "              11111111111111111  11111111111111111111111111111      1111111111111111" +newline +</em>
+<a class="jxr_linenumber" name="L258" href="#L258">258</a> <em class="jxr_comment">//      "Chain 2:    2 HLTPEEKSAVTALWGKV--NVDEVGGEALGRLLVVYPWTQRFFESFGDLSTPDAVMGNPKVKAHGKKVLG" +newline +</em>
+<a class="jxr_linenumber" name="L259" href="#L259">259</a> <em class="jxr_comment">//      "" +newline +</em>
+<a class="jxr_linenumber" name="L260" href="#L260">260</a> <em class="jxr_comment">//      "                  .    :    .    :    .    :    .    :    .    :    .    :    .    :" +newline +</em>
+<a class="jxr_linenumber" name="L261" href="#L261">261</a> <em class="jxr_comment">//      "Chain 1:   65 ALTNAVAHVDDMPNALSALSDLHAHKLRVDPVNFKLLSHCLLVTLAAHLPAEFTPAVHASLDKFLASVST" +newline +</em>
+<a class="jxr_linenumber" name="L262" href="#L262">262</a> <em class="jxr_comment">//      "              1111111111111111111111111111111111111111111111111111111111111111111111" +newline +</em>
+<a class="jxr_linenumber" name="L263" href="#L263">263</a> <em class="jxr_comment">//      "Chain 2:   70 AFSDGLAHLDNLKGTFATLSELHCDKLHVDPENFRLLGNVLVCVLAHHFGKEFTPPVQAAYQKVVAGVAN" +newline +</em>
+<a class="jxr_linenumber" name="L264" href="#L264">264</a> <em class="jxr_comment">//      "" +newline +</em>
+<a class="jxr_linenumber" name="L265" href="#L265">265</a> <em class="jxr_comment">//      "                  ." +newline +</em>
+<a class="jxr_linenumber" name="L266" href="#L266">266</a> <em class="jxr_comment">//      "Chain 1:  135 VLTSKYR" +newline +</em>
+<a class="jxr_linenumber" name="L267" href="#L267">267</a> <em class="jxr_comment">//      "              1111111" +newline +</em>
+<a class="jxr_linenumber" name="L268" href="#L268">268</a> <em class="jxr_comment">//      "Chain 2:  140 ALAHKYH" +newline +</em>
+<a class="jxr_linenumber" name="L269" href="#L269">269</a> <em class="jxr_comment">//      "" +newline +</em>
+<a class="jxr_linenumber" name="L270" href="#L270">270</a> <em class="jxr_comment">//      "Note: positions are from PDB; the numbers between alignments are block index" +newline ;</em>
+<a class="jxr_linenumber" name="L271" href="#L271">271</a> <em class="jxr_comment">//      String result = MyTestHelper.compareAlignment(pdb1, chain1, pdb2, chain2, originalOutput,true);</em>
+<a class="jxr_linenumber" name="L272" href="#L272">272</a> <em class="jxr_comment">//      if (! result.equals("")){</em>
+<a class="jxr_linenumber" name="L273" href="#L273">273</a> <em class="jxr_comment">//         String msg = "the created alignment images are not identical! ";</em>
+<a class="jxr_linenumber" name="L274" href="#L274">274</a> <em class="jxr_comment">//         printMismatch(originalOutput,result);</em>
+<a class="jxr_linenumber" name="L275" href="#L275">275</a> <em class="jxr_comment">//         printFirstMismatch(result, originalOutput);</em>
+<a class="jxr_linenumber" name="L276" href="#L276">276</a> <em class="jxr_comment">//         fail(msg);</em>
+<a class="jxr_linenumber" name="L277" href="#L277">277</a> <em class="jxr_comment">//      }     </em>
+<a class="jxr_linenumber" name="L278" href="#L278">278</a> <em class="jxr_comment">//   }</em>
+<a class="jxr_linenumber" name="L279" href="#L279">279</a> 
+<a class="jxr_linenumber" name="L280" href="#L280">280</a>    <em class="jxr_comment">// speed up of junit tests</em>
+<a class="jxr_linenumber" name="L281" href="#L281">281</a>    <em class="jxr_comment">//exact</em>
+<a class="jxr_linenumber" name="L282" href="#L282">282</a> <em class="jxr_comment">//   public void test4hhbsFlexible(){</em>
+<a class="jxr_linenumber" name="L283" href="#L283">283</a> <em class="jxr_comment">//      String pdb1= "4hhb";</em>
+<a class="jxr_linenumber" name="L284" href="#L284">284</a> <em class="jxr_comment">//      String pdb2 = "4hhb";</em>
+<a class="jxr_linenumber" name="L285" href="#L285">285</a> <em class="jxr_comment">//      String chain1 = "A";</em>
+<a class="jxr_linenumber" name="L286" href="#L286">286</a> <em class="jxr_comment">//      String chain2 = "B";</em>
+<a class="jxr_linenumber" name="L287" href="#L287">287</a> <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L288" href="#L288">288</a> <em class="jxr_comment">//      String originalOutput="Align 4hhbA.pdb 141 with 4hhbB.pdb 146" +newline +</em>
+<a class="jxr_linenumber" name="L289" href="#L289">289</a> <em class="jxr_comment">//      "Twists 0 ini-len 128 ini-rmsd 1.36 opt-equ 139 opt-rmsd 1.49 chain-rmsd 1.36 Score 364.84 align-len 147 gaps 8 (5.44%)" +newline +</em>
+<a class="jxr_linenumber" name="L290" href="#L290">290</a> <em class="jxr_comment">//      "P-value 0.00e+00 Afp-num 13309 Identity 40.82% Similarity 57.82%" +newline +</em>
+<a class="jxr_linenumber" name="L291" href="#L291">291</a> <em class="jxr_comment">//      "Block  0 afp 16 score 364.84 rmsd  1.36 gap 17 (0.12%)" +newline +</em>
+<a class="jxr_linenumber" name="L292" href="#L292">292</a> <em class="jxr_comment">//      "" +newline +</em>
+<a class="jxr_linenumber" name="L293" href="#L293">293</a> <em class="jxr_comment">//      "                  .    :    .    :    .    :    .    :    .    :    .    :    .    :" +newline +</em>
+<a class="jxr_linenumber" name="L294" href="#L294">294</a> <em class="jxr_comment">//      "Chain 1:    1 VLSPADKTNVKAAWGKVGAHAGEYGAEALERMFLSFPTTKTYFPHFDL------SHGSAQVKGHGKKVAD" +newline +</em>
+<a class="jxr_linenumber" name="L295" href="#L295">295</a> <em class="jxr_comment">//      "              11111111111111111  11111111111111111111111111111      1111111111111111" +newline +</em>
+<a class="jxr_linenumber" name="L296" href="#L296">296</a> <em class="jxr_comment">//      "Chain 2:    2 HLTPEEKSAVTALWGKV--NVDEVGGEALGRLLVVYPWTQRFFESFGDLSTPDAVMGNPKVKAHGKKVLG" +newline +</em>
+<a class="jxr_linenumber" name="L297" href="#L297">297</a> <em class="jxr_comment">//      "" +newline +</em>
+<a class="jxr_linenumber" name="L298" href="#L298">298</a> <em class="jxr_comment">//      "                  .    :    .    :    .    :    .    :    .    :    .    :    .    :" +newline +</em>
+<a class="jxr_linenumber" name="L299" href="#L299">299</a> <em class="jxr_comment">//      "Chain 1:   65 ALTNAVAHVDDMPNALSALSDLHAHKLRVDPVNFKLLSHCLLVTLAAHLPAEFTPAVHASLDKFLASVST" +newline +</em>
+<a class="jxr_linenumber" name="L300" href="#L300">300</a> <em class="jxr_comment">//      "              1111111111111111111111111111111111111111111111111111111111111111111111" +newline +</em>
+<a class="jxr_linenumber" name="L301" href="#L301">301</a> <em class="jxr_comment">//      "Chain 2:   70 AFSDGLAHLDNLKGTFATLSELHCDKLHVDPENFRLLGNVLVCVLAHHFGKEFTPPVQAAYQKVVAGVAN" +newline +</em>
+<a class="jxr_linenumber" name="L302" href="#L302">302</a> <em class="jxr_comment">//      "" +newline +</em>
+<a class="jxr_linenumber" name="L303" href="#L303">303</a> <em class="jxr_comment">//      "                  ." +newline +</em>
+<a class="jxr_linenumber" name="L304" href="#L304">304</a> <em class="jxr_comment">//      "Chain 1:  135 VLTSKYR" +newline +</em>
+<a class="jxr_linenumber" name="L305" href="#L305">305</a> <em class="jxr_comment">//      "              1111111" +newline +</em>
+<a class="jxr_linenumber" name="L306" href="#L306">306</a> <em class="jxr_comment">//      "Chain 2:  140 ALAHKYH" +newline +</em>
+<a class="jxr_linenumber" name="L307" href="#L307">307</a> <em class="jxr_comment">//      "" +newline +</em>
+<a class="jxr_linenumber" name="L308" href="#L308">308</a> <em class="jxr_comment">//      "Note: positions are from PDB; the numbers between alignments are block index" +newline ;</em>
+<a class="jxr_linenumber" name="L309" href="#L309">309</a> <em class="jxr_comment">//      String result = MyTestHelper.compareAlignment(pdb1, chain1, pdb2, chain2, originalOutput,false);</em>
+<a class="jxr_linenumber" name="L310" href="#L310">310</a> <em class="jxr_comment">//      if (! result.equals("")){</em>
+<a class="jxr_linenumber" name="L311" href="#L311">311</a> <em class="jxr_comment">//         String msg = "the created alignment images are not identical! ";</em>
+<a class="jxr_linenumber" name="L312" href="#L312">312</a> <em class="jxr_comment">//         printMismatch(originalOutput,result);</em>
+<a class="jxr_linenumber" name="L313" href="#L313">313</a> <em class="jxr_comment">//         printFirstMismatch(result, originalOutput);</em>
+<a class="jxr_linenumber" name="L314" href="#L314">314</a> <em class="jxr_comment">//         fail(msg);</em>
+<a class="jxr_linenumber" name="L315" href="#L315">315</a> <em class="jxr_comment">//      }     </em>
+<a class="jxr_linenumber" name="L316" href="#L316">316</a> <em class="jxr_comment">//   }</em>
+<a class="jxr_linenumber" name="L317" href="#L317">317</a> <em class="jxr_comment">//   </em>
+<a class="jxr_linenumber" name="L318" href="#L318">318</a> 
+<a class="jxr_linenumber" name="L319" href="#L319">319</a>   
+<a class="jxr_linenumber" name="L320" href="#L320">320</a> 
+<a class="jxr_linenumber" name="L321" href="#L321">321</a> 
+<a class="jxr_linenumber" name="L322" href="#L322">322</a>    <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> test1a641hngFlexible(){
+<a class="jxr_linenumber" name="L323" href="#L323">323</a>       String pdb1 = <span class="jxr_string">"1a64"</span>;
+<a class="jxr_linenumber" name="L324" href="#L324">324</a>       String chain1 = <span class="jxr_string">"A"</span>;
+<a class="jxr_linenumber" name="L325" href="#L325">325</a>       String pdb2 = <span class="jxr_string">"1hng"</span>;
+<a class="jxr_linenumber" name="L326" href="#L326">326</a>       String chain2 =<span class="jxr_string">"B"</span>;
+<a class="jxr_linenumber" name="L327" href="#L327">327</a> 
+<a class="jxr_linenumber" name="L328" href="#L328">328</a>       String originalOutput=<span class="jxr_string">"Align 1a64A.pdb 94 with 1hngB.pdb 175"</span> +newline +
+<a class="jxr_linenumber" name="L329" href="#L329">329</a>       <span class="jxr_string">"Twists 1 ini-len 88 ini-rmsd 1.84 opt-equ 94 opt-rmsd 0.64 chain-rmsd 20.77 Score 235.94 align-len 96 gaps 2 (2.08%)"</span> +newline +
+<a class="jxr_linenumber" name="L330" href="#L330">330</a>       <span class="jxr_string">"P-value 4.23e-13 Afp-num 6497 Identity 96.88% Similarity 97.92%"</span> +newline +
+<a class="jxr_linenumber" name="L331" href="#L331">331</a>       <span class="jxr_string">"Block  0 afp  5 score 118.80 rmsd  0.75 gap 0 (0.00%)"</span> +newline +
+<a class="jxr_linenumber" name="L332" href="#L332">332</a>       <span class="jxr_string">"Block  1 afp  6 score 143.14 rmsd  0.46 gap 0 (0.00%)"</span> +newline +
+<a class="jxr_linenumber" name="L333" href="#L333">333</a>       <span class="jxr_string">""</span> +newline +
+<a class="jxr_linenumber" name="L334" href="#L334">334</a>       <span class="jxr_string">"                  .    :    .    :    .    :    .    :    .    :    .    :    .    :"</span> +newline +
+<a class="jxr_linenumber" name="L335" href="#L335">335</a>       <span class="jxr_string">"Chain 1:    4 GTVWGALGHGINLNIPNFQMTDDIDEVRWERGSTLVAEFKR--KPFLKSGAFEILANGDLKIKNLTRDDS"</span> +newline +
+<a class="jxr_linenumber" name="L336" href="#L336">336</a>       <span class="jxr_string">"              11111111111111111111111111111111111111111  222222222222222222222222222"</span> +newline +
+<a class="jxr_linenumber" name="L337" href="#L337">337</a>       <span class="jxr_string">"Chain 2:    4 GTVWGALGHGINLNIPNFQMTDDIDEVRWERGSTLVAEFKRKMKPFLKSGAFEILANGDLKIKNLTRDDS"</span> +newline +
+<a class="jxr_linenumber" name="L338" href="#L338">338</a>       <span class="jxr_string">""</span> +newline +
+<a class="jxr_linenumber" name="L339" href="#L339">339</a>       <span class="jxr_string">"                  .    :    .    :    ."</span> +newline +
+<a class="jxr_linenumber" name="L340" href="#L340">340</a>       <span class="jxr_string">"Chain 1:   74 GTYNVTVYSTNGTRILDKALDLRILE"</span> +newline +
+<a class="jxr_linenumber" name="L341" href="#L341">341</a>       <span class="jxr_string">"              22222222222222222222222222"</span> +newline +
+<a class="jxr_linenumber" name="L342" href="#L342">342</a>       <span class="jxr_string">"Chain 2:   74 GTYNVTVYSTNGTRILNKALDLRILE"</span> +newline +
+<a class="jxr_linenumber" name="L343" href="#L343">343</a>       <span class="jxr_string">""</span> +newline +
+<a class="jxr_linenumber" name="L344" href="#L344">344</a>       <span class="jxr_string">"Note: positions are from PDB; the numbers between alignments are block index"</span> +newline ;
+<a class="jxr_linenumber" name="L345" href="#L345">345</a>       String result = MyTestHelper.compareAlignment(pdb1, chain1, pdb2, chain2, originalOutput,false);
+<a class="jxr_linenumber" name="L346" href="#L346">346</a>       <strong class="jxr_keyword">if</strong> (! result.equals(<span class="jxr_string">""</span>)){
+<a class="jxr_linenumber" name="L347" href="#L347">347</a>          String msg = <span class="jxr_string">"the created alignment images are not identical! "</span>;
+<a class="jxr_linenumber" name="L348" href="#L348">348</a>          printMismatch(originalOutput,result);
+<a class="jxr_linenumber" name="L349" href="#L349">349</a>          printFirstMismatch(result, originalOutput);
+<a class="jxr_linenumber" name="L350" href="#L350">350</a>          fail(msg);
+<a class="jxr_linenumber" name="L351" href="#L351">351</a>       }
+<a class="jxr_linenumber" name="L352" href="#L352">352</a> 
+<a class="jxr_linenumber" name="L353" href="#L353">353</a>    }
+<a class="jxr_linenumber" name="L354" href="#L354">354</a> 
+<a class="jxr_linenumber" name="L355" href="#L355">355</a>    <em class="jxr_comment">// disabled since so slow</em>
+<a class="jxr_linenumber" name="L356" href="#L356">356</a>    <em class="jxr_comment">// 100% identical</em>
+<a class="jxr_linenumber" name="L357" href="#L357">357</a> <em class="jxr_comment">//   public void test1nbw1kidFlexible(){</em>
+<a class="jxr_linenumber" name="L358" href="#L358">358</a> <em class="jxr_comment">//      String pdb1 = "1nbw";</em>
+<a class="jxr_linenumber" name="L359" href="#L359">359</a> <em class="jxr_comment">//      String chain1 = "A";</em>
+<a class="jxr_linenumber" name="L360" href="#L360">360</a> <em class="jxr_comment">//      String pdb2 = "1kid";</em>
+<a class="jxr_linenumber" name="L361" href="#L361">361</a> <em class="jxr_comment">//      String chain2 ="A";</em>
+<a class="jxr_linenumber" name="L362" href="#L362">362</a> <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L363" href="#L363">363</a> <em class="jxr_comment">//      String originalOutput="Align 1nbwA.pdb 606 with 1kidA.pdb 193" +newline +</em>
+<a class="jxr_linenumber" name="L364" href="#L364">364</a> <em class="jxr_comment">//      "Twists 5 ini-len 120 ini-rmsd 5.60 opt-equ 155 opt-rmsd 3.58 chain-rmsd 21.86 Score 133.98 align-len 248 gaps 93 (37.50%)" +newline +</em>
+<a class="jxr_linenumber" name="L365" href="#L365">365</a> <em class="jxr_comment">//      "P-value 6.48e-01 Afp-num 37019 Identity 5.65% Similarity 18.55%" +newline +</em>
+<a class="jxr_linenumber" name="L366" href="#L366">366</a> <em class="jxr_comment">//      "Block  0 afp  6 score 68.26 rmsd  4.20 gap 13 (0.21%)" +newline +</em>
+<a class="jxr_linenumber" name="L367" href="#L367">367</a> <em class="jxr_comment">//      "Block  1 afp  2 score 42.05 rmsd  1.96 gap 1 (0.06%)" +newline +</em>
+<a class="jxr_linenumber" name="L368" href="#L368">368</a> <em class="jxr_comment">//      "Block  2 afp  1 score 22.05 rmsd  1.14 gap 0 (0.00%)" +newline +</em>
+<a class="jxr_linenumber" name="L369" href="#L369">369</a> <em class="jxr_comment">//      "Block  3 afp  2 score 40.82 rmsd  2.48 gap 0 (0.00%)" +newline +</em>
+<a class="jxr_linenumber" name="L370" href="#L370">370</a> <em class="jxr_comment">//      "Block  4 afp  2 score 40.27 rmsd  2.24 gap 0 (0.00%)" +newline +</em>
+<a class="jxr_linenumber" name="L371" href="#L371">371</a> <em class="jxr_comment">//      "Block  5 afp  2 score 47.60 rmsd  0.60 gap 0 (0.00%)" +newline +</em>
+<a class="jxr_linenumber" name="L372" href="#L372">372</a> <em class="jxr_comment">//      "" +newline +</em>
+<a class="jxr_linenumber" name="L373" href="#L373">373</a> <em class="jxr_comment">//      "                  .    :    .    :    .    :    .    :    .    :    .    :    .    :" +newline +</em>
+<a class="jxr_linenumber" name="L374" href="#L374">374</a> <em class="jxr_comment">//      "Chain 1:   93 TESTMIGHNPQTPGGVG-------VGVGTTIALGRLATLPAAQYAEGWIVLIDDAVDFLDAVWWLNEALD" +newline +</em>
+<a class="jxr_linenumber" name="L375" href="#L375">375</a> <em class="jxr_comment">//      "              1 111111111111111       1111                  111111111111111111111111" +newline +</em>
+<a class="jxr_linenumber" name="L376" href="#L376">376</a> <em class="jxr_comment">//      "Chain 2:  190 SEGMQFDRGYLSPYFINKPETGAVELES------------------PFILLADKKISNIREMLPVLEAVA" +newline +</em>
+<a class="jxr_linenumber" name="L377" href="#L377">377</a> <em class="jxr_comment">//      "" +newline +</em>
+<a class="jxr_linenumber" name="L378" href="#L378">378</a> <em class="jxr_comment">//      "                  .    :    .    :    .    :    .    :    .    :    .    :    .    :" +newline +</em>
+<a class="jxr_linenumber" name="L379" href="#L379">379</a> <em class="jxr_comment">//      "Chain 1:  156 RGINVVAAILKKDD--GVLVNNRLR---KTLPVVDEVTLLEQVPEGVMAAVEVAAPGQVVRILSNPYGIA" +newline +</em>
+<a class="jxr_linenumber" name="L380" href="#L380">380</a> <em class="jxr_comment">//      "              11111111111111  111111111   1111111                                222" +newline +</em>
+<a class="jxr_linenumber" name="L381" href="#L381">381</a> <em class="jxr_comment">//      "Chain 2:  242 KAGKPLLIIAEDVEGEALATLVVNTMRGIVKVAAV--------------------------------KAP" +newline +</em>
+<a class="jxr_linenumber" name="L382" href="#L382">382</a> <em class="jxr_comment">//      "" +newline +</em>
+<a class="jxr_linenumber" name="L383" href="#L383">383</a> <em class="jxr_comment">//      "                  .    :    .    :    .    :    .    :    .    :    .    :    .    :" +newline +</em>
+<a class="jxr_linenumber" name="L384" href="#L384">384</a> <em class="jxr_comment">//      "Chain 1:  221 TFFGLSPEETQAIVPIARALIGNRSAVVLKTPQGDVQSRVIPA-----GNLYISGEKRRGEADVAEGAEA" +newline +</em>
+<a class="jxr_linenumber" name="L385" href="#L385">385</a> <em class="jxr_comment">//      "                  22222222222222222    33333333               444444444444444  55555" +newline +</em>
+<a class="jxr_linenumber" name="L386" href="#L386">386</a> <em class="jxr_comment">//      "Chain 2:  280 ----GFGDRRKAMLQDIATLT----GGTVISEEIGMELEKATLEDLGQAKRVVINKDTTTIIDGVGEEAA" +newline +</em>
+<a class="jxr_linenumber" name="L387" href="#L387">387</a> <em class="jxr_comment">//      "" +newline +</em>
+<a class="jxr_linenumber" name="L388" href="#L388">388</a> <em class="jxr_comment">//      "                  .    :    .    :    .    :    ." +newline +</em>
+<a class="jxr_linenumber" name="L389" href="#L389">389</a> <em class="jxr_comment">//      "Chain 1:  286 IMQAMSACAPVRDIRGEPGTHAGGMLERVRKVMASLTG" +newline +</em>
+<a class="jxr_linenumber" name="L390" href="#L390">390</a> <em class="jxr_comment">//      "              555555555555     666666666666666666666" +newline +</em>
+<a class="jxr_linenumber" name="L391" href="#L391">391</a> <em class="jxr_comment">//      "Chain 2:  342 IQGRVAQIRQQIEE---ATSDYDREKLQERVAKLAGGV" +newline +</em>
+<a class="jxr_linenumber" name="L392" href="#L392">392</a> <em class="jxr_comment">//      "" +newline +</em>
+<a class="jxr_linenumber" name="L393" href="#L393">393</a> <em class="jxr_comment">//      "Note: positions are from PDB; the numbers between alignments are block index" +newline;</em>
+<a class="jxr_linenumber" name="L394" href="#L394">394</a> <em class="jxr_comment">//      String result = MyTestHelper.compareAlignment(pdb1, chain1, pdb2, chain2, originalOutput,false);</em>
+<a class="jxr_linenumber" name="L395" href="#L395">395</a> <em class="jxr_comment">//      if (! result.equals("")){</em>
+<a class="jxr_linenumber" name="L396" href="#L396">396</a> <em class="jxr_comment">//         String msg = "the created alignment images are not identical! ";</em>
+<a class="jxr_linenumber" name="L397" href="#L397">397</a> <em class="jxr_comment">//         printMismatch(originalOutput,result);</em>
+<a class="jxr_linenumber" name="L398" href="#L398">398</a> <em class="jxr_comment">//         printFirstMismatch(result, originalOutput);</em>
+<a class="jxr_linenumber" name="L399" href="#L399">399</a> <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L400" href="#L400">400</a> <em class="jxr_comment">//         fail(msg);</em>
+<a class="jxr_linenumber" name="L401" href="#L401">401</a> <em class="jxr_comment">//      }</em>
+<a class="jxr_linenumber" name="L402" href="#L402">402</a> <em class="jxr_comment">//   }</em>
+<a class="jxr_linenumber" name="L403" href="#L403">403</a> 
+<a class="jxr_linenumber" name="L404" href="#L404">404</a>   <em class="jxr_comment">// 100% identical</em>
+<a class="jxr_linenumber" name="L405" href="#L405">405</a> <em class="jxr_comment">//   public void test1cdg8tim(){</em>
+<a class="jxr_linenumber" name="L406" href="#L406">406</a> <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L407" href="#L407">407</a> <em class="jxr_comment">//      String pdb1 = "1cdg";</em>
+<a class="jxr_linenumber" name="L408" href="#L408">408</a> <em class="jxr_comment">//      String chain1 = "A";</em>
+<a class="jxr_linenumber" name="L409" href="#L409">409</a> <em class="jxr_comment">//      String pdb2 = "8tim";</em>
+<a class="jxr_linenumber" name="L410" href="#L410">410</a> <em class="jxr_comment">//      String chain2 ="A";</em>
+<a class="jxr_linenumber" name="L411" href="#L411">411</a> <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L412" href="#L412">412</a> <em class="jxr_comment">//      String originalOutput ="Align 1cdgA.pdb 686 with 8timA.pdb 247" +newline +</em>
+<a class="jxr_linenumber" name="L413" href="#L413">413</a> <em class="jxr_comment">//      "Twists 0 ini-len 128 ini-rmsd 8.15 opt-equ 159 opt-rmsd 4.72 chain-rmsd 8.15 Score 185.44 align-len 238 gaps 79 (33.19%)" +newline +</em>
+<a class="jxr_linenumber" name="L414" href="#L414">414</a> <em class="jxr_comment">//      "P-value 1.38e-01 Afp-num 50059 Identity 5.46% Similarity 13.87%" +newline +</em>
+<a class="jxr_linenumber" name="L415" href="#L415">415</a> <em class="jxr_comment">//      "Block  0 afp 16 score 185.44 rmsd  8.15 gap 121 (0.49%)" +newline +</em>
+<a class="jxr_linenumber" name="L416" href="#L416">416</a> <em class="jxr_comment">//      "" +newline +</em>
+<a class="jxr_linenumber" name="L417" href="#L417">417</a> <em class="jxr_comment">//      "                  .    :    .    :    .    :    .    :    .    :    .    :    .    :" +newline +</em>
+<a class="jxr_linenumber" name="L418" href="#L418">418</a> <em class="jxr_comment">//      "Chain 1:  193 NLYDLADLNHNNSTVDVYLKDAIKMWLDLGIDGIRMDA---VKHMPFGWQKSFMAAVNNYKPVFTFGEWF" +newline +</em>
+<a class="jxr_linenumber" name="L419" href="#L419">419</a> <em class="jxr_comment">//      "              11111111          1  111111  111111111   111111111  111         111111" +newline +</em>
+<a class="jxr_linenumber" name="L420" href="#L420">420</a> <em class="jxr_comment">//      "Chain 2:   16 GDKKSLGELI--------HTLNGAKLS--ADTEVVCGAPSIYLDFARQKL--DAK---------IGVAAQ" +newline +</em>
+<a class="jxr_linenumber" name="L421" href="#L421">421</a> <em class="jxr_comment">//      "" +newline +</em>
+<a class="jxr_linenumber" name="L422" href="#L422">422</a> <em class="jxr_comment">//      "                  .    :    .    :    .    :    .    :    .    :    .    :    .    :" +newline +</em>
+<a class="jxr_linenumber" name="L423" href="#L423">423</a> <em class="jxr_comment">//      "Chain 1:  260 LGV---------NEVSPENHKFANESGMSLLDFRFAQKVRQVFRDNTDNMYGLKAMLEGSAADYAQVDDQ" +newline +</em>
+<a class="jxr_linenumber" name="L424" href="#L424">424</a> <em class="jxr_comment">//      "              111         11111111111     111111111 11   1111111111111111111111   11" +newline +</em>
+<a class="jxr_linenumber" name="L425" href="#L425">425</a> <em class="jxr_comment">//      "Chain 2:   65 NCYKVPKGAFTGEISPAMIKDIG-----AAWVILGHSERR---HVFGESDELIGQKVAHALAEGL---GV" +newline +</em>
+<a class="jxr_linenumber" name="L426" href="#L426">426</a> <em class="jxr_comment">//      "" +newline +</em>
+<a class="jxr_linenumber" name="L427" href="#L427">427</a> <em class="jxr_comment">//      "                  .    :    .    :    .    :    .    :    .    :    .    :    .    :" +newline +</em>
+<a class="jxr_linenumber" name="L428" href="#L428">428</a> <em class="jxr_comment">//      "Chain 1:  321 VTFIDNHDMERFHASNANRRKLEQALAFTLTS---------RGVPAIYYGTEQYMSGGTDPDNRARIPSF" +newline +</em>
+<a class="jxr_linenumber" name="L429" href="#L429">429</a> <em class="jxr_comment">//      "              11111      111111111111111111111         111111   11111111      111111" +newline +</em>
+<a class="jxr_linenumber" name="L430" href="#L430">430</a> <em class="jxr_comment">//      "Chain 2:  124 IACIG------EKLDEREAGITEKVVFEQTKAIADNVKDWSKVVLAY---EPVWAIGT------GKTATP" +newline +</em>
+<a class="jxr_linenumber" name="L431" href="#L431">431</a> <em class="jxr_comment">//      "" +newline +</em>
+<a class="jxr_linenumber" name="L432" href="#L432">432</a> <em class="jxr_comment">//      "                  .    :    .    :    ." +newline +</em>
+<a class="jxr_linenumber" name="L433" href="#L433">433</a> <em class="jxr_comment">//      "Chain 1:  382 STSTTAYQVIQKLAPLRK---CNPAIAY" +newline +</em>
+<a class="jxr_linenumber" name="L434" href="#L434">434</a> <em class="jxr_comment">//      "              11   1111111111111   1111111" +newline +</em>
+<a class="jxr_linenumber" name="L435" href="#L435">435</a> <em class="jxr_comment">//      "Chain 2:  179 QQ---AQEVHEKLRGWLKTHVSDAVAQS" +newline +</em>
+<a class="jxr_linenumber" name="L436" href="#L436">436</a> <em class="jxr_comment">//      "" +newline +</em>
+<a class="jxr_linenumber" name="L437" href="#L437">437</a> <em class="jxr_comment">//      "Note: positions are from PDB; the numbers between alignments are block index" +newline ;</em>
+<a class="jxr_linenumber" name="L438" href="#L438">438</a> <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L439" href="#L439">439</a> <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L440" href="#L440">440</a> <em class="jxr_comment">//      String result = MyTestHelper.compareAlignment(pdb1, chain1, pdb2, chain2, originalOutput,true);</em>
+<a class="jxr_linenumber" name="L441" href="#L441">441</a> <em class="jxr_comment">//      if (! result.equals("")){</em>
+<a class="jxr_linenumber" name="L442" href="#L442">442</a> <em class="jxr_comment">//         String msg = "the created alignment images are not identical! ";</em>
+<a class="jxr_linenumber" name="L443" href="#L443">443</a> <em class="jxr_comment">//         printMismatch(originalOutput,result);</em>
+<a class="jxr_linenumber" name="L444" href="#L444">444</a> <em class="jxr_comment">//         printFirstMismatch(result, originalOutput);</em>
+<a class="jxr_linenumber" name="L445" href="#L445">445</a> <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L446" href="#L446">446</a> <em class="jxr_comment">//         fail(msg);</em>
+<a class="jxr_linenumber" name="L447" href="#L447">447</a> <em class="jxr_comment">//      }</em>
+<a class="jxr_linenumber" name="L448" href="#L448">448</a> <em class="jxr_comment">//   }</em>
+<a class="jxr_linenumber" name="L449" href="#L449">449</a> 
+<a class="jxr_linenumber" name="L450" href="#L450">450</a>    
+<a class="jxr_linenumber" name="L451" href="#L451">451</a>    <em class="jxr_comment">// 100% identical</em>
+<a class="jxr_linenumber" name="L452" href="#L452">452</a> <em class="jxr_comment">//   public void test1cdg8timFlexible(){</em>
+<a class="jxr_linenumber" name="L453" href="#L453">453</a> <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L454" href="#L454">454</a> <em class="jxr_comment">//      String pdb1 = "1cdg";</em>
+<a class="jxr_linenumber" name="L455" href="#L455">455</a> <em class="jxr_comment">//      String chain1 = "A";</em>
+<a class="jxr_linenumber" name="L456" href="#L456">456</a> <em class="jxr_comment">//      String pdb2 = "8tim";</em>
+<a class="jxr_linenumber" name="L457" href="#L457">457</a> <em class="jxr_comment">//      String chain2 ="A";</em>
+<a class="jxr_linenumber" name="L458" href="#L458">458</a> <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L459" href="#L459">459</a> <em class="jxr_comment">//      String originalOutput ="Align 1cdgA.pdb 686 with 8timA.pdb 247" +newline +</em>
+<a class="jxr_linenumber" name="L460" href="#L460">460</a> <em class="jxr_comment">//      "Twists 3 ini-len 112 ini-rmsd 3.95 opt-equ 149 opt-rmsd 3.85 chain-rmsd 8.15 Score 185.44 align-len 255 gaps 106 (41.57%)" +newline +</em>
+<a class="jxr_linenumber" name="L461" href="#L461">461</a> <em class="jxr_comment">//      "P-value 3.52e-01 Afp-num 50059 Identity 7.45% Similarity 18.82%" +newline +</em>
+<a class="jxr_linenumber" name="L462" href="#L462">462</a> <em class="jxr_comment">//      "Block  0 afp  4 score 72.41 rmsd  2.94 gap 28 (0.47%)" +newline +</em>
+<a class="jxr_linenumber" name="L463" href="#L463">463</a> <em class="jxr_comment">//      "Block  1 afp  2 score 26.63 rmsd  2.67 gap 1 (0.06%)" +newline +</em>
+<a class="jxr_linenumber" name="L464" href="#L464">464</a> <em class="jxr_comment">//      "Block  2 afp  5 score 86.03 rmsd  4.72 gap 24 (0.38%)" +newline +</em>
+<a class="jxr_linenumber" name="L465" href="#L465">465</a> <em class="jxr_comment">//      "Block  3 afp  3 score 49.73 rmsd  4.26 gap 28 (0.54%)" +newline +</em>
+<a class="jxr_linenumber" name="L466" href="#L466">466</a> <em class="jxr_comment">//      "" +newline +</em>
+<a class="jxr_linenumber" name="L467" href="#L467">467</a> <em class="jxr_comment">//      "                  .    :    .    :    .    :    .    :    .    :    .    :    .    :" +newline +</em>
+<a class="jxr_linenumber" name="L468" href="#L468">468</a> <em class="jxr_comment">//      "Chain 1:  223 IDGIRMDAVKHMPFGWQKSFMAAVNNYKP----VFTFGEWFLGVNEV-----------------------" +newline +</em>
+<a class="jxr_linenumber" name="L469" href="#L469">469</a> <em class="jxr_comment">//      "              11111111111111111111111111111    111111111                            " +newline +</em>
+<a class="jxr_linenumber" name="L470" href="#L470">470</a> <em class="jxr_comment">//      "Chain 2:    5 KFFVGGNWKMNGDKKSLGELIHTLNGAKLSADTEVVCGAPSIYLDFARQKLDAKIGVAAQNCYKVPKGAF" +newline +</em>
+<a class="jxr_linenumber" name="L471" href="#L471">471</a> <em class="jxr_comment">//      "" +newline +</em>
+<a class="jxr_linenumber" name="L472" href="#L472">472</a> <em class="jxr_comment">//      "                  .    :    .    :    .    :    .    :    .    :    .    :    .    :" +newline +</em>
+<a class="jxr_linenumber" name="L473" href="#L473">473</a> <em class="jxr_comment">//      "Chain 1:  266 -SPENHKFANESGMSLLDFRFAQKVRQVFRDNTDNMYGLKAMLEGSAADYAQVDDQVTFIDNHDMERFHA" +newline +</em>
+<a class="jxr_linenumber" name="L474" href="#L474">474</a> <em class="jxr_comment">//      "               2222222222222222222    333333333333333333333333333   333333       333" +newline +</em>
+<a class="jxr_linenumber" name="L475" href="#L475">475</a> <em class="jxr_comment">//      "Chain 2:   75 TGEISPAMIKDIGAAWVILG----HSERRHVFGESDELIGQKVAHALAEGL---GVIACI-------GEK" +newline +</em>
+<a class="jxr_linenumber" name="L476" href="#L476">476</a> <em class="jxr_comment">//      "" +newline +</em>
+<a class="jxr_linenumber" name="L477" href="#L477">477</a> <em class="jxr_comment">//      "                  .    :    .    :    .    :    .    :    .    :    .    :    .    :" +newline +</em>
+<a class="jxr_linenumber" name="L478" href="#L478">478</a> <em class="jxr_comment">//      "Chain 1:  335 SNANR--RKLEQALAFTLTSR--------GVPAIYYGTEQYMSGGTDPDNRARIPSFSTSTTAYQVIQKL" +newline +</em>
+<a class="jxr_linenumber" name="L479" href="#L479">479</a> <em class="jxr_comment">//      "              33333  33333333333333        333333                       444444444444" +newline +</em>
+<a class="jxr_linenumber" name="L480" href="#L480">480</a> <em class="jxr_comment">//      "Chain 2:  131 LDEREAGITEKVVFEQTKAIADNVKDWSKVVLAYEPVWAIGTGKTA------------TPQQAQEVHEKL" +newline +</em>
+<a class="jxr_linenumber" name="L481" href="#L481">481</a> <em class="jxr_comment">//      "" +newline +</em>
+<a class="jxr_linenumber" name="L482" href="#L482">482</a> <em class="jxr_comment">//      "                  .    :    .    :    .    :    .    :    ." +newline +</em>
+<a class="jxr_linenumber" name="L483" href="#L483">483</a> <em class="jxr_comment">//      "Chain 1:  395 APLRKCNPAIAYGSTQERWINNDVLIYERKFGSNVAVVAVNRNLN" +newline +</em>
+<a class="jxr_linenumber" name="L484" href="#L484">484</a> <em class="jxr_comment">//      "              4444444444444 4                         44444" +newline +</em>
+<a class="jxr_linenumber" name="L485" href="#L485">485</a> <em class="jxr_comment">//      "Chain 2:  189 RGWLKTHVSDAVAQSTRIIYGGSVTGGNCKELASQHDVDGFLVGG" +newline +</em>
+<a class="jxr_linenumber" name="L486" href="#L486">486</a> <em class="jxr_comment">//      "" +newline +</em>
+<a class="jxr_linenumber" name="L487" href="#L487">487</a> <em class="jxr_comment">//      "Note: positions are from PDB; the numbers between alignments are block index" +newline ;</em>
+<a class="jxr_linenumber" name="L488" href="#L488">488</a> <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L489" href="#L489">489</a> <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L490" href="#L490">490</a> <em class="jxr_comment">//      String result = MyTestHelper.compareAlignment(pdb1, chain1, pdb2, chain2, originalOutput,false);</em>
+<a class="jxr_linenumber" name="L491" href="#L491">491</a> <em class="jxr_comment">//      if (! result.equals("")){</em>
+<a class="jxr_linenumber" name="L492" href="#L492">492</a> <em class="jxr_comment">//         String msg = "the created alignment images are not identical! ";</em>
+<a class="jxr_linenumber" name="L493" href="#L493">493</a> <em class="jxr_comment">//         printMismatch(originalOutput,result);</em>
+<a class="jxr_linenumber" name="L494" href="#L494">494</a> <em class="jxr_comment">//         printFirstMismatch(result, originalOutput);</em>
+<a class="jxr_linenumber" name="L495" href="#L495">495</a> <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L496" href="#L496">496</a> <em class="jxr_comment">//         fail(msg);</em>
+<a class="jxr_linenumber" name="L497" href="#L497">497</a> <em class="jxr_comment">//      }</em>
+<a class="jxr_linenumber" name="L498" href="#L498">498</a> <em class="jxr_comment">//   }</em>
+<a class="jxr_linenumber" name="L499" href="#L499">499</a> 
+<a class="jxr_linenumber" name="L500" href="#L500">500</a> 
+<a class="jxr_linenumber" name="L501" href="#L501">501</a>    <em class="jxr_comment">//exact</em>
+<a class="jxr_linenumber" name="L502" href="#L502">502</a>    <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> test1a211hwgFlexible(){
+<a class="jxr_linenumber" name="L503" href="#L503">503</a> 
+<a class="jxr_linenumber" name="L504" href="#L504">504</a>       String pdb1 = <span class="jxr_string">"1a21"</span>;
+<a class="jxr_linenumber" name="L505" href="#L505">505</a>       String chain1 = <span class="jxr_string">"A"</span>;
+<a class="jxr_linenumber" name="L506" href="#L506">506</a>       String pdb2 = <span class="jxr_string">"1hwg"</span>;
+<a class="jxr_linenumber" name="L507" href="#L507">507</a>       String chain2 =<span class="jxr_string">"C"</span>;
+<a class="jxr_linenumber" name="L508" href="#L508">508</a> 
+<a class="jxr_linenumber" name="L509" href="#L509">509</a>       String originalOutput=<span class="jxr_string">"Align 1a21A.pdb 194 with 1hwgC.pdb 191"</span> +newline +
+<a class="jxr_linenumber" name="L510" href="#L510">510</a>       <span class="jxr_string">"Twists 1 ini-len 120 ini-rmsd 3.04 opt-equ 150 opt-rmsd 2.96 chain-rmsd 4.21 Score 233.34 align-len 210 gaps 60 (28.57%)"</span> +newline +
+<a class="jxr_linenumber" name="L511" href="#L511">511</a>       <span class="jxr_string">"P-value 1.15e-05 Afp-num 12696 Identity 9.52% Similarity 19.05%"</span> +newline +
+<a class="jxr_linenumber" name="L512" href="#L512">512</a>       <span class="jxr_string">"Block  0 afp  4 score 66.42 rmsd  2.03 gap 6 (0.16%)"</span> +newline +
+<a class="jxr_linenumber" name="L513" href="#L513">513</a>       <span class="jxr_string">"Block  1 afp 11 score 184.29 rmsd  3.24 gap 69 (0.44%)"</span> +newline +
+<a class="jxr_linenumber" name="L514" href="#L514">514</a>       <span class="jxr_string">""</span> +newline +     
+<a class="jxr_linenumber" name="L515" href="#L515">515</a>       <span class="jxr_string">"                  .    :    .    :    .    :    .    :    .    :    .    :    .    :"</span> +newline +
+<a class="jxr_linenumber" name="L516" href="#L516">516</a>       <span class="jxr_string">"Chain 1:    6 RAYNLTWKSTN-FKTILEWEPKSIDHVYTVQISTRLENWKSKCFLTAE---TECDLTDEVVKDVGQTYMA"</span> +newline +
+<a class="jxr_linenumber" name="L517" href="#L517">517</a>       <span class="jxr_string">"              11111111111 111111111     111111111111111111       222222222   222222 "</span> +newline +
+<a class="jxr_linenumber" name="L518" href="#L518">518</a>       <span class="jxr_string">"Chain 2:   32 EPKFTKCRSPERETFSCHWTD-----PIQLFYTRRNQEWKECPDYVSAGENSCYFNSSFT---SIWIPYC"</span> +newline +
+<a class="jxr_linenumber" name="L519" href="#L519">519</a>       <span class="jxr_string">""</span> +newline +
+<a class="jxr_linenumber" name="L520" href="#L520">520</a>       <span class="jxr_string">"                  .    :    .    :    .    :    .    :    .    :    .    :    .    :"</span> +newline +
+<a class="jxr_linenumber" name="L521" href="#L521">521</a>       <span class="jxr_string">"Chain 1:   72 RVLSYPARNTTGFPEEPPFRNSPEFTPYLDTNLGQPTIQSFEQVG-------TKLNVTVQDARTLVTFLS"</span> +newline +
+<a class="jxr_linenumber" name="L522" href="#L522">522</a>       <span class="jxr_string">"                                    22222222222222222222222       222222222222   222"</span> +newline +
+<a class="jxr_linenumber" name="L523" href="#L523">523</a>       <span class="jxr_string">"Chain 2:  109 IKLTSNGGTVDE----------KCFSVDEIVQPDPPIALNWTLLNVSLTGIHADIQVRWEAPRN---ADI"</span> +newline +
+<a class="jxr_linenumber" name="L524" href="#L524">524</a>       <span class="jxr_string">""</span> +newline +
+<a class="jxr_linenumber" name="L525" href="#L525">525</a>       <span class="jxr_string">"                  .    :    .    :    .    :    .    :    .    :    .    :    .    :"</span> +newline +
+<a class="jxr_linenumber" name="L526" href="#L526">526</a>       <span class="jxr_string">"Chain 1:  141 LRAVFGKDLNYTLYYWR-----KKTAT-TNTNEFLIDVDKGE-NYCFSVQAVIPSRKRKQRSPESLTECT"</span> +newline +
+<a class="jxr_linenumber" name="L527" href="#L527">527</a>       <span class="jxr_string">"              222222  222222222     22222 22222222222222 2222222222222  222222222222"</span> +newline +
+<a class="jxr_linenumber" name="L528" href="#L528">528</a>       <span class="jxr_string">"Chain 2:  166 QKGWMV--LEYELQYKEVNETKWKMMDPILTTSVPVYSLKVDKEYEVRVRSKQRNS--GNYGEFSEVLYV"</span> +newline +
+<a class="jxr_linenumber" name="L529" href="#L529">529</a>       <span class="jxr_string">""</span> +newline +
+<a class="jxr_linenumber" name="L530" href="#L530">530</a>       <span class="jxr_string">"Note: positions are from PDB; the numbers between alignments are block index"</span> +newline;
+<a class="jxr_linenumber" name="L531" href="#L531">531</a> 
+<a class="jxr_linenumber" name="L532" href="#L532">532</a>       String result = MyTestHelper.compareAlignment(pdb1, chain1, pdb2, chain2, originalOutput,false);
+<a class="jxr_linenumber" name="L533" href="#L533">533</a>       <strong class="jxr_keyword">if</strong> (! result.equals(<span class="jxr_string">""</span>)){
+<a class="jxr_linenumber" name="L534" href="#L534">534</a>          String msg = <span class="jxr_string">"the created alignment images are not identical! "</span>;
+<a class="jxr_linenumber" name="L535" href="#L535">535</a>          printMismatch(originalOutput,result);
+<a class="jxr_linenumber" name="L536" href="#L536">536</a>          printFirstMismatch(result, originalOutput);
+<a class="jxr_linenumber" name="L537" href="#L537">537</a> 
+<a class="jxr_linenumber" name="L538" href="#L538">538</a>          fail(msg);
+<a class="jxr_linenumber" name="L539" href="#L539">539</a>       }
+<a class="jxr_linenumber" name="L540" href="#L540">540</a>    }
+<a class="jxr_linenumber" name="L541" href="#L541">541</a> 
+<a class="jxr_linenumber" name="L542" href="#L542">542</a> }
+</pre>
+<hr/>
+<div id="footer">Copyright &#169; 2000&#x2013;2015 <a href="http://www.biojava.org">BioJava</a>. All rights reserved.</div>
+</body>
+</html>

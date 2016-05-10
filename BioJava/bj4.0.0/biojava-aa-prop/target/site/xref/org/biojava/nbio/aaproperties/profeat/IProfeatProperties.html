@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>IProfeatProperties xref</title>
+<link type="text/css" rel="stylesheet" href="../../../../../stylesheet.css" />
+</head>
+<body>
+<div id="overview"><a href="../../../../../../apidocs/org/biojava/nbio/aaproperties/profeat/IProfeatProperties.html">View Javadoc</a></div><pre>
+<a class="jxr_linenumber" name="L1" href="#L1">1</a>   <em class="jxr_comment">/*</em>
+<a class="jxr_linenumber" name="L2" href="#L2">2</a>   <em class="jxr_comment"> *                    BioJava development code</em>
+<a class="jxr_linenumber" name="L3" href="#L3">3</a>   <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L4" href="#L4">4</a>   <em class="jxr_comment"> * This code may be freely distributed and modified under the</em>
+<a class="jxr_linenumber" name="L5" href="#L5">5</a>   <em class="jxr_comment"> * terms of the GNU Lesser General Public Licence.  This should</em>
+<a class="jxr_linenumber" name="L6" href="#L6">6</a>   <em class="jxr_comment"> * be distributed with the code.  If you do not have a copy,</em>
+<a class="jxr_linenumber" name="L7" href="#L7">7</a>   <em class="jxr_comment"> * see:</em>
+<a class="jxr_linenumber" name="L8" href="#L8">8</a>   <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>   <em class="jxr_comment"> *      <a href="http://www.gnu.org/copyleft/lesser.htm" target="alexandria_uri">http://www.gnu.org/copyleft/lesser.htm</a>l</em>
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_comment"> * Copyright for this code is held jointly by the individual</em>
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_comment"> * authors.  These should be listed in @author doc comments.</em>
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>  <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>  <em class="jxr_comment"> * For more information on the BioJava project and its aims,</em>
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>  <em class="jxr_comment"> * or to join the biojava-l mailing list, visit the home page</em>
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>  <em class="jxr_comment"> * at:</em>
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>  <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>  <em class="jxr_comment"> *      <a href="http://www.biojava.org" target="alexandria_uri">http://www.biojava.org</a>/</em>
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>  <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>  <em class="jxr_comment"> */</em>
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>  <strong class="jxr_keyword">package</strong> org.biojava.nbio.aaproperties.profeat;
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>  
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>  <strong class="jxr_keyword">import</strong> org.biojava.nbio.core.sequence.ProteinSequence;
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>  
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>  <strong class="jxr_keyword">import</strong> java.util.Map;
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>  
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">interface</strong> <a href="../../../../../org/biojava/nbio/aaproperties/profeat/IProfeatProperties.html">IProfeatProperties</a> {
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>  	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>  <em class="jxr_javadoccomment">	 * Based on Table 2 of <a href="http://nar.oxfordjournals.org/content/34/suppl_2/W32.full.pdf&lt;br/&gt" target="alexandria_uri">http://nar.oxfordjournals.org/content/34/suppl_2/W32.full.pdf&lt;br/&gt</a>;</em>
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>  <em class="jxr_javadoccomment">	 * An interface class to generate the properties of a protein sequence based on its converted attributes.&lt;br/&gt;</em>
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>  <em class="jxr_javadoccomment">	 * The seven different attributes are&lt;p/&gt;</em>
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>  <em class="jxr_javadoccomment">	 * Hydrophobicity (Polar, Neutral, Hydrophobicity)&lt;br/&gt;</em>
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>  <em class="jxr_javadoccomment">	 * Normalized van der Waals volume (Range 0 - 2.78, 2.95 - 4.0, 4.03 - 8.08)&lt;br/&gt;</em>
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>  <em class="jxr_javadoccomment">	 * Polarity (Value 4.9 - 6.2, 8.0 - 9.2, 10.4 - 13.0)&lt;br/&gt;</em>
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>  <em class="jxr_javadoccomment">	 * Polarizability (Value 0 - 1.08, 0.128 - 0.186, 0.219 - 0.409)&lt;br/&gt;</em>
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>  <em class="jxr_javadoccomment">	 * Charge (Positive, Neutral, Negative)&lt;br/&gt;</em>
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>  <em class="jxr_javadoccomment">	 * Secondary structure (Helix, Strand, Coil)&lt;br/&gt;</em>
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>  <em class="jxr_javadoccomment">	 * Solvent accessibility (Buried, Exposed, Intermediate)&lt;br/&gt;</em>
+<a class="jxr_linenumber" name="L39" href="#L39">39</a>  <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="L40" href="#L40">40</a>  <em class="jxr_javadoccomment">	 * @author kohchuanhock</em>
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>  <em class="jxr_javadoccomment">	 * @version 2011.06.16</em>
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>  <em class="jxr_javadoccomment">	 * @since 3.0.2</em>
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>  <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="L44" href="#L44">44</a>  	
+<a class="jxr_linenumber" name="L45" href="#L45">45</a>  	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>  <em class="jxr_javadoccomment">	 * Enumeration of the seven different attributes</em>
+<a class="jxr_linenumber" name="L47" href="#L47">47</a>  <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="L48" href="#L48">48</a>  	<strong class="jxr_keyword">public</strong> enum <a href="../../../../../org/biojava/nbio/aaproperties/profeat/IProfeatProperties.html">ATTRIBUTE</a> {HYDROPHOBICITY, VOLUME, POLARITY, POLARIZABILITY, CHARGE, SECONDARYSTRUCTURE, SOLVENTACCESSIBILITY};
+<a class="jxr_linenumber" name="L49" href="#L49">49</a>  	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L50" href="#L50">50</a>  <em class="jxr_javadoccomment">	 * Enumeration of the three different groupings for each attributes </em>
+<a class="jxr_linenumber" name="L51" href="#L51">51</a>  <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="L52" href="#L52">52</a>  	<strong class="jxr_keyword">public</strong> enum <a href="../../../../../org/biojava/nbio/aaproperties/profeat/IProfeatProperties.html">GROUPING</a> {GROUP1, GROUP2, GROUP3};
+<a class="jxr_linenumber" name="L53" href="#L53">53</a>  	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L54" href="#L54">54</a>  <em class="jxr_javadoccomment">	 * Enumeration of the transition between groupA and groupB </em>
+<a class="jxr_linenumber" name="L55" href="#L55">55</a>  <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="L56" href="#L56">56</a>  	<strong class="jxr_keyword">public</strong> enum <a href="../../../../../org/biojava/nbio/aaproperties/profeat/IProfeatProperties.html">TRANSITION</a> {BETWEEN_11, BETWEEN_22, BETWEEN_33, BETWEEN_12, BETWEEN_13, BETWEEN_23};
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>  	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L58" href="#L58">58</a>  <em class="jxr_javadoccomment">	 * Enumeration of the distribution for the first, first 25%, first 50%, first 75% and 100% of the grouping</em>
+<a class="jxr_linenumber" name="L59" href="#L59">59</a>  <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="L60" href="#L60">60</a>  	<strong class="jxr_keyword">public</strong> enum <a href="../../../../../org/biojava/nbio/aaproperties/profeat/IProfeatProperties.html">DISTRIBUTION</a> {FIRST, FIRST25, FIRST50, FIRST75, ALL};
+<a class="jxr_linenumber" name="L61" href="#L61">61</a>  
+<a class="jxr_linenumber" name="L62" href="#L62">62</a>  	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L63" href="#L63">63</a>  <em class="jxr_javadoccomment">	 * Returns the composition of the specific grouping for the given attribute.</em>
+<a class="jxr_linenumber" name="L64" href="#L64">64</a>  <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="L65" href="#L65">65</a>  <em class="jxr_javadoccomment">	 * @param sequence</em>
+<a class="jxr_linenumber" name="L66" href="#L66">66</a>  <em class="jxr_javadoccomment">	 * 	a protein sequence consisting of non-ambiguous characters only</em>
+<a class="jxr_linenumber" name="L67" href="#L67">67</a>  <em class="jxr_javadoccomment">	 * @param attribute</em>
+<a class="jxr_linenumber" name="L68" href="#L68">68</a>  <em class="jxr_javadoccomment">	 * 	one of the seven attributes (Hydrophobicity, Volume, Polarity, Polarizability, Charge, SecondaryStructure or SolventAccessibility)</em>
+<a class="jxr_linenumber" name="L69" href="#L69">69</a>  <em class="jxr_javadoccomment">	 * @param group</em>
+<a class="jxr_linenumber" name="L70" href="#L70">70</a>  <em class="jxr_javadoccomment">	 * 	the grouping to be computed</em>
+<a class="jxr_linenumber" name="L71" href="#L71">71</a>  <em class="jxr_javadoccomment">	 * @return</em>
+<a class="jxr_linenumber" name="L72" href="#L72">72</a>  <em class="jxr_javadoccomment">	 * 	returns the composition of the specific grouping for the given attribute</em>
+<a class="jxr_linenumber" name="L73" href="#L73">73</a>  <em class="jxr_javadoccomment">	 * @throws Exception</em>
+<a class="jxr_linenumber" name="L74" href="#L74">74</a>  <em class="jxr_javadoccomment">	 * 	throws Exception if attribute or group are unknown</em>
+<a class="jxr_linenumber" name="L75" href="#L75">75</a>  <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="L76" href="#L76">76</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">double</strong> getComposition(ProteinSequence sequence, <a href="../../../../../org/biojava/nbio/aaproperties/profeat/IProfeatProperties.html">ATTRIBUTE</a> attribute, <a href="../../../../../org/biojava/nbio/aaproperties/profeat/IProfeatProperties.html">GROUPING</a> group) <strong class="jxr_keyword">throws</strong> Exception;
+<a class="jxr_linenumber" name="L77" href="#L77">77</a>  	
+<a class="jxr_linenumber" name="L78" href="#L78">78</a>  	<strong class="jxr_keyword">public</strong> Map&lt;GROUPING, Double&gt; getComposition(ProteinSequence sequence, <a href="../../../../../org/biojava/nbio/aaproperties/profeat/IProfeatProperties.html">ATTRIBUTE</a> attribute) <strong class="jxr_keyword">throws</strong> Exception;
+<a class="jxr_linenumber" name="L79" href="#L79">79</a>  	
+<a class="jxr_linenumber" name="L80" href="#L80">80</a>  	<strong class="jxr_keyword">public</strong> Map&lt;ATTRIBUTE, Map&lt;GROUPING, Double&gt;&gt; getComposition(ProteinSequence sequence) <strong class="jxr_keyword">throws</strong> Exception;
+<a class="jxr_linenumber" name="L81" href="#L81">81</a>  	
+<a class="jxr_linenumber" name="L82" href="#L82">82</a>  	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L83" href="#L83">83</a>  <em class="jxr_javadoccomment">	 * Returns the number of transition between the specified groups for the given attribute with respect to the length of sequence.</em>
+<a class="jxr_linenumber" name="L84" href="#L84">84</a>  <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="L85" href="#L85">85</a>  <em class="jxr_javadoccomment">	 * @param sequence</em>
+<a class="jxr_linenumber" name="L86" href="#L86">86</a>  <em class="jxr_javadoccomment">	 * 	a protein sequence consisting of non-ambiguous characters only</em>
+<a class="jxr_linenumber" name="L87" href="#L87">87</a>  <em class="jxr_javadoccomment">	 * @param attribute</em>
+<a class="jxr_linenumber" name="L88" href="#L88">88</a>  <em class="jxr_javadoccomment">	 * 	one of the seven attributes (Hydrophobicity, Volume, Polarity, Polarizability, Charge, SecondaryStructure or SolventAccessibility)</em>
+<a class="jxr_linenumber" name="L89" href="#L89">89</a>  <em class="jxr_javadoccomment">	 * @param transition</em>
+<a class="jxr_linenumber" name="L90" href="#L90">90</a>  <em class="jxr_javadoccomment">	 * 	the interested transition between the groups</em>
+<a class="jxr_linenumber" name="L91" href="#L91">91</a>  <em class="jxr_javadoccomment">	 * @return</em>
+<a class="jxr_linenumber" name="L92" href="#L92">92</a>  <em class="jxr_javadoccomment">	 *  returns the number of transition between the specified groups for the given attribute with respect to the length of sequence.</em>
+<a class="jxr_linenumber" name="L93" href="#L93">93</a>  <em class="jxr_javadoccomment">	 * @throws Exception</em>
+<a class="jxr_linenumber" name="L94" href="#L94">94</a>  <em class="jxr_javadoccomment">	 * 	throws Exception if attribute or group are unknown</em>
+<a class="jxr_linenumber" name="L95" href="#L95">95</a>  <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="L96" href="#L96">96</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">double</strong> getTransition(ProteinSequence sequence, <a href="../../../../../org/biojava/nbio/aaproperties/profeat/IProfeatProperties.html">ATTRIBUTE</a> attribute, <a href="../../../../../org/biojava/nbio/aaproperties/profeat/IProfeatProperties.html">TRANSITION</a> transition) <strong class="jxr_keyword">throws</strong> Exception;
+<a class="jxr_linenumber" name="L97" href="#L97">97</a>  	
+<a class="jxr_linenumber" name="L98" href="#L98">98</a>  	<strong class="jxr_keyword">public</strong> Map&lt;TRANSITION, Double&gt; getTransition(ProteinSequence sequence, <a href="../../../../../org/biojava/nbio/aaproperties/profeat/IProfeatProperties.html">ATTRIBUTE</a> attribute) <strong class="jxr_keyword">throws</strong> Exception;
+<a class="jxr_linenumber" name="L99" href="#L99">99</a>  	
+<a class="jxr_linenumber" name="L100" href="#L100">100</a> 	<strong class="jxr_keyword">public</strong> Map&lt;ATTRIBUTE, Map&lt;TRANSITION, Double&gt;&gt; getTransition(ProteinSequence sequence) <strong class="jxr_keyword">throws</strong> Exception;
+<a class="jxr_linenumber" name="L101" href="#L101">101</a> 	
+<a class="jxr_linenumber" name="L102" href="#L102">102</a> 	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L103" href="#L103">103</a> <em class="jxr_javadoccomment">	 * Computes and return the position with respect to the sequence where the given distribution of the grouping can be found.&lt;br/&gt;</em>
+<a class="jxr_linenumber" name="L104" href="#L104">104</a> <em class="jxr_javadoccomment">	 * Example: "1111122222"&lt;br/&gt;</em>
+<a class="jxr_linenumber" name="L105" href="#L105">105</a> <em class="jxr_javadoccomment">	 * For the above example,&lt;br/&gt;</em>
+<a class="jxr_linenumber" name="L106" href="#L106">106</a> <em class="jxr_javadoccomment">	 * position of the GROUPING.GROUP1 &amp;&amp; DISTRIBUTION.FIRST = 0/10 (because the first occurrence of '1' is at position 0)&lt;br/&gt; </em>
+<a class="jxr_linenumber" name="L107" href="#L107">107</a> <em class="jxr_javadoccomment">	 * position of the GROUPING.GROUP1 &amp;&amp; DISTRIBUTION.ALL = 4/10 (because all occurrences of '1' happens on and before position 4)&lt;br/&gt;</em>
+<a class="jxr_linenumber" name="L108" href="#L108">108</a> <em class="jxr_javadoccomment">	 * </em>
+<a class="jxr_linenumber" name="L109" href="#L109">109</a> <em class="jxr_javadoccomment">	 * @param sequence</em>
+<a class="jxr_linenumber" name="L110" href="#L110">110</a> <em class="jxr_javadoccomment">	 * 	a protein sequence consisting of non-ambiguous characters only</em>
+<a class="jxr_linenumber" name="L111" href="#L111">111</a> <em class="jxr_javadoccomment">	 * @param attribute</em>
+<a class="jxr_linenumber" name="L112" href="#L112">112</a> <em class="jxr_javadoccomment">	 * 	one of the seven attributes (Hydrophobicity, Volume, Polarity, Polarizability, Charge, SecondaryStructure or SolventAccessibility)</em>
+<a class="jxr_linenumber" name="L113" href="#L113">113</a> <em class="jxr_javadoccomment">	 * @param group	</em>
+<a class="jxr_linenumber" name="L114" href="#L114">114</a> <em class="jxr_javadoccomment">	 * 	one the three groups for the attribute</em>
+<a class="jxr_linenumber" name="L115" href="#L115">115</a> <em class="jxr_javadoccomment">	 * @param distribution</em>
+<a class="jxr_linenumber" name="L116" href="#L116">116</a> <em class="jxr_javadoccomment">	 * 	the distribution of the grouping</em>
+<a class="jxr_linenumber" name="L117" href="#L117">117</a> <em class="jxr_javadoccomment">	 * 	</em>
+<a class="jxr_linenumber" name="L118" href="#L118">118</a> <em class="jxr_javadoccomment">	 * @return</em>
+<a class="jxr_linenumber" name="L119" href="#L119">119</a> <em class="jxr_javadoccomment">	 * 	the position with respect to the length of sequence where the given distribution of the grouping can be found.&lt;br/&gt; </em>
+<a class="jxr_linenumber" name="L120" href="#L120">120</a> <em class="jxr_javadoccomment">	 * @throws Exception</em>
+<a class="jxr_linenumber" name="L121" href="#L121">121</a> <em class="jxr_javadoccomment">	 * 	throws Exception if attribute or group are unknown</em>
+<a class="jxr_linenumber" name="L122" href="#L122">122</a> <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="L123" href="#L123">123</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">double</strong> getDistributionPosition(ProteinSequence sequence, <a href="../../../../../org/biojava/nbio/aaproperties/profeat/IProfeatProperties.html">ATTRIBUTE</a> attribute, <a href="../../../../../org/biojava/nbio/aaproperties/profeat/IProfeatProperties.html">GROUPING</a> group, <a href="../../../../../org/biojava/nbio/aaproperties/profeat/IProfeatProperties.html">DISTRIBUTION</a> distribution) <strong class="jxr_keyword">throws</strong> Exception;
+<a class="jxr_linenumber" name="L124" href="#L124">124</a> 	
+<a class="jxr_linenumber" name="L125" href="#L125">125</a> 	<strong class="jxr_keyword">public</strong> Map&lt;DISTRIBUTION, Double&gt; getDistributionPosition(ProteinSequence sequence, <a href="../../../../../org/biojava/nbio/aaproperties/profeat/IProfeatProperties.html">ATTRIBUTE</a> attribute, <a href="../../../../../org/biojava/nbio/aaproperties/profeat/IProfeatProperties.html">GROUPING</a> group) <strong class="jxr_keyword">throws</strong> Exception;
+<a class="jxr_linenumber" name="L126" href="#L126">126</a> 	
+<a class="jxr_linenumber" name="L127" href="#L127">127</a> 	<strong class="jxr_keyword">public</strong> Map&lt;GROUPING, Map&lt;DISTRIBUTION, Double&gt;&gt; getDistributionPosition(ProteinSequence sequence, <a href="../../../../../org/biojava/nbio/aaproperties/profeat/IProfeatProperties.html">ATTRIBUTE</a> attribute) <strong class="jxr_keyword">throws</strong> Exception;
+<a class="jxr_linenumber" name="L128" href="#L128">128</a> 	
+<a class="jxr_linenumber" name="L129" href="#L129">129</a> 	<strong class="jxr_keyword">public</strong> Map&lt;ATTRIBUTE , Map&lt;GROUPING, Map&lt;DISTRIBUTION, Double&gt;&gt;&gt; getDistributionPosition(ProteinSequence sequence) <strong class="jxr_keyword">throws</strong> Exception;
+<a class="jxr_linenumber" name="L130" href="#L130">130</a> }
+</pre>
+<hr/>
+<div id="footer">Copyright &#169; 2000&#x2013;2015 <a href="http://www.biojava.org">BioJava</a>. All rights reserved.</div>
+</body>
+</html>

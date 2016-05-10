@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+<rss version="0.91">
+  <channel>
+    <title>biojava-protein-disorder - Checkstyle report</title>
+    <link>http://www.biojava.org/biojava-protein-disorder</link>
+    <description>biojava-protein-disorder - Checkstyle report</description>
+    <language>en-us</language>
+    <copyright>&#169;2000 - 2015 BioJava</copyright>
+    <item>
+      <title>File: 13,
+             Errors: 2158,
+             Warnings: 0,
+             Infos: 0
+      </title>
+            <link>http://www.biojava.org/biojava-protein-disorder/checkstyle.html</link>
+      <description>
+        <p>Click <a href="http://www.biojava.org/biojava-protein-disorder/checkstyle.html">here</a> for the full Checkstyle report.</p>
+
+        <table summary="Files" boder="1">
+          <thead>
+            <tr>
+              <th>Files</th>
+              <th style="width:30px;"><abbr title="Info">I</abbr></th>
+              <th style="width:30px;"><abbr title="Warning">W</abbr></th>
+              <th style="width:30px;"><abbr title="Error">E</abbr></th>
+            </tr>
+          </thead>
+          <tbody>
+                          <tr>
+                <td>
+                  <a href="http://www.biojava.org/biojava-protein-disorder/checkstyle.html#org.biojava.nbio.ronn.NullOutputStream.java">org/biojava/nbio/ronn/NullOutputStream.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  11
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.biojava.org/biojava-protein-disorder/checkstyle.html#org.biojava.nbio.ronn.Timer.java">org/biojava/nbio/ronn/Timer.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  35
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.biojava.org/biojava-protein-disorder/checkstyle.html#org.biojava.nbio.ronn.InputParameters.java">org/biojava/nbio/ronn/InputParameters.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  163
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.biojava.org/biojava-protein-disorder/checkstyle.html#org.biojava.nbio.data.sequence.SequenceUtil.java">org/biojava/nbio/data/sequence/SequenceUtil.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  156
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.biojava.org/biojava-protein-disorder/checkstyle.html#org.biojava.nbio.ronn.package-info.java">org/biojava/nbio/ronn/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  21
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.biojava.org/biojava-protein-disorder/checkstyle.html#org.biojava.nbio.ronn.ORonnModel.java">org/biojava/nbio/ronn/ORonnModel.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  136
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.biojava.org/biojava-protein-disorder/checkstyle.html#org.biojava.nbio.ronn.Jronn.java">org/biojava/nbio/ronn/Jronn.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  479
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.biojava.org/biojava-protein-disorder/checkstyle.html#org.biojava.nbio.data.sequence.package-info.java">org/biojava/nbio/data/sequence/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  6
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.biojava.org/biojava-protein-disorder/checkstyle.html#org.biojava.nbio.ronn.ModelLoader.java">org/biojava/nbio/ronn/ModelLoader.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  179
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.biojava.org/biojava-protein-disorder/checkstyle.html#org.biojava.nbio.ronn.ORonn.java">org/biojava/nbio/ronn/ORonn.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  408
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.biojava.org/biojava-protein-disorder/checkstyle.html#demo.PredictDisorder.java">demo/PredictDisorder.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  49
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.biojava.org/biojava-protein-disorder/checkstyle.html#org.biojava.nbio.ronn.RonnConstraint.java">org/biojava/nbio/ronn/RonnConstraint.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  398
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.biojava.org/biojava-protein-disorder/checkstyle.html#org.biojava.nbio.data.sequence.FastaSequence.java">org/biojava/nbio/data/sequence/FastaSequence.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  117
+                </td>
+              </tr>
+                      </tbody>
+        </table>
+        
+      </description>
+    </item>
+  </channel>
+</rss>
+

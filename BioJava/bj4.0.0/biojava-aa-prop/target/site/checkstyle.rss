@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+<rss version="0.91">
+  <channel>
+    <title>biojava-aa-prop - Checkstyle report</title>
+    <link>http://www.biojava.org</link>
+    <description>biojava-aa-prop - Checkstyle report</description>
+    <language>en-us</language>
+    <copyright>&#169;2000 - 2015 BioJava</copyright>
+    <item>
+      <title>File: 32,
+             Errors: 5836,
+             Warnings: 0,
+             Infos: 0
+      </title>
+            <link>http://www.biojava.org/checkstyle.html</link>
+      <description>
+        <p>Click <a href="http://www.biojava.org/checkstyle.html">here</a> for the full Checkstyle report.</p>
+
+        <table summary="Files" boder="1">
+          <thead>
+            <tr>
+              <th>Files</th>
+              <th style="width:30px;"><abbr title="Info">I</abbr></th>
+              <th style="width:30px;"><abbr title="Warning">W</abbr></th>
+              <th style="width:30px;"><abbr title="Error">E</abbr></th>
+            </tr>
+          </thead>
+          <tbody>
+                          <tr>
+                <td>
+                  <a href="http://www.biojava.org/checkstyle.html#org.biojava.nbio.aaproperties.xml.ElementTable.java">org/biojava/nbio/aaproperties/xml/ElementTable.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  104
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.biojava.org/checkstyle.html#org.biojava.nbio.aaproperties.profeat.ProfeatProperties.java">org/biojava/nbio/aaproperties/profeat/ProfeatProperties.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  289
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.biojava.org/checkstyle.html#org.biojava.nbio.aaproperties.package-info.java">org/biojava/nbio/aaproperties/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.biojava.org/checkstyle.html#org.biojava.nbio.aaproperties.profeat.convertor.Convertor.java">org/biojava/nbio/aaproperties/profeat/convertor/Convertor.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  102
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.biojava.org/checkstyle.html#org.biojava.nbio.aaproperties.Constraints.java">org/biojava/nbio/aaproperties/Constraints.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  670
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.biojava.org/checkstyle.html#org.biojava.nbio.aaproperties.profeat.convertor.Convert2SecondaryStructure.java">org/biojava/nbio/aaproperties/profeat/convertor/Convert2SecondaryStructure.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  48
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.biojava.org/checkstyle.html#org.biojava.nbio.aaproperties.profeat.convertor.Convert2Charge.java">org/biojava/nbio/aaproperties/profeat/convertor/Convert2Charge.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  54
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.biojava.org/checkstyle.html#org.biojava.nbio.aaproperties.profeat.convertor.Convert2Hydrophobicity.java">org/biojava/nbio/aaproperties/profeat/convertor/Convert2Hydrophobicity.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  50
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.biojava.org/checkstyle.html#org.biojava.nbio.aaproperties.xml.Isotope.java">org/biojava/nbio/aaproperties/xml/Isotope.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  99
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.biojava.org/checkstyle.html#org.biojava.nbio.aaproperties.profeat.convertor.Convert2Polarizability.java">org/biojava/nbio/aaproperties/profeat/convertor/Convert2Polarizability.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  51
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.biojava.org/checkstyle.html#org.biojava.nbio.aaproperties.xml.MyValidationEventHandler.java">org/biojava/nbio/aaproperties/xml/MyValidationEventHandler.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  30
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.biojava.org/checkstyle.html#org.biojava.nbio.aaproperties.profeat.convertor.Convert2Polarity.java">org/biojava/nbio/aaproperties/profeat/convertor/Convert2Polarity.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  51
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.biojava.org/checkstyle.html#org.biojava.nbio.aaproperties.xml.ModifiedAminoAcidCompoundSet.java">org/biojava/nbio/aaproperties/xml/ModifiedAminoAcidCompoundSet.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  33
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.biojava.org/checkstyle.html#org.biojava.nbio.aaproperties.profeat.convertor.package-info.java">org/biojava/nbio/aaproperties/profeat/convertor/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  4
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.biojava.org/checkstyle.html#demo.BioJavaAADemo.java">demo/BioJavaAADemo.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  6
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.biojava.org/checkstyle.html#org.biojava.nbio.aaproperties.xml.Name2Count.java">org/biojava/nbio/aaproperties/xml/Name2Count.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  47
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.biojava.org/checkstyle.html#org.biojava.nbio.aaproperties.xml.AminoAcidCompositionTable.java">org/biojava/nbio/aaproperties/xml/AminoAcidCompositionTable.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  204
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.biojava.org/checkstyle.html#org.biojava.nbio.aaproperties.xml.package-info.java">org/biojava/nbio/aaproperties/xml/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.biojava.org/checkstyle.html#org.biojava.nbio.aaproperties.xml.AminoAcidComposition.java">org/biojava/nbio/aaproperties/xml/AminoAcidComposition.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  153
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.biojava.org/checkstyle.html#org.biojava.nbio.aaproperties.Utils.java">org/biojava/nbio/aaproperties/Utils.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  257
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.biojava.org/checkstyle.html#org.biojava.nbio.aaproperties.profeat.package-info.java">org/biojava/nbio/aaproperties/profeat/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  4
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.biojava.org/checkstyle.html#org.biojava.nbio.aaproperties.CommandPrompt.java">org/biojava/nbio/aaproperties/CommandPrompt.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  603
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.biojava.org/checkstyle.html#org.biojava.nbio.aaproperties.IPeptideProperties.java">org/biojava/nbio/aaproperties/IPeptideProperties.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  406
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.biojava.org/checkstyle.html#org.biojava.nbio.aaproperties.profeat.convertor.Convert2SolventAccessibility.java">org/biojava/nbio/aaproperties/profeat/convertor/Convert2SolventAccessibility.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  50
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.biojava.org/checkstyle.html#org.biojava.nbio.aaproperties.xml.Element.java">org/biojava/nbio/aaproperties/xml/Element.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  154
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.biojava.org/checkstyle.html#org.biojava.nbio.aaproperties.profeat.ProfeatPropertiesImpl.java">org/biojava/nbio/aaproperties/profeat/ProfeatPropertiesImpl.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  257
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.biojava.org/checkstyle.html#org.biojava.nbio.aaproperties.profeat.convertor.Convert2NormalizedVanDerWaalsVolume.java">org/biojava/nbio/aaproperties/profeat/convertor/Convert2NormalizedVanDerWaalsVolume.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  51
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.biojava.org/checkstyle.html#org.biojava.nbio.aaproperties.xml.CaseFreeAminoAcidCompoundSet.java">org/biojava/nbio/aaproperties/xml/CaseFreeAminoAcidCompoundSet.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  126
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.biojava.org/checkstyle.html#org.biojava.nbio.aaproperties.PeptideProperties.java">org/biojava/nbio/aaproperties/PeptideProperties.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  746
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.biojava.org/checkstyle.html#org.biojava.nbio.aaproperties.xml.SchemaGenerator.java">org/biojava/nbio/aaproperties/xml/SchemaGenerator.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  22
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.biojava.org/checkstyle.html#org.biojava.nbio.aaproperties.profeat.IProfeatProperties.java">org/biojava/nbio/aaproperties/profeat/IProfeatProperties.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  178
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.biojava.org/checkstyle.html#org.biojava.nbio.aaproperties.PeptidePropertiesImpl.java">org/biojava/nbio/aaproperties/PeptidePropertiesImpl.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  982
+                </td>
+              </tr>
+                      </tbody>
+        </table>
+        
+      </description>
+    </item>
+  </channel>
+</rss>
+

@@ -1,0 +1,25 @@
+What Is Java?
+
+Java is a computer programming language. It enables programmers to write computer instructions using English based commands, 
+instead of having to write in numeric codes. It's known as a "high-level" language because it can be read and written easily by humans. 
+Like English, Java has a set of rules that determine how the instructions are written. These rules are known as its "syntax". 
+Once a program has been written, the high-level instructions are translated into numeric codes that computers can understand and execute.
+Who Created Java?
+
+In the early nineties, Java was created by a team led by James Gosling for Sun Microsystems. It was originally designed for use on digital 
+mobile devices, such as cell phones. However, when Java 1.0 was released to the public in 1996, its main focus had shifted to use on the Internet. It provided more interactivity with users by giving developers a way to produce animated webpages . Over the years it has evolved as a successful language for use both on and off the Internet. A decade later, it's still an extremely popular language with over 6.5million developers worldwide.
+Why Choose Java?
+
+Java was designed with a few key principles in mind:
+
+    * Easy to Use: The fundamentals of Java came from a programming language called c++. Although a powerful language, it was felt to be too complex in its syntax, and inadequate for all of Java's requirements. Java built on, and improved the ideas of c++, to provide a programming language that was powerful and simple to use.
+    * Reliability: Java needed to reduce the likelihood of fatal errors from programmer mistakes. With this in mind, object-oriented programming was introduced. Once data and its manipulation were packaged together in one place, it increased Java's robustness.
+    * Secure: As Java was originally targeting mobile devices that would be exchanging data over networks, it was built to include a high level of security. Java is probably the most secure programming language to date.
+    * Platform Independent: Programs needed to work regardless of the machine they were being executed on. Java was written to be a portable language that doesn't care about the operating system or the hardware of the computer. 
+
+The team at Sun Microsystems were successful in combining these key principles, and Java's popularity can be traced to it being a robust, secure, easy to use, and portable language.
+Where Do I Start?
+
+To start programming in Java, all you need to do is download1 and install2 the Java development Kit.
+
+Once you have the JDK installed on your computer, there's nothing to stop you writing your first Java program

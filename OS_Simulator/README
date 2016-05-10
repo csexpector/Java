@@ -1,0 +1,17 @@
+README
+
+1. Files listing
+- ossimulator: directory
+  +) CPU.java: implement the CPU
+  +) OSSimulator: implement the program to simulate CPU
+- program1.txt, program2.txt: the examples from instruction
+- program3.txt, program4.txt, program5.txt: extra programs
+  +) program3.txt: sum from 1 to 10, also handle timer interrupt
+  +) program4.txt: test index-out-of-bout interrupt
+  +) program5.txt: test invalid access to system memory
+
+2. Build the program
+javac ossimulator/*.java
+
+3. Run the program
+java ossimulator/OSSimulator program3.txt 3

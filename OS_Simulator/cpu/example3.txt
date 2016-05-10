@@ -1,0 +1,16 @@
+addc @1 @0 #1 
+addc @2 @0 #5 
+addc @3 @0 #2 
+st @3 @1 #0
+out @3
+mul @3 @3 @3 
+ceq @16 @1 @2
+addc @1 @1 #1
+bez @17 @16 #-6
+subc @1 @1 #1
+ld @4 @1 #0
+subc @1 @1 #1
+out @4
+ceqc @16 @1 #0
+bez @17 @16 #-5
+break @0

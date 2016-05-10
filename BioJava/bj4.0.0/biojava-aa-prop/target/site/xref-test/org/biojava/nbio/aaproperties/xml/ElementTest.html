@@ -1,0 +1,798 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>ElementTest xref</title>
+<link type="text/css" rel="stylesheet" href="../../../../../stylesheet.css" />
+</head>
+<body>
+<div id="overview"><a href="../../../../../../testapidocs/org/biojava/nbio/aaproperties/xml/ElementTest.html">View Javadoc</a></div><pre>
+<a class="jxr_linenumber" name="L1" href="#L1">1</a>   <em class="jxr_comment">/*</em>
+<a class="jxr_linenumber" name="L2" href="#L2">2</a>   <em class="jxr_comment"> *                    BioJava development code</em>
+<a class="jxr_linenumber" name="L3" href="#L3">3</a>   <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L4" href="#L4">4</a>   <em class="jxr_comment"> * This code may be freely distributed and modified under the</em>
+<a class="jxr_linenumber" name="L5" href="#L5">5</a>   <em class="jxr_comment"> * terms of the GNU Lesser General Public Licence.  This should</em>
+<a class="jxr_linenumber" name="L6" href="#L6">6</a>   <em class="jxr_comment"> * be distributed with the code.  If you do not have a copy,</em>
+<a class="jxr_linenumber" name="L7" href="#L7">7</a>   <em class="jxr_comment"> * see:</em>
+<a class="jxr_linenumber" name="L8" href="#L8">8</a>   <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>   <em class="jxr_comment"> *      <a href="http://www.gnu.org/copyleft/lesser.htm" target="alexandria_uri">http://www.gnu.org/copyleft/lesser.htm</a>l</em>
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_comment"> * Copyright for this code is held jointly by the individual</em>
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_comment"> * authors.  These should be listed in @author doc comments.</em>
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>  <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>  <em class="jxr_comment"> * For more information on the BioJava project and its aims,</em>
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>  <em class="jxr_comment"> * or to join the biojava-l mailing list, visit the home page</em>
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>  <em class="jxr_comment"> * at:</em>
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>  <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>  <em class="jxr_comment"> *      <a href="http://www.biojava.org" target="alexandria_uri">http://www.biojava.org</a>/</em>
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>  <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>  <em class="jxr_comment"> */</em>
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>  <strong class="jxr_keyword">package</strong> org.biojava.nbio.aaproperties.xml;
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>  
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>  <strong class="jxr_keyword">import</strong> org.biojava.nbio.aaproperties.xml.Element;
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>  <strong class="jxr_keyword">import</strong> org.biojava.nbio.aaproperties.xml.ElementTable;
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>  <strong class="jxr_keyword">import</strong> org.biojava.nbio.aaproperties.xml.Isotope;
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>  <strong class="jxr_keyword">import</strong> org.biojava.nbio.aaproperties.xml.SchemaGenerator;
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>  <strong class="jxr_keyword">import</strong> org.junit.Test;
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>  <strong class="jxr_keyword">import</strong> org.slf4j.Logger;
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>  <strong class="jxr_keyword">import</strong> org.slf4j.LoggerFactory;
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>  
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>  <strong class="jxr_keyword">import</strong> javax.xml.bind.JAXBContext;
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>  <strong class="jxr_keyword">import</strong> javax.xml.bind.JAXBException;
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>  <strong class="jxr_keyword">import</strong> javax.xml.bind.Marshaller;
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>  <strong class="jxr_keyword">import</strong> javax.xml.bind.Unmarshaller;
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>  <strong class="jxr_keyword">import</strong> java.io.*;
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>  <strong class="jxr_keyword">import</strong> java.util.ArrayList;
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>  <strong class="jxr_keyword">import</strong> java.util.List;
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>  
+<a class="jxr_linenumber" name="L39" href="#L39">39</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../org/biojava/nbio/aaproperties/xml/ElementTest.html">ElementTest</a> {
+<a class="jxr_linenumber" name="L40" href="#L40">40</a>  
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">static</strong> Logger logger = LoggerFactory.getLogger(ElementTest.<strong class="jxr_keyword">class</strong>);
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>  
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>  	@Test
+<a class="jxr_linenumber" name="L44" href="#L44">44</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> generateSchema() <strong class="jxr_keyword">throws</strong> JAXBException, IOException{
+<a class="jxr_linenumber" name="L45" href="#L45">45</a>  		File outputFile = <strong class="jxr_keyword">new</strong> File(System.getProperty(<span class="jxr_string">"java.io.tmpdir"</span>),<span class="jxr_string">"ElementMass.xsd"</span>);
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>  		outputFile.deleteOnExit();
+<a class="jxr_linenumber" name="L47" href="#L47">47</a>  		JAXBContext context = JAXBContext.newInstance(ElementTable.<strong class="jxr_keyword">class</strong>);
+<a class="jxr_linenumber" name="L48" href="#L48">48</a>  		context.generateSchema(<strong class="jxr_keyword">new</strong> SchemaGenerator(outputFile.toString()));
+<a class="jxr_linenumber" name="L49" href="#L49">49</a>  	}
+<a class="jxr_linenumber" name="L50" href="#L50">50</a>  	
+<a class="jxr_linenumber" name="L51" href="#L51">51</a>  	@Test
+<a class="jxr_linenumber" name="L52" href="#L52">52</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> readXml() <strong class="jxr_keyword">throws</strong> JAXBException, IOException{
+<a class="jxr_linenumber" name="L53" href="#L53">53</a>  		ElementTable iTable = <strong class="jxr_keyword">new</strong> ElementTable();
+<a class="jxr_linenumber" name="L54" href="#L54">54</a>  		<em class="jxr_comment">// Get a JAXB Context for the object we created above</em>
+<a class="jxr_linenumber" name="L55" href="#L55">55</a>  		JAXBContext jc = JAXBContext.newInstance(iTable.getClass());
+<a class="jxr_linenumber" name="L56" href="#L56">56</a>  		Unmarshaller u = jc.createUnmarshaller();
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>  		iTable = (ElementTable)u.unmarshal(<strong class="jxr_keyword">new</strong> FileInputStream(<span class="jxr_string">"./src/main/resources/ElementMass.xml"</span> ) );
+<a class="jxr_linenumber" name="L58" href="#L58">58</a>  		<strong class="jxr_keyword">for</strong>(Element e:iTable.getElement()){
+<a class="jxr_linenumber" name="L59" href="#L59">59</a>  			logger.info(<span class="jxr_string">"Element: {}"</span>, e);
+<a class="jxr_linenumber" name="L60" href="#L60">60</a>  		}
+<a class="jxr_linenumber" name="L61" href="#L61">61</a>  	}
+<a class="jxr_linenumber" name="L62" href="#L62">62</a>  	
+<a class="jxr_linenumber" name="L63" href="#L63">63</a>  	@Test
+<a class="jxr_linenumber" name="L64" href="#L64">64</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> generateXml() <strong class="jxr_keyword">throws</strong> JAXBException, IOException {
+<a class="jxr_linenumber" name="L65" href="#L65">65</a>  		List&lt;Isotope&gt; iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L66" href="#L66">66</a>  		Element hydrogen = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Hydrogen"</span>, <span class="jxr_string">"H"</span>, 1, <strong class="jxr_keyword">null</strong>, 1.00794);
+<a class="jxr_linenumber" name="L67" href="#L67">67</a>  		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Hydrogen"</span>, 1, 1.00782503207));
+<a class="jxr_linenumber" name="L68" href="#L68">68</a>  		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Deuterium"</span>, 2, 2.0141017778));
+<a class="jxr_linenumber" name="L69" href="#L69">69</a>  		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Tritium"</span>, 3, 3.0160492777));
+<a class="jxr_linenumber" name="L70" href="#L70">70</a>  		hydrogen.setIsotopes(iList);
+<a class="jxr_linenumber" name="L71" href="#L71">71</a>  
+<a class="jxr_linenumber" name="L72" href="#L72">72</a>  		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L73" href="#L73">73</a>  		Element helium = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Helium"</span>, <span class="jxr_string">"He"</span>, 2, <strong class="jxr_keyword">null</strong>, 4.002602);
+<a class="jxr_linenumber" name="L74" href="#L74">74</a>  		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Helium-3"</span>, 3, 3.0160293191));
+<a class="jxr_linenumber" name="L75" href="#L75">75</a>  		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Helium-4"</span>, 4, 4.00260325415));
+<a class="jxr_linenumber" name="L76" href="#L76">76</a>  		helium.setIsotopes(iList);
+<a class="jxr_linenumber" name="L77" href="#L77">77</a>  
+<a class="jxr_linenumber" name="L78" href="#L78">78</a>  		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L79" href="#L79">79</a>  		Element lithium = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Lithium"</span>, <span class="jxr_string">"Li"</span>, 3, <strong class="jxr_keyword">null</strong>, 6.941);
+<a class="jxr_linenumber" name="L80" href="#L80">80</a>  		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Lithium-6"</span>, 6, 6.015122795));
+<a class="jxr_linenumber" name="L81" href="#L81">81</a>  		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Lithium-7"</span>, 7, 7.01600455));
+<a class="jxr_linenumber" name="L82" href="#L82">82</a>  		lithium.setIsotopes(iList);
+<a class="jxr_linenumber" name="L83" href="#L83">83</a>  
+<a class="jxr_linenumber" name="L84" href="#L84">84</a>  		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L85" href="#L85">85</a>  		Element beryllium = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Beryllium"</span>, <span class="jxr_string">"Be"</span>, 4, <strong class="jxr_keyword">null</strong>, 9.012182);
+<a class="jxr_linenumber" name="L86" href="#L86">86</a>  		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Beryllium-9"</span>, 9, 9.0121822));
+<a class="jxr_linenumber" name="L87" href="#L87">87</a>  		beryllium.setIsotopes(iList);
+<a class="jxr_linenumber" name="L88" href="#L88">88</a>  
+<a class="jxr_linenumber" name="L89" href="#L89">89</a>  		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L90" href="#L90">90</a>  		Element boron = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Boron"</span>, <span class="jxr_string">"B"</span>, 5, <strong class="jxr_keyword">null</strong>, 10.811);
+<a class="jxr_linenumber" name="L91" href="#L91">91</a>  		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Boron-10"</span>, 10, 10.012937));
+<a class="jxr_linenumber" name="L92" href="#L92">92</a>  		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Boron-11"</span>, 11, 11.0093054));
+<a class="jxr_linenumber" name="L93" href="#L93">93</a>  		boron.setIsotopes(iList);
+<a class="jxr_linenumber" name="L94" href="#L94">94</a>  
+<a class="jxr_linenumber" name="L95" href="#L95">95</a>  		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L96" href="#L96">96</a>  		Element carbon = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Carbon"</span>, <span class="jxr_string">"C"</span>, 6, <strong class="jxr_keyword">null</strong>, 12.0107);
+<a class="jxr_linenumber" name="L97" href="#L97">97</a>  		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Carbon-12"</span>, 12, 12.0));
+<a class="jxr_linenumber" name="L98" href="#L98">98</a>  		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Carbon-13"</span>, 13, 13.0033548378));
+<a class="jxr_linenumber" name="L99" href="#L99">99</a>  		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Carbon-14"</span>, 14, 14.003241989));
+<a class="jxr_linenumber" name="L100" href="#L100">100</a> 		carbon.setIsotopes(iList);
+<a class="jxr_linenumber" name="L101" href="#L101">101</a> 
+<a class="jxr_linenumber" name="L102" href="#L102">102</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L103" href="#L103">103</a> 		Element nitrogen = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Nitrogen"</span>, <span class="jxr_string">"N"</span>, 7, <strong class="jxr_keyword">null</strong>, 14.0067);
+<a class="jxr_linenumber" name="L104" href="#L104">104</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Nitrogen-14"</span>, 14, 14.0030740048));
+<a class="jxr_linenumber" name="L105" href="#L105">105</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Nitrogen-15"</span>, 15, 15.0001088982));
+<a class="jxr_linenumber" name="L106" href="#L106">106</a> 		nitrogen.setIsotopes(iList);
+<a class="jxr_linenumber" name="L107" href="#L107">107</a> 
+<a class="jxr_linenumber" name="L108" href="#L108">108</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L109" href="#L109">109</a> 		Element oxygen = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Oxygen"</span>, <span class="jxr_string">"O"</span>, 8, <strong class="jxr_keyword">null</strong>, 15.9994);
+<a class="jxr_linenumber" name="L110" href="#L110">110</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Oxygen-16"</span>, 16, 15.99491461956));
+<a class="jxr_linenumber" name="L111" href="#L111">111</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Oxygen-17"</span>, 17, 16.9991317));
+<a class="jxr_linenumber" name="L112" href="#L112">112</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Oxygen-18"</span>, 18, 17.999161));
+<a class="jxr_linenumber" name="L113" href="#L113">113</a> 		oxygen.setIsotopes(iList);
+<a class="jxr_linenumber" name="L114" href="#L114">114</a> 
+<a class="jxr_linenumber" name="L115" href="#L115">115</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L116" href="#L116">116</a> 		Element fluorine = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Fluorine"</span>, <span class="jxr_string">"F"</span>, 9, <strong class="jxr_keyword">null</strong>, 18.9984032);
+<a class="jxr_linenumber" name="L117" href="#L117">117</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Fluorine-19"</span>, 19, 18.99840322));
+<a class="jxr_linenumber" name="L118" href="#L118">118</a> 		fluorine.setIsotopes(iList);
+<a class="jxr_linenumber" name="L119" href="#L119">119</a> 
+<a class="jxr_linenumber" name="L120" href="#L120">120</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L121" href="#L121">121</a> 		Element neon = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Neon"</span>, <span class="jxr_string">"Ne"</span>, 10, <strong class="jxr_keyword">null</strong>, 20.1797);
+<a class="jxr_linenumber" name="L122" href="#L122">122</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Neon-20"</span>, 20, 19.9924401754));
+<a class="jxr_linenumber" name="L123" href="#L123">123</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Neon-21"</span>, 21, 20.99384668));
+<a class="jxr_linenumber" name="L124" href="#L124">124</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Neon-22"</span>, 22, 21.991385114));
+<a class="jxr_linenumber" name="L125" href="#L125">125</a> 		neon.setIsotopes(iList);
+<a class="jxr_linenumber" name="L126" href="#L126">126</a> 
+<a class="jxr_linenumber" name="L127" href="#L127">127</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L128" href="#L128">128</a> 		Element sodium = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Sodium"</span>, <span class="jxr_string">"Na"</span>, 11, <strong class="jxr_keyword">null</strong>, 22.98976928);
+<a class="jxr_linenumber" name="L129" href="#L129">129</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Sodium-23"</span>, 23, 22.9897692809));
+<a class="jxr_linenumber" name="L130" href="#L130">130</a> 		sodium.setIsotopes(iList);
+<a class="jxr_linenumber" name="L131" href="#L131">131</a> 
+<a class="jxr_linenumber" name="L132" href="#L132">132</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L133" href="#L133">133</a> 		Element magnesium = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Magnesium"</span>, <span class="jxr_string">"Mg"</span>, 12, <strong class="jxr_keyword">null</strong>, 24.305);
+<a class="jxr_linenumber" name="L134" href="#L134">134</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Magnesium-24"</span>, 24, 23.9850417));
+<a class="jxr_linenumber" name="L135" href="#L135">135</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Magnesium-25"</span>, 25, 24.98583692));
+<a class="jxr_linenumber" name="L136" href="#L136">136</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Magnesium-26"</span>, 26, 25.982592929));
+<a class="jxr_linenumber" name="L137" href="#L137">137</a> 		magnesium.setIsotopes(iList);
+<a class="jxr_linenumber" name="L138" href="#L138">138</a> 
+<a class="jxr_linenumber" name="L139" href="#L139">139</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L140" href="#L140">140</a> 		Element aluminium = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Aluminium"</span>, <span class="jxr_string">"Al"</span>, 13, <strong class="jxr_keyword">null</strong>, 26.9815386);
+<a class="jxr_linenumber" name="L141" href="#L141">141</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Aluminium-27"</span>, 27, 26.98153863));
+<a class="jxr_linenumber" name="L142" href="#L142">142</a> 		aluminium.setIsotopes(iList);
+<a class="jxr_linenumber" name="L143" href="#L143">143</a> 
+<a class="jxr_linenumber" name="L144" href="#L144">144</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L145" href="#L145">145</a> 		Element silicon = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Silicon"</span>, <span class="jxr_string">"Si"</span>, 14, <strong class="jxr_keyword">null</strong>, 28.0855);
+<a class="jxr_linenumber" name="L146" href="#L146">146</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Silicon-28"</span>, 28, 27.9769265325));
+<a class="jxr_linenumber" name="L147" href="#L147">147</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Silicon-29"</span>, 29, 28.9764947));
+<a class="jxr_linenumber" name="L148" href="#L148">148</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Silicon-30"</span>, 30, 29.97377017));
+<a class="jxr_linenumber" name="L149" href="#L149">149</a> 		silicon.setIsotopes(iList);
+<a class="jxr_linenumber" name="L150" href="#L150">150</a> 
+<a class="jxr_linenumber" name="L151" href="#L151">151</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L152" href="#L152">152</a> 		Element phosphorus = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Phosphorus"</span>, <span class="jxr_string">"P"</span>, 15, <strong class="jxr_keyword">null</strong>, 30.973762);
+<a class="jxr_linenumber" name="L153" href="#L153">153</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Phosphorus-31"</span>, 31, 30.97376163));
+<a class="jxr_linenumber" name="L154" href="#L154">154</a> 		phosphorus.setIsotopes(iList);
+<a class="jxr_linenumber" name="L155" href="#L155">155</a> 
+<a class="jxr_linenumber" name="L156" href="#L156">156</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L157" href="#L157">157</a> 		Element sulfur = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Sulfur"</span>, <span class="jxr_string">"S"</span>, 16, <strong class="jxr_keyword">null</strong>, 32.065);
+<a class="jxr_linenumber" name="L158" href="#L158">158</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Sulfur-32"</span>, 32, 31.972071));
+<a class="jxr_linenumber" name="L159" href="#L159">159</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Sulfur-33"</span>, 33, 32.97145876));
+<a class="jxr_linenumber" name="L160" href="#L160">160</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Sulfur-34"</span>, 34, 33.9678669));
+<a class="jxr_linenumber" name="L161" href="#L161">161</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Sulfur-36"</span>, 36, 35.96708076));
+<a class="jxr_linenumber" name="L162" href="#L162">162</a> 		sulfur.setIsotopes(iList);
+<a class="jxr_linenumber" name="L163" href="#L163">163</a> 
+<a class="jxr_linenumber" name="L164" href="#L164">164</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L165" href="#L165">165</a> 		Element chlorine = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Chlorine"</span>, <span class="jxr_string">"Cl"</span>, 17, <strong class="jxr_keyword">null</strong>, 35.453);
+<a class="jxr_linenumber" name="L166" href="#L166">166</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Chlorine-35"</span>, 35, 34.96885268));
+<a class="jxr_linenumber" name="L167" href="#L167">167</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Chlorine-37"</span>, 37, 36.96590259));
+<a class="jxr_linenumber" name="L168" href="#L168">168</a> 		chlorine.setIsotopes(iList);
+<a class="jxr_linenumber" name="L169" href="#L169">169</a> 
+<a class="jxr_linenumber" name="L170" href="#L170">170</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L171" href="#L171">171</a> 		Element argon = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Argon"</span>, <span class="jxr_string">"Ar"</span>, 18, <strong class="jxr_keyword">null</strong>, 39.948);
+<a class="jxr_linenumber" name="L172" href="#L172">172</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Argon-36"</span>, 36, 35.967545106));
+<a class="jxr_linenumber" name="L173" href="#L173">173</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Argon-38"</span>, 38, 37.9627324));
+<a class="jxr_linenumber" name="L174" href="#L174">174</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Argon-40"</span>, 40, 39.9623831225));
+<a class="jxr_linenumber" name="L175" href="#L175">175</a> 		argon.setIsotopes(iList);
+<a class="jxr_linenumber" name="L176" href="#L176">176</a> 
+<a class="jxr_linenumber" name="L177" href="#L177">177</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L178" href="#L178">178</a> 		Element potassium = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Potassium"</span>, <span class="jxr_string">"K"</span>, 19, <strong class="jxr_keyword">null</strong>, 39.0983);
+<a class="jxr_linenumber" name="L179" href="#L179">179</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Potassium-39"</span>, 39, 38.96370668));
+<a class="jxr_linenumber" name="L180" href="#L180">180</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Potassium-40"</span>, 40, 39.96399848));
+<a class="jxr_linenumber" name="L181" href="#L181">181</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Potassium-41"</span>, 41, 40.96182576));
+<a class="jxr_linenumber" name="L182" href="#L182">182</a> 		potassium.setIsotopes(iList);
+<a class="jxr_linenumber" name="L183" href="#L183">183</a> 
+<a class="jxr_linenumber" name="L184" href="#L184">184</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L185" href="#L185">185</a> 		Element calcium = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Calcium"</span>, <span class="jxr_string">"Ca"</span>, 20, <strong class="jxr_keyword">null</strong>, 40.078);
+<a class="jxr_linenumber" name="L186" href="#L186">186</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Calcium-40"</span>, 40, 39.96259098));
+<a class="jxr_linenumber" name="L187" href="#L187">187</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Calcium-42"</span>, 42, 41.95861801));
+<a class="jxr_linenumber" name="L188" href="#L188">188</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Calcium-43"</span>, 43, 42.9587666));
+<a class="jxr_linenumber" name="L189" href="#L189">189</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Calcium-44"</span>, 44, 43.9554818));
+<a class="jxr_linenumber" name="L190" href="#L190">190</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Calcium-46"</span>, 46, 45.9536926));
+<a class="jxr_linenumber" name="L191" href="#L191">191</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Calcium-48"</span>, 48, 47.952534));
+<a class="jxr_linenumber" name="L192" href="#L192">192</a> 		calcium.setIsotopes(iList);
+<a class="jxr_linenumber" name="L193" href="#L193">193</a> 
+<a class="jxr_linenumber" name="L194" href="#L194">194</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L195" href="#L195">195</a> 		Element scandium = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Scandium"</span>, <span class="jxr_string">"Sc"</span>, 21, <strong class="jxr_keyword">null</strong>, 44.955912);
+<a class="jxr_linenumber" name="L196" href="#L196">196</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Scandium-45"</span>, 45, 44.9559119));
+<a class="jxr_linenumber" name="L197" href="#L197">197</a> 		scandium.setIsotopes(iList);
+<a class="jxr_linenumber" name="L198" href="#L198">198</a> 
+<a class="jxr_linenumber" name="L199" href="#L199">199</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L200" href="#L200">200</a> 		Element titanium = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Titanium"</span>, <span class="jxr_string">"Ti"</span>, 22, <strong class="jxr_keyword">null</strong>, 47.867);
+<a class="jxr_linenumber" name="L201" href="#L201">201</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Titanium-46"</span>, 46, 45.9526316));
+<a class="jxr_linenumber" name="L202" href="#L202">202</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Titanium-47"</span>, 47, 46.9517631));
+<a class="jxr_linenumber" name="L203" href="#L203">203</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Titanium-48"</span>, 48, 47.9479463));
+<a class="jxr_linenumber" name="L204" href="#L204">204</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Titanium-49"</span>, 49, 48.94787));
+<a class="jxr_linenumber" name="L205" href="#L205">205</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Titanium-50"</span>, 50, 49.9447912));
+<a class="jxr_linenumber" name="L206" href="#L206">206</a> 		titanium.setIsotopes(iList);
+<a class="jxr_linenumber" name="L207" href="#L207">207</a> 
+<a class="jxr_linenumber" name="L208" href="#L208">208</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L209" href="#L209">209</a> 		Element vanadium = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Vanadium"</span>, <span class="jxr_string">"V"</span>, 23, <strong class="jxr_keyword">null</strong>, 50.9415);
+<a class="jxr_linenumber" name="L210" href="#L210">210</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Vanadium-50"</span>, 50, 49.9471585));
+<a class="jxr_linenumber" name="L211" href="#L211">211</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Vanadium-51"</span>, 51, 50.9439595));
+<a class="jxr_linenumber" name="L212" href="#L212">212</a> 		vanadium.setIsotopes(iList);
+<a class="jxr_linenumber" name="L213" href="#L213">213</a> 
+<a class="jxr_linenumber" name="L214" href="#L214">214</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L215" href="#L215">215</a> 		Element chromium = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Chromium"</span>, <span class="jxr_string">"Cr"</span>, 24, <strong class="jxr_keyword">null</strong>, 51.9961);
+<a class="jxr_linenumber" name="L216" href="#L216">216</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Chromium-50"</span>, 50, 49.9460442));
+<a class="jxr_linenumber" name="L217" href="#L217">217</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Chromium-52"</span>, 52, 51.9405075));
+<a class="jxr_linenumber" name="L218" href="#L218">218</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Chromium-53"</span>, 53, 52.9406494));
+<a class="jxr_linenumber" name="L219" href="#L219">219</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Chromium-54"</span>, 54, 53.9388804));
+<a class="jxr_linenumber" name="L220" href="#L220">220</a> 		chromium.setIsotopes(iList);
+<a class="jxr_linenumber" name="L221" href="#L221">221</a> 
+<a class="jxr_linenumber" name="L222" href="#L222">222</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L223" href="#L223">223</a> 		Element manganese = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Manganese"</span>, <span class="jxr_string">"Mn"</span>, 25, <strong class="jxr_keyword">null</strong>, 54.938045);
+<a class="jxr_linenumber" name="L224" href="#L224">224</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Manganese-55"</span>, 55, 54.9380451));
+<a class="jxr_linenumber" name="L225" href="#L225">225</a> 		manganese.setIsotopes(iList);
+<a class="jxr_linenumber" name="L226" href="#L226">226</a> 
+<a class="jxr_linenumber" name="L227" href="#L227">227</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L228" href="#L228">228</a> 		Element iron = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Iron"</span>, <span class="jxr_string">"Fe"</span>, 26, <strong class="jxr_keyword">null</strong>, 55.845);
+<a class="jxr_linenumber" name="L229" href="#L229">229</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Iron-54"</span>, 54, 53.9396105));
+<a class="jxr_linenumber" name="L230" href="#L230">230</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Iron-56"</span>, 56, 55.9349375));
+<a class="jxr_linenumber" name="L231" href="#L231">231</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Iron-57"</span>, 57, 56.935394));
+<a class="jxr_linenumber" name="L232" href="#L232">232</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Iron-58"</span>, 58, 57.9332756));
+<a class="jxr_linenumber" name="L233" href="#L233">233</a> 		iron.setIsotopes(iList);
+<a class="jxr_linenumber" name="L234" href="#L234">234</a> 
+<a class="jxr_linenumber" name="L235" href="#L235">235</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L236" href="#L236">236</a> 		Element cobalt = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Cobalt"</span>, <span class="jxr_string">"Co"</span>, 27, <strong class="jxr_keyword">null</strong>, 58.933195);
+<a class="jxr_linenumber" name="L237" href="#L237">237</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Cobalt-59"</span>, 59, 58.933195));
+<a class="jxr_linenumber" name="L238" href="#L238">238</a> 		cobalt.setIsotopes(iList);
+<a class="jxr_linenumber" name="L239" href="#L239">239</a> 
+<a class="jxr_linenumber" name="L240" href="#L240">240</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L241" href="#L241">241</a> 		Element nickel = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Nickel"</span>, <span class="jxr_string">"Ni"</span>, 28, <strong class="jxr_keyword">null</strong>, 58.6934);
+<a class="jxr_linenumber" name="L242" href="#L242">242</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Nickel-58"</span>, 58, 57.9353429));
+<a class="jxr_linenumber" name="L243" href="#L243">243</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Nickel-60"</span>, 60, 59.9307864));
+<a class="jxr_linenumber" name="L244" href="#L244">244</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Nickel-61"</span>, 61, 60.931056));
+<a class="jxr_linenumber" name="L245" href="#L245">245</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Nickel-62"</span>, 62, 61.9283451));
+<a class="jxr_linenumber" name="L246" href="#L246">246</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Nickel-64"</span>, 64, 63.927966));
+<a class="jxr_linenumber" name="L247" href="#L247">247</a> 		nickel.setIsotopes(iList);
+<a class="jxr_linenumber" name="L248" href="#L248">248</a> 
+<a class="jxr_linenumber" name="L249" href="#L249">249</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L250" href="#L250">250</a> 		Element copper = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Copper"</span>, <span class="jxr_string">"Cu"</span>, 29, <strong class="jxr_keyword">null</strong>, 63.546);
+<a class="jxr_linenumber" name="L251" href="#L251">251</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Copper-63"</span>, 63, 62.9295975));
+<a class="jxr_linenumber" name="L252" href="#L252">252</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Copper-65"</span>, 65, 64.9277895));
+<a class="jxr_linenumber" name="L253" href="#L253">253</a> 		copper.setIsotopes(iList);
+<a class="jxr_linenumber" name="L254" href="#L254">254</a> 
+<a class="jxr_linenumber" name="L255" href="#L255">255</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L256" href="#L256">256</a> 		Element zinc = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Zinc"</span>, <span class="jxr_string">"Zn"</span>, 30, <strong class="jxr_keyword">null</strong>, 65.38);
+<a class="jxr_linenumber" name="L257" href="#L257">257</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Zinc-64"</span>, 64, 63.9291422));
+<a class="jxr_linenumber" name="L258" href="#L258">258</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Zinc-66"</span>, 66, 65.9260334));
+<a class="jxr_linenumber" name="L259" href="#L259">259</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Zinc-67"</span>, 67, 66.9271273));
+<a class="jxr_linenumber" name="L260" href="#L260">260</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Zinc-68"</span>, 68, 67.9248442));
+<a class="jxr_linenumber" name="L261" href="#L261">261</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Zinc-70"</span>, 70, 69.9253193));
+<a class="jxr_linenumber" name="L262" href="#L262">262</a> 		zinc.setIsotopes(iList);
+<a class="jxr_linenumber" name="L263" href="#L263">263</a> 
+<a class="jxr_linenumber" name="L264" href="#L264">264</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L265" href="#L265">265</a> 		Element gallium = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Gallium"</span>, <span class="jxr_string">"Ga"</span>, 31, <strong class="jxr_keyword">null</strong>, 69.723);
+<a class="jxr_linenumber" name="L266" href="#L266">266</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Gallium-69"</span>, 69, 68.9255736));
+<a class="jxr_linenumber" name="L267" href="#L267">267</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Gallium-71"</span>, 71, 70.9247013));
+<a class="jxr_linenumber" name="L268" href="#L268">268</a> 		gallium.setIsotopes(iList);
+<a class="jxr_linenumber" name="L269" href="#L269">269</a> 
+<a class="jxr_linenumber" name="L270" href="#L270">270</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L271" href="#L271">271</a> 		Element germanium = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Germanium"</span>, <span class="jxr_string">"Ge"</span>, 32, <strong class="jxr_keyword">null</strong>, 72.64);
+<a class="jxr_linenumber" name="L272" href="#L272">272</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Germanium-70"</span>, 70, 69.9242474));
+<a class="jxr_linenumber" name="L273" href="#L273">273</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Germanium-72"</span>, 72, 71.9220758));
+<a class="jxr_linenumber" name="L274" href="#L274">274</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Germanium-73"</span>, 73, 72.9234589));
+<a class="jxr_linenumber" name="L275" href="#L275">275</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Germanium-74"</span>, 74, 73.9211778));
+<a class="jxr_linenumber" name="L276" href="#L276">276</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Germanium-76"</span>, 76, 75.9214026));
+<a class="jxr_linenumber" name="L277" href="#L277">277</a> 		germanium.setIsotopes(iList);
+<a class="jxr_linenumber" name="L278" href="#L278">278</a> 
+<a class="jxr_linenumber" name="L279" href="#L279">279</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L280" href="#L280">280</a> 		Element arsenic = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Arsenic"</span>, <span class="jxr_string">"As"</span>, 33, <strong class="jxr_keyword">null</strong>, 74.9216);
+<a class="jxr_linenumber" name="L281" href="#L281">281</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Arsenic-75"</span>, 75, 74.9215965));
+<a class="jxr_linenumber" name="L282" href="#L282">282</a> 		arsenic.setIsotopes(iList);
+<a class="jxr_linenumber" name="L283" href="#L283">283</a> 
+<a class="jxr_linenumber" name="L284" href="#L284">284</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L285" href="#L285">285</a> 		Element selenium = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Selenium"</span>, <span class="jxr_string">"Se"</span>, 34, <strong class="jxr_keyword">null</strong>, 78.96);
+<a class="jxr_linenumber" name="L286" href="#L286">286</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Selenium-74"</span>, 74, 73.9224764));
+<a class="jxr_linenumber" name="L287" href="#L287">287</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Selenium-76"</span>, 76, 75.9192136));
+<a class="jxr_linenumber" name="L288" href="#L288">288</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Selenium-77"</span>, 77, 76.919914));
+<a class="jxr_linenumber" name="L289" href="#L289">289</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Selenium-78"</span>, 78, 77.9173091));
+<a class="jxr_linenumber" name="L290" href="#L290">290</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Selenium-80"</span>, 80, 79.9165213));
+<a class="jxr_linenumber" name="L291" href="#L291">291</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Selenium-82"</span>, 82, 81.9166994));
+<a class="jxr_linenumber" name="L292" href="#L292">292</a> 		selenium.setIsotopes(iList);
+<a class="jxr_linenumber" name="L293" href="#L293">293</a> 
+<a class="jxr_linenumber" name="L294" href="#L294">294</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L295" href="#L295">295</a> 		Element bromine = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Bromine"</span>, <span class="jxr_string">"Br"</span>, 35, <strong class="jxr_keyword">null</strong>, 79.904);
+<a class="jxr_linenumber" name="L296" href="#L296">296</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Bromine-79"</span>, 79, 78.9183371));
+<a class="jxr_linenumber" name="L297" href="#L297">297</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Bromine-81"</span>, 81, 80.9162906));
+<a class="jxr_linenumber" name="L298" href="#L298">298</a> 		bromine.setIsotopes(iList);
+<a class="jxr_linenumber" name="L299" href="#L299">299</a> 
+<a class="jxr_linenumber" name="L300" href="#L300">300</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L301" href="#L301">301</a> 		Element krypton = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Krypton"</span>, <span class="jxr_string">"Kr"</span>, 36, <strong class="jxr_keyword">null</strong>, 83.798);
+<a class="jxr_linenumber" name="L302" href="#L302">302</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Krypton-78"</span>, 78, 77.9203648));
+<a class="jxr_linenumber" name="L303" href="#L303">303</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Krypton-80"</span>, 80, 79.916379));
+<a class="jxr_linenumber" name="L304" href="#L304">304</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Krypton-82"</span>, 82, 81.9134836));
+<a class="jxr_linenumber" name="L305" href="#L305">305</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Krypton-83"</span>, 83, 82.914136));
+<a class="jxr_linenumber" name="L306" href="#L306">306</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Krypton-84"</span>, 84, 83.911507));
+<a class="jxr_linenumber" name="L307" href="#L307">307</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Krypton-86"</span>, 86, 85.91061073));
+<a class="jxr_linenumber" name="L308" href="#L308">308</a> 		krypton.setIsotopes(iList);
+<a class="jxr_linenumber" name="L309" href="#L309">309</a> 
+<a class="jxr_linenumber" name="L310" href="#L310">310</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L311" href="#L311">311</a> 		Element rubidium = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Rubidium"</span>, <span class="jxr_string">"Rb"</span>, 37, <strong class="jxr_keyword">null</strong>, 85.4678);
+<a class="jxr_linenumber" name="L312" href="#L312">312</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Rubidium-85"</span>, 85, 84.911789738));
+<a class="jxr_linenumber" name="L313" href="#L313">313</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Rubidium-87"</span>, 87, 86.909180527));
+<a class="jxr_linenumber" name="L314" href="#L314">314</a> 		rubidium.setIsotopes(iList);
+<a class="jxr_linenumber" name="L315" href="#L315">315</a> 
+<a class="jxr_linenumber" name="L316" href="#L316">316</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L317" href="#L317">317</a> 		Element strontium = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Strontium"</span>, <span class="jxr_string">"Sr"</span>, 38, <strong class="jxr_keyword">null</strong>, 87.62);
+<a class="jxr_linenumber" name="L318" href="#L318">318</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Strontium-84"</span>, 84, 83.913425));
+<a class="jxr_linenumber" name="L319" href="#L319">319</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Strontium-86"</span>, 86, 85.9092602));
+<a class="jxr_linenumber" name="L320" href="#L320">320</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Strontium-87"</span>, 87, 86.9088771));
+<a class="jxr_linenumber" name="L321" href="#L321">321</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Strontium-88"</span>, 88, 87.9056121));
+<a class="jxr_linenumber" name="L322" href="#L322">322</a> 		strontium.setIsotopes(iList);
+<a class="jxr_linenumber" name="L323" href="#L323">323</a> 
+<a class="jxr_linenumber" name="L324" href="#L324">324</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L325" href="#L325">325</a> 		Element yttrium = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Yttrium"</span>, <span class="jxr_string">"Y"</span>, 39, <strong class="jxr_keyword">null</strong>, 88.90585);
+<a class="jxr_linenumber" name="L326" href="#L326">326</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Yttrium-89"</span>, 89, 88.9058483));
+<a class="jxr_linenumber" name="L327" href="#L327">327</a> 		yttrium.setIsotopes(iList);
+<a class="jxr_linenumber" name="L328" href="#L328">328</a> 
+<a class="jxr_linenumber" name="L329" href="#L329">329</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L330" href="#L330">330</a> 		Element zirconium = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Zirconium"</span>, <span class="jxr_string">"Zr"</span>, 40, <strong class="jxr_keyword">null</strong>, 91.224);
+<a class="jxr_linenumber" name="L331" href="#L331">331</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Zirconium-90"</span>, 90, 89.9047044));
+<a class="jxr_linenumber" name="L332" href="#L332">332</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Zirconium-91"</span>, 91, 90.9056458));
+<a class="jxr_linenumber" name="L333" href="#L333">333</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Zirconium-92"</span>, 92, 91.9050408));
+<a class="jxr_linenumber" name="L334" href="#L334">334</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Zirconium-94"</span>, 94, 93.9063152));
+<a class="jxr_linenumber" name="L335" href="#L335">335</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Zirconium-96"</span>, 96, 95.9082734));
+<a class="jxr_linenumber" name="L336" href="#L336">336</a> 		zirconium.setIsotopes(iList);
+<a class="jxr_linenumber" name="L337" href="#L337">337</a> 
+<a class="jxr_linenumber" name="L338" href="#L338">338</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L339" href="#L339">339</a> 		Element niobium = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Niobium"</span>, <span class="jxr_string">"Nb"</span>, 41, <strong class="jxr_keyword">null</strong>, 92.90638);
+<a class="jxr_linenumber" name="L340" href="#L340">340</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Niobium-93"</span>, 93, 92.9063781));
+<a class="jxr_linenumber" name="L341" href="#L341">341</a> 		niobium.setIsotopes(iList);
+<a class="jxr_linenumber" name="L342" href="#L342">342</a> 
+<a class="jxr_linenumber" name="L343" href="#L343">343</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L344" href="#L344">344</a> 		Element molybdenum = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Molybdenum"</span>, <span class="jxr_string">"Mo"</span>, 42, <strong class="jxr_keyword">null</strong>, 95.96);
+<a class="jxr_linenumber" name="L345" href="#L345">345</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Molybdenum-92"</span>, 92, 91.906811));
+<a class="jxr_linenumber" name="L346" href="#L346">346</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Molybdenum-94"</span>, 94, 93.9050883));
+<a class="jxr_linenumber" name="L347" href="#L347">347</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Molybdenum-95"</span>, 95, 94.9058421));
+<a class="jxr_linenumber" name="L348" href="#L348">348</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Molybdenum-96"</span>, 96, 95.9046795));
+<a class="jxr_linenumber" name="L349" href="#L349">349</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Molybdenum-97"</span>, 97, 96.9060215));
+<a class="jxr_linenumber" name="L350" href="#L350">350</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Molybdenum-98"</span>, 98, 97.9054082));
+<a class="jxr_linenumber" name="L351" href="#L351">351</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Molybdenum-100"</span>, 100, 99.907477));
+<a class="jxr_linenumber" name="L352" href="#L352">352</a> 		molybdenum.setIsotopes(iList);
+<a class="jxr_linenumber" name="L353" href="#L353">353</a> 
+<a class="jxr_linenumber" name="L354" href="#L354">354</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L355" href="#L355">355</a> 		Element technetium = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Technetium"</span>, <span class="jxr_string">"Tc"</span>, 43, <strong class="jxr_keyword">null</strong>, 98.0);
+<a class="jxr_linenumber" name="L356" href="#L356">356</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Technetium-97"</span>, 97, 96.906365));
+<a class="jxr_linenumber" name="L357" href="#L357">357</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Technetium-98"</span>, 98, 97.907216));
+<a class="jxr_linenumber" name="L358" href="#L358">358</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Technetium-99"</span>, 99, 98.9062547));
+<a class="jxr_linenumber" name="L359" href="#L359">359</a> 		technetium.setIsotopes(iList);
+<a class="jxr_linenumber" name="L360" href="#L360">360</a> 
+<a class="jxr_linenumber" name="L361" href="#L361">361</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L362" href="#L362">362</a> 		Element ruthenium = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Ruthenium"</span>, <span class="jxr_string">"Ru"</span>, 44, <strong class="jxr_keyword">null</strong>, 101.07);
+<a class="jxr_linenumber" name="L363" href="#L363">363</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Ruthenium-96"</span>, 96, 95.907598));
+<a class="jxr_linenumber" name="L364" href="#L364">364</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Ruthenium-98"</span>, 98, 97.905287));
+<a class="jxr_linenumber" name="L365" href="#L365">365</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Ruthenium-99"</span>, 99, 98.9059393));
+<a class="jxr_linenumber" name="L366" href="#L366">366</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Ruthenium-100"</span>, 100, 99.9042195));
+<a class="jxr_linenumber" name="L367" href="#L367">367</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Ruthenium-101"</span>, 101, 100.9055821));
+<a class="jxr_linenumber" name="L368" href="#L368">368</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Ruthenium-102"</span>, 102, 101.9043493));
+<a class="jxr_linenumber" name="L369" href="#L369">369</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Ruthenium-104"</span>, 104, 103.905433));
+<a class="jxr_linenumber" name="L370" href="#L370">370</a> 		ruthenium.setIsotopes(iList);
+<a class="jxr_linenumber" name="L371" href="#L371">371</a> 
+<a class="jxr_linenumber" name="L372" href="#L372">372</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L373" href="#L373">373</a> 		Element rhodium = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Rhodium"</span>, <span class="jxr_string">"Rh"</span>, 45, <strong class="jxr_keyword">null</strong>, 102.9055);
+<a class="jxr_linenumber" name="L374" href="#L374">374</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Rhodium-103"</span>, 103, 102.905504));
+<a class="jxr_linenumber" name="L375" href="#L375">375</a> 		rhodium.setIsotopes(iList);
+<a class="jxr_linenumber" name="L376" href="#L376">376</a> 
+<a class="jxr_linenumber" name="L377" href="#L377">377</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L378" href="#L378">378</a> 		Element palladium = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Palladium"</span>, <span class="jxr_string">"Pd"</span>, 46, <strong class="jxr_keyword">null</strong>, 106.42);
+<a class="jxr_linenumber" name="L379" href="#L379">379</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Palladium-102"</span>, 102, 101.905609));
+<a class="jxr_linenumber" name="L380" href="#L380">380</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Palladium-104"</span>, 104, 103.904036));
+<a class="jxr_linenumber" name="L381" href="#L381">381</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Palladium-105"</span>, 105, 104.905085));
+<a class="jxr_linenumber" name="L382" href="#L382">382</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Palladium-106"</span>, 106, 105.903486));
+<a class="jxr_linenumber" name="L383" href="#L383">383</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Palladium-108"</span>, 108, 107.903892));
+<a class="jxr_linenumber" name="L384" href="#L384">384</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Palladium-110"</span>, 110, 109.905153));
+<a class="jxr_linenumber" name="L385" href="#L385">385</a> 		palladium.setIsotopes(iList);
+<a class="jxr_linenumber" name="L386" href="#L386">386</a> 
+<a class="jxr_linenumber" name="L387" href="#L387">387</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L388" href="#L388">388</a> 		Element silver = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Silver"</span>, <span class="jxr_string">"Ag"</span>, 47, <strong class="jxr_keyword">null</strong>, 107.8682);
+<a class="jxr_linenumber" name="L389" href="#L389">389</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Silver-107"</span>, 107, 106.905097));
+<a class="jxr_linenumber" name="L390" href="#L390">390</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Silver-109"</span>, 109, 108.904752));
+<a class="jxr_linenumber" name="L391" href="#L391">391</a> 		silver.setIsotopes(iList);
+<a class="jxr_linenumber" name="L392" href="#L392">392</a> 
+<a class="jxr_linenumber" name="L393" href="#L393">393</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L394" href="#L394">394</a> 		Element cadmium = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Cadmium"</span>, <span class="jxr_string">"Cd"</span>, 48, <strong class="jxr_keyword">null</strong>, 112.411);
+<a class="jxr_linenumber" name="L395" href="#L395">395</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Cadmium-106"</span>, 106, 105.906459));
+<a class="jxr_linenumber" name="L396" href="#L396">396</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Cadmium-108"</span>, 108, 107.904184));
+<a class="jxr_linenumber" name="L397" href="#L397">397</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Cadmium-110"</span>, 110, 109.9030021));
+<a class="jxr_linenumber" name="L398" href="#L398">398</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Cadmium-111"</span>, 111, 110.9041781));
+<a class="jxr_linenumber" name="L399" href="#L399">399</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Cadmium-112"</span>, 112, 111.9027578));
+<a class="jxr_linenumber" name="L400" href="#L400">400</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Cadmium-113"</span>, 113, 112.9044017));
+<a class="jxr_linenumber" name="L401" href="#L401">401</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Cadmium-114"</span>, 114, 113.9033585));
+<a class="jxr_linenumber" name="L402" href="#L402">402</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Cadmium-116"</span>, 116, 115.904756));
+<a class="jxr_linenumber" name="L403" href="#L403">403</a> 		cadmium.setIsotopes(iList);
+<a class="jxr_linenumber" name="L404" href="#L404">404</a> 
+<a class="jxr_linenumber" name="L405" href="#L405">405</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L406" href="#L406">406</a> 		Element indium = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Indium"</span>, <span class="jxr_string">"In"</span>, 49, <strong class="jxr_keyword">null</strong>, 114.818);
+<a class="jxr_linenumber" name="L407" href="#L407">407</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Indium-113"</span>, 113, 112.904058));
+<a class="jxr_linenumber" name="L408" href="#L408">408</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Indium-115"</span>, 115, 114.903878));
+<a class="jxr_linenumber" name="L409" href="#L409">409</a> 		indium.setIsotopes(iList);
+<a class="jxr_linenumber" name="L410" href="#L410">410</a> 
+<a class="jxr_linenumber" name="L411" href="#L411">411</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L412" href="#L412">412</a> 		Element tin = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Tin"</span>, <span class="jxr_string">"Sn"</span>, 50, <strong class="jxr_keyword">null</strong>, 118.71);
+<a class="jxr_linenumber" name="L413" href="#L413">413</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Tin-112"</span>, 112, 111.904818));
+<a class="jxr_linenumber" name="L414" href="#L414">414</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Tin-114"</span>, 114, 113.902779));
+<a class="jxr_linenumber" name="L415" href="#L415">415</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Tin-115"</span>, 115, 114.903342));
+<a class="jxr_linenumber" name="L416" href="#L416">416</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Tin-116"</span>, 116, 115.901741));
+<a class="jxr_linenumber" name="L417" href="#L417">417</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Tin-117"</span>, 117, 116.902952));
+<a class="jxr_linenumber" name="L418" href="#L418">418</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Tin-118"</span>, 118, 117.901603));
+<a class="jxr_linenumber" name="L419" href="#L419">419</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Tin-119"</span>, 119, 118.903308));
+<a class="jxr_linenumber" name="L420" href="#L420">420</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Tin-120"</span>, 120, 119.9021947));
+<a class="jxr_linenumber" name="L421" href="#L421">421</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Tin-122"</span>, 122, 121.903439));
+<a class="jxr_linenumber" name="L422" href="#L422">422</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Tin-124"</span>, 124, 123.9052739));
+<a class="jxr_linenumber" name="L423" href="#L423">423</a> 		tin.setIsotopes(iList);
+<a class="jxr_linenumber" name="L424" href="#L424">424</a> 
+<a class="jxr_linenumber" name="L425" href="#L425">425</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L426" href="#L426">426</a> 		Element antimony = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Antimony"</span>, <span class="jxr_string">"Sb"</span>, 51, <strong class="jxr_keyword">null</strong>, 121.76);
+<a class="jxr_linenumber" name="L427" href="#L427">427</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Antimony-121"</span>, 121, 120.9038157));
+<a class="jxr_linenumber" name="L428" href="#L428">428</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Antimony-123"</span>, 123, 122.904214));
+<a class="jxr_linenumber" name="L429" href="#L429">429</a> 		antimony.setIsotopes(iList);
+<a class="jxr_linenumber" name="L430" href="#L430">430</a> 
+<a class="jxr_linenumber" name="L431" href="#L431">431</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L432" href="#L432">432</a> 		Element tellurium = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Tellurium"</span>, <span class="jxr_string">"Te"</span>, 52, <strong class="jxr_keyword">null</strong>, 127.6);
+<a class="jxr_linenumber" name="L433" href="#L433">433</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Tellurium-120"</span>, 120, 119.90402));
+<a class="jxr_linenumber" name="L434" href="#L434">434</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Tellurium-122"</span>, 122, 121.9030439));
+<a class="jxr_linenumber" name="L435" href="#L435">435</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Tellurium-123"</span>, 123, 122.90427));
+<a class="jxr_linenumber" name="L436" href="#L436">436</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Tellurium-124"</span>, 124, 123.9028179));
+<a class="jxr_linenumber" name="L437" href="#L437">437</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Tellurium-125"</span>, 125, 124.9044307));
+<a class="jxr_linenumber" name="L438" href="#L438">438</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Tellurium-126"</span>, 126, 125.9033117));
+<a class="jxr_linenumber" name="L439" href="#L439">439</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Tellurium-128"</span>, 128, 127.9044631));
+<a class="jxr_linenumber" name="L440" href="#L440">440</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Tellurium-130"</span>, 130, 129.9062244));
+<a class="jxr_linenumber" name="L441" href="#L441">441</a> 		tellurium.setIsotopes(iList);
+<a class="jxr_linenumber" name="L442" href="#L442">442</a> 
+<a class="jxr_linenumber" name="L443" href="#L443">443</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L444" href="#L444">444</a> 		Element iodine = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Iodine"</span>, <span class="jxr_string">"I"</span>, 53, <strong class="jxr_keyword">null</strong>, 126.90447);
+<a class="jxr_linenumber" name="L445" href="#L445">445</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Iodine-127"</span>, 127, 126.904473));
+<a class="jxr_linenumber" name="L446" href="#L446">446</a> 		iodine.setIsotopes(iList);
+<a class="jxr_linenumber" name="L447" href="#L447">447</a> 
+<a class="jxr_linenumber" name="L448" href="#L448">448</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L449" href="#L449">449</a> 		Element xenon = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Xenon"</span>, <span class="jxr_string">"Xe"</span>, 54, <strong class="jxr_keyword">null</strong>, 131.293);
+<a class="jxr_linenumber" name="L450" href="#L450">450</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Xenon-124"</span>, 124, 123.905893));
+<a class="jxr_linenumber" name="L451" href="#L451">451</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Xenon-126"</span>, 126, 125.904274));
+<a class="jxr_linenumber" name="L452" href="#L452">452</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Xenon-128"</span>, 128, 127.9035313));
+<a class="jxr_linenumber" name="L453" href="#L453">453</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Xenon-129"</span>, 129, 128.9047794));
+<a class="jxr_linenumber" name="L454" href="#L454">454</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Xenon-130"</span>, 130, 129.903508));
+<a class="jxr_linenumber" name="L455" href="#L455">455</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Xenon-131"</span>, 131, 130.9050824));
+<a class="jxr_linenumber" name="L456" href="#L456">456</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Xenon-132"</span>, 132, 131.9041535));
+<a class="jxr_linenumber" name="L457" href="#L457">457</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Xenon-134"</span>, 134, 133.9053945));
+<a class="jxr_linenumber" name="L458" href="#L458">458</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Xenon-136"</span>, 136, 135.907219));
+<a class="jxr_linenumber" name="L459" href="#L459">459</a> 		xenon.setIsotopes(iList);
+<a class="jxr_linenumber" name="L460" href="#L460">460</a> 
+<a class="jxr_linenumber" name="L461" href="#L461">461</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L462" href="#L462">462</a> 		Element caesium = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Caesium"</span>, <span class="jxr_string">"Cs"</span>, 55, <strong class="jxr_keyword">null</strong>, 132.9054519);
+<a class="jxr_linenumber" name="L463" href="#L463">463</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Caesium-133"</span>, 133, 132.905451933));
+<a class="jxr_linenumber" name="L464" href="#L464">464</a> 		caesium.setIsotopes(iList);
+<a class="jxr_linenumber" name="L465" href="#L465">465</a> 
+<a class="jxr_linenumber" name="L466" href="#L466">466</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L467" href="#L467">467</a> 		Element barium = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Barium"</span>, <span class="jxr_string">"Ba"</span>, 56, <strong class="jxr_keyword">null</strong>, 137.327);
+<a class="jxr_linenumber" name="L468" href="#L468">468</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Barium-130"</span>, 130, 129.9063208));
+<a class="jxr_linenumber" name="L469" href="#L469">469</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Barium-132"</span>, 132, 131.9050613));
+<a class="jxr_linenumber" name="L470" href="#L470">470</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Barium-134"</span>, 134, 133.9045084));
+<a class="jxr_linenumber" name="L471" href="#L471">471</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Barium-135"</span>, 135, 134.9056886));
+<a class="jxr_linenumber" name="L472" href="#L472">472</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Barium-136"</span>, 136, 135.9045759));
+<a class="jxr_linenumber" name="L473" href="#L473">473</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Barium-137"</span>, 137, 136.9058274));
+<a class="jxr_linenumber" name="L474" href="#L474">474</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Barium-138"</span>, 138, 137.9052472));
+<a class="jxr_linenumber" name="L475" href="#L475">475</a> 		barium.setIsotopes(iList);
+<a class="jxr_linenumber" name="L476" href="#L476">476</a> 
+<a class="jxr_linenumber" name="L477" href="#L477">477</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L478" href="#L478">478</a> 		Element lanthanum = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Lanthanum"</span>, <span class="jxr_string">"La"</span>, 57, <strong class="jxr_keyword">null</strong>, 138.90547);
+<a class="jxr_linenumber" name="L479" href="#L479">479</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Lanthanum-138"</span>, 138, 137.907112));
+<a class="jxr_linenumber" name="L480" href="#L480">480</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Lanthanum-139"</span>, 139, 138.9063533));
+<a class="jxr_linenumber" name="L481" href="#L481">481</a> 		lanthanum.setIsotopes(iList);
+<a class="jxr_linenumber" name="L482" href="#L482">482</a> 
+<a class="jxr_linenumber" name="L483" href="#L483">483</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L484" href="#L484">484</a> 		Element cerium = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Cerium"</span>, <span class="jxr_string">"Ce"</span>, 58, <strong class="jxr_keyword">null</strong>, 140.116);
+<a class="jxr_linenumber" name="L485" href="#L485">485</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Cerium-136"</span>, 136, 135.907172));
+<a class="jxr_linenumber" name="L486" href="#L486">486</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Cerium-138"</span>, 138, 137.905991));
+<a class="jxr_linenumber" name="L487" href="#L487">487</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Cerium-140"</span>, 140, 139.9054387));
+<a class="jxr_linenumber" name="L488" href="#L488">488</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Cerium-142"</span>, 142, 141.909244));
+<a class="jxr_linenumber" name="L489" href="#L489">489</a> 		cerium.setIsotopes(iList);
+<a class="jxr_linenumber" name="L490" href="#L490">490</a> 
+<a class="jxr_linenumber" name="L491" href="#L491">491</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L492" href="#L492">492</a> 		Element praseodymium = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Praseodymium"</span>, <span class="jxr_string">"Pr"</span>, 59, <strong class="jxr_keyword">null</strong>, 140.90765);
+<a class="jxr_linenumber" name="L493" href="#L493">493</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Praseodymium-141"</span>, 141, 140.9076528));
+<a class="jxr_linenumber" name="L494" href="#L494">494</a> 		praseodymium.setIsotopes(iList);
+<a class="jxr_linenumber" name="L495" href="#L495">495</a> 
+<a class="jxr_linenumber" name="L496" href="#L496">496</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L497" href="#L497">497</a> 		Element neodymium = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Neodymium"</span>, <span class="jxr_string">"Nd"</span>, 60, <strong class="jxr_keyword">null</strong>, 144.242);
+<a class="jxr_linenumber" name="L498" href="#L498">498</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Neodymium-142"</span>, 142, 141.9077233));
+<a class="jxr_linenumber" name="L499" href="#L499">499</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Neodymium-143"</span>, 143, 142.9098143));
+<a class="jxr_linenumber" name="L500" href="#L500">500</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Neodymium-144"</span>, 144, 143.9100873));
+<a class="jxr_linenumber" name="L501" href="#L501">501</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Neodymium-145"</span>, 145, 144.9125736));
+<a class="jxr_linenumber" name="L502" href="#L502">502</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Neodymium-146"</span>, 146, 145.9131169));
+<a class="jxr_linenumber" name="L503" href="#L503">503</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Neodymium-148"</span>, 148, 147.916893));
+<a class="jxr_linenumber" name="L504" href="#L504">504</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Neodymium-150"</span>, 150, 149.920891));
+<a class="jxr_linenumber" name="L505" href="#L505">505</a> 		neodymium.setIsotopes(iList);
+<a class="jxr_linenumber" name="L506" href="#L506">506</a> 
+<a class="jxr_linenumber" name="L507" href="#L507">507</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L508" href="#L508">508</a> 		Element promethium = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Promethium"</span>, <span class="jxr_string">"Pm"</span>, 61, <strong class="jxr_keyword">null</strong>, 145.0);
+<a class="jxr_linenumber" name="L509" href="#L509">509</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Promethium-145"</span>, 145, 144.912749));
+<a class="jxr_linenumber" name="L510" href="#L510">510</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Promethium-147"</span>, 147, 146.9151385));
+<a class="jxr_linenumber" name="L511" href="#L511">511</a> 		promethium.setIsotopes(iList);
+<a class="jxr_linenumber" name="L512" href="#L512">512</a> 
+<a class="jxr_linenumber" name="L513" href="#L513">513</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L514" href="#L514">514</a> 		Element samarium = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Samarium"</span>, <span class="jxr_string">"Sm"</span>, 62, <strong class="jxr_keyword">null</strong>, 150.36);
+<a class="jxr_linenumber" name="L515" href="#L515">515</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Samarium-144"</span>, 144, 143.911999));
+<a class="jxr_linenumber" name="L516" href="#L516">516</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Samarium-147"</span>, 147, 146.9148979));
+<a class="jxr_linenumber" name="L517" href="#L517">517</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Samarium-148"</span>, 148, 147.9148227));
+<a class="jxr_linenumber" name="L518" href="#L518">518</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Samarium-149"</span>, 149, 148.9171847));
+<a class="jxr_linenumber" name="L519" href="#L519">519</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Samarium-150"</span>, 150, 149.9172755));
+<a class="jxr_linenumber" name="L520" href="#L520">520</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Samarium-152"</span>, 152, 151.9197324));
+<a class="jxr_linenumber" name="L521" href="#L521">521</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Samarium-154"</span>, 154, 153.9222093));
+<a class="jxr_linenumber" name="L522" href="#L522">522</a> 		samarium.setIsotopes(iList);
+<a class="jxr_linenumber" name="L523" href="#L523">523</a> 
+<a class="jxr_linenumber" name="L524" href="#L524">524</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L525" href="#L525">525</a> 		Element europium = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Europium"</span>, <span class="jxr_string">"Eu"</span>, 63, <strong class="jxr_keyword">null</strong>, 151.964);
+<a class="jxr_linenumber" name="L526" href="#L526">526</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Europium-151"</span>, 151, 150.9198502));
+<a class="jxr_linenumber" name="L527" href="#L527">527</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Europium-153"</span>, 153, 152.9212303));
+<a class="jxr_linenumber" name="L528" href="#L528">528</a> 		europium.setIsotopes(iList);
+<a class="jxr_linenumber" name="L529" href="#L529">529</a> 
+<a class="jxr_linenumber" name="L530" href="#L530">530</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L531" href="#L531">531</a> 		Element gadolinium = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Gadolinium"</span>, <span class="jxr_string">"Gd"</span>, 64, <strong class="jxr_keyword">null</strong>, 157.25);
+<a class="jxr_linenumber" name="L532" href="#L532">532</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Gadolinium-152"</span>, 152, 151.919791));
+<a class="jxr_linenumber" name="L533" href="#L533">533</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Gadolinium-154"</span>, 154, 153.9208656));
+<a class="jxr_linenumber" name="L534" href="#L534">534</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Gadolinium-155"</span>, 155, 154.922622));
+<a class="jxr_linenumber" name="L535" href="#L535">535</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Gadolinium-156"</span>, 156, 155.9221227));
+<a class="jxr_linenumber" name="L536" href="#L536">536</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Gadolinium-157"</span>, 157, 156.9239601));
+<a class="jxr_linenumber" name="L537" href="#L537">537</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Gadolinium-158"</span>, 158, 157.9241039));
+<a class="jxr_linenumber" name="L538" href="#L538">538</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Gadolinium-160"</span>, 160, 159.9270541));
+<a class="jxr_linenumber" name="L539" href="#L539">539</a> 		gadolinium.setIsotopes(iList);
+<a class="jxr_linenumber" name="L540" href="#L540">540</a> 
+<a class="jxr_linenumber" name="L541" href="#L541">541</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L542" href="#L542">542</a> 		Element terbium = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Terbium"</span>, <span class="jxr_string">"Tb"</span>, 65, <strong class="jxr_keyword">null</strong>, 158.92535);
+<a class="jxr_linenumber" name="L543" href="#L543">543</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Terbium-159"</span>, 159, 158.9253468));
+<a class="jxr_linenumber" name="L544" href="#L544">544</a> 		terbium.setIsotopes(iList);
+<a class="jxr_linenumber" name="L545" href="#L545">545</a> 
+<a class="jxr_linenumber" name="L546" href="#L546">546</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L547" href="#L547">547</a> 		Element dysprosium = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Dysprosium"</span>, <span class="jxr_string">"Dy"</span>, 66, <strong class="jxr_keyword">null</strong>, 162.5);
+<a class="jxr_linenumber" name="L548" href="#L548">548</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Dysprosium-156"</span>, 156, 155.924283));
+<a class="jxr_linenumber" name="L549" href="#L549">549</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Dysprosium-158"</span>, 158, 157.924409));
+<a class="jxr_linenumber" name="L550" href="#L550">550</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Dysprosium-160"</span>, 160, 159.9251975));
+<a class="jxr_linenumber" name="L551" href="#L551">551</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Dysprosium-161"</span>, 161, 160.9269334));
+<a class="jxr_linenumber" name="L552" href="#L552">552</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Dysprosium-162"</span>, 162, 161.9267984));
+<a class="jxr_linenumber" name="L553" href="#L553">553</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Dysprosium-163"</span>, 163, 162.9287312));
+<a class="jxr_linenumber" name="L554" href="#L554">554</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Dysprosium-164"</span>, 164, 163.9291748));
+<a class="jxr_linenumber" name="L555" href="#L555">555</a> 		dysprosium.setIsotopes(iList);
+<a class="jxr_linenumber" name="L556" href="#L556">556</a> 
+<a class="jxr_linenumber" name="L557" href="#L557">557</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L558" href="#L558">558</a> 		Element holmium = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Holmium"</span>, <span class="jxr_string">"Ho"</span>, 67, <strong class="jxr_keyword">null</strong>, 164.93032);
+<a class="jxr_linenumber" name="L559" href="#L559">559</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Holmium-165"</span>, 165, 164.9303221));
+<a class="jxr_linenumber" name="L560" href="#L560">560</a> 		holmium.setIsotopes(iList);
+<a class="jxr_linenumber" name="L561" href="#L561">561</a> 
+<a class="jxr_linenumber" name="L562" href="#L562">562</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L563" href="#L563">563</a> 		Element erbium = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Erbium"</span>, <span class="jxr_string">"Er"</span>, 68, <strong class="jxr_keyword">null</strong>, 167.259);
+<a class="jxr_linenumber" name="L564" href="#L564">564</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Erbium-162"</span>, 162, 161.928778));
+<a class="jxr_linenumber" name="L565" href="#L565">565</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Erbium-164"</span>, 164, 163.9292));
+<a class="jxr_linenumber" name="L566" href="#L566">566</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Erbium-166"</span>, 166, 165.9302931));
+<a class="jxr_linenumber" name="L567" href="#L567">567</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Erbium-167"</span>, 167, 166.9320482));
+<a class="jxr_linenumber" name="L568" href="#L568">568</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Erbium-168"</span>, 168, 167.9323702));
+<a class="jxr_linenumber" name="L569" href="#L569">569</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Erbium-170"</span>, 170, 169.9354643));
+<a class="jxr_linenumber" name="L570" href="#L570">570</a> 		erbium.setIsotopes(iList);
+<a class="jxr_linenumber" name="L571" href="#L571">571</a> 
+<a class="jxr_linenumber" name="L572" href="#L572">572</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L573" href="#L573">573</a> 		Element thulium = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Thulium"</span>, <span class="jxr_string">"Tm"</span>, 69, <strong class="jxr_keyword">null</strong>, 168.93421);
+<a class="jxr_linenumber" name="L574" href="#L574">574</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Thulium-169"</span>, 169, 168.9342133));
+<a class="jxr_linenumber" name="L575" href="#L575">575</a> 		thulium.setIsotopes(iList);
+<a class="jxr_linenumber" name="L576" href="#L576">576</a> 
+<a class="jxr_linenumber" name="L577" href="#L577">577</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L578" href="#L578">578</a> 		Element ytterbium = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Ytterbium"</span>, <span class="jxr_string">"Yb"</span>, 70, <strong class="jxr_keyword">null</strong>, 173.054);
+<a class="jxr_linenumber" name="L579" href="#L579">579</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Ytterbium-168"</span>, 168, 167.933897));
+<a class="jxr_linenumber" name="L580" href="#L580">580</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Ytterbium-170"</span>, 170, 169.9347618));
+<a class="jxr_linenumber" name="L581" href="#L581">581</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Ytterbium-171"</span>, 171, 170.9363258));
+<a class="jxr_linenumber" name="L582" href="#L582">582</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Ytterbium-172"</span>, 172, 171.9363815));
+<a class="jxr_linenumber" name="L583" href="#L583">583</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Ytterbium-173"</span>, 173, 172.9382108));
+<a class="jxr_linenumber" name="L584" href="#L584">584</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Ytterbium-174"</span>, 174, 173.9388621));
+<a class="jxr_linenumber" name="L585" href="#L585">585</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Ytterbium-176"</span>, 176, 175.9425717));
+<a class="jxr_linenumber" name="L586" href="#L586">586</a> 		ytterbium.setIsotopes(iList);
+<a class="jxr_linenumber" name="L587" href="#L587">587</a> 
+<a class="jxr_linenumber" name="L588" href="#L588">588</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L589" href="#L589">589</a> 		Element lutetium = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Lutetium"</span>, <span class="jxr_string">"Lu"</span>, 71, <strong class="jxr_keyword">null</strong>, 174.9668);
+<a class="jxr_linenumber" name="L590" href="#L590">590</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Lutetium-175"</span>, 175, 174.9407718));
+<a class="jxr_linenumber" name="L591" href="#L591">591</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Lutetium-176"</span>, 176, 175.9426863));
+<a class="jxr_linenumber" name="L592" href="#L592">592</a> 		lutetium.setIsotopes(iList);
+<a class="jxr_linenumber" name="L593" href="#L593">593</a> 
+<a class="jxr_linenumber" name="L594" href="#L594">594</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L595" href="#L595">595</a> 		Element hafnium = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Hafnium"</span>, <span class="jxr_string">"Hf"</span>, 72, <strong class="jxr_keyword">null</strong>, 178.49);
+<a class="jxr_linenumber" name="L596" href="#L596">596</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Hafnium-174"</span>, 174, 173.940046));
+<a class="jxr_linenumber" name="L597" href="#L597">597</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Hafnium-176"</span>, 176, 175.9414086));
+<a class="jxr_linenumber" name="L598" href="#L598">598</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Hafnium-177"</span>, 177, 176.9432207));
+<a class="jxr_linenumber" name="L599" href="#L599">599</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Hafnium-178"</span>, 178, 177.9436988));
+<a class="jxr_linenumber" name="L600" href="#L600">600</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Hafnium-179"</span>, 179, 178.9458161));
+<a class="jxr_linenumber" name="L601" href="#L601">601</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Hafnium-180"</span>, 180, 179.94655));
+<a class="jxr_linenumber" name="L602" href="#L602">602</a> 		hafnium.setIsotopes(iList);
+<a class="jxr_linenumber" name="L603" href="#L603">603</a> 
+<a class="jxr_linenumber" name="L604" href="#L604">604</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L605" href="#L605">605</a> 		Element tantalum = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Tantalum"</span>, <span class="jxr_string">"Ta"</span>, 73, <strong class="jxr_keyword">null</strong>, 180.94788);
+<a class="jxr_linenumber" name="L606" href="#L606">606</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Tantalum-180"</span>, 180, 179.9474648));
+<a class="jxr_linenumber" name="L607" href="#L607">607</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Tantalum-181"</span>, 181, 180.9479958));
+<a class="jxr_linenumber" name="L608" href="#L608">608</a> 		tantalum.setIsotopes(iList);
+<a class="jxr_linenumber" name="L609" href="#L609">609</a> 
+<a class="jxr_linenumber" name="L610" href="#L610">610</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L611" href="#L611">611</a> 		Element tungsten = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Tungsten"</span>, <span class="jxr_string">"W"</span>, 74, <strong class="jxr_keyword">null</strong>, 183.84);
+<a class="jxr_linenumber" name="L612" href="#L612">612</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Tungsten-180"</span>, 180, 179.946704));
+<a class="jxr_linenumber" name="L613" href="#L613">613</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Tungsten-182"</span>, 182, 181.9482042));
+<a class="jxr_linenumber" name="L614" href="#L614">614</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Tungsten-183"</span>, 183, 182.950223));
+<a class="jxr_linenumber" name="L615" href="#L615">615</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Tungsten-184"</span>, 184, 183.9509312));
+<a class="jxr_linenumber" name="L616" href="#L616">616</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Tungsten-186"</span>, 186, 185.9543641));
+<a class="jxr_linenumber" name="L617" href="#L617">617</a> 		tungsten.setIsotopes(iList);
+<a class="jxr_linenumber" name="L618" href="#L618">618</a> 
+<a class="jxr_linenumber" name="L619" href="#L619">619</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L620" href="#L620">620</a> 		Element rhenium = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Rhenium"</span>, <span class="jxr_string">"Re"</span>, 75, <strong class="jxr_keyword">null</strong>, 186.207);
+<a class="jxr_linenumber" name="L621" href="#L621">621</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Rhenium-185"</span>, 185, 184.952955));
+<a class="jxr_linenumber" name="L622" href="#L622">622</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Rhenium-187"</span>, 187, 186.9557531));
+<a class="jxr_linenumber" name="L623" href="#L623">623</a> 		rhenium.setIsotopes(iList);
+<a class="jxr_linenumber" name="L624" href="#L624">624</a> 
+<a class="jxr_linenumber" name="L625" href="#L625">625</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L626" href="#L626">626</a> 		Element osmium = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Osmium"</span>, <span class="jxr_string">"Os"</span>, 76, <strong class="jxr_keyword">null</strong>, 190.23);
+<a class="jxr_linenumber" name="L627" href="#L627">627</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Osmium-184"</span>, 184, 183.9524891));
+<a class="jxr_linenumber" name="L628" href="#L628">628</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Osmium-186"</span>, 186, 185.9538382));
+<a class="jxr_linenumber" name="L629" href="#L629">629</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Osmium-187"</span>, 187, 186.9557505));
+<a class="jxr_linenumber" name="L630" href="#L630">630</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Osmium-188"</span>, 188, 187.9558382));
+<a class="jxr_linenumber" name="L631" href="#L631">631</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Osmium-189"</span>, 189, 188.9581475));
+<a class="jxr_linenumber" name="L632" href="#L632">632</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Osmium-190"</span>, 190, 189.958447));
+<a class="jxr_linenumber" name="L633" href="#L633">633</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Osmium-192"</span>, 192, 191.9614807));
+<a class="jxr_linenumber" name="L634" href="#L634">634</a> 		osmium.setIsotopes(iList);
+<a class="jxr_linenumber" name="L635" href="#L635">635</a> 
+<a class="jxr_linenumber" name="L636" href="#L636">636</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L637" href="#L637">637</a> 		Element iridium = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Iridium"</span>, <span class="jxr_string">"Ir"</span>, 77, <strong class="jxr_keyword">null</strong>, 192.217);
+<a class="jxr_linenumber" name="L638" href="#L638">638</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Iridium-191"</span>, 191, 190.960594));
+<a class="jxr_linenumber" name="L639" href="#L639">639</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Iridium-193"</span>, 193, 192.9629264));
+<a class="jxr_linenumber" name="L640" href="#L640">640</a> 		iridium.setIsotopes(iList);
+<a class="jxr_linenumber" name="L641" href="#L641">641</a> 
+<a class="jxr_linenumber" name="L642" href="#L642">642</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L643" href="#L643">643</a> 		Element platinum = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Platinum"</span>, <span class="jxr_string">"Pt"</span>, 78, <strong class="jxr_keyword">null</strong>, 195.084);
+<a class="jxr_linenumber" name="L644" href="#L644">644</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Platinum-190"</span>, 190, 189.959932));
+<a class="jxr_linenumber" name="L645" href="#L645">645</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Platinum-192"</span>, 192, 191.961038));
+<a class="jxr_linenumber" name="L646" href="#L646">646</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Platinum-194"</span>, 194, 193.9626803));
+<a class="jxr_linenumber" name="L647" href="#L647">647</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Platinum-195"</span>, 195, 194.9647911));
+<a class="jxr_linenumber" name="L648" href="#L648">648</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Platinum-196"</span>, 196, 195.9649515));
+<a class="jxr_linenumber" name="L649" href="#L649">649</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Platinum-198"</span>, 198, 197.967893));
+<a class="jxr_linenumber" name="L650" href="#L650">650</a> 		platinum.setIsotopes(iList);
+<a class="jxr_linenumber" name="L651" href="#L651">651</a> 
+<a class="jxr_linenumber" name="L652" href="#L652">652</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L653" href="#L653">653</a> 		Element gold = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Gold"</span>, <span class="jxr_string">"Au"</span>, 79, <strong class="jxr_keyword">null</strong>, 196.966569);
+<a class="jxr_linenumber" name="L654" href="#L654">654</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Gold-197"</span>, 197, 196.9665687));
+<a class="jxr_linenumber" name="L655" href="#L655">655</a> 		gold.setIsotopes(iList);
+<a class="jxr_linenumber" name="L656" href="#L656">656</a> 
+<a class="jxr_linenumber" name="L657" href="#L657">657</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L658" href="#L658">658</a> 		Element mercury = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Mercury"</span>, <span class="jxr_string">"Hg"</span>, 80, <strong class="jxr_keyword">null</strong>, 200.59);
+<a class="jxr_linenumber" name="L659" href="#L659">659</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Mercury-196"</span>, 196, 195.965833));
+<a class="jxr_linenumber" name="L660" href="#L660">660</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Mercury-198"</span>, 198, 197.966769));
+<a class="jxr_linenumber" name="L661" href="#L661">661</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Mercury-199"</span>, 199, 198.9682799));
+<a class="jxr_linenumber" name="L662" href="#L662">662</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Mercury-200"</span>, 200, 199.968326));
+<a class="jxr_linenumber" name="L663" href="#L663">663</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Mercury-201"</span>, 201, 200.9703023));
+<a class="jxr_linenumber" name="L664" href="#L664">664</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Mercury-202"</span>, 202, 201.970643));
+<a class="jxr_linenumber" name="L665" href="#L665">665</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Mercury-204"</span>, 204, 203.9734939));
+<a class="jxr_linenumber" name="L666" href="#L666">666</a> 		mercury.setIsotopes(iList);
+<a class="jxr_linenumber" name="L667" href="#L667">667</a> 
+<a class="jxr_linenumber" name="L668" href="#L668">668</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L669" href="#L669">669</a> 		Element thallium = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Thallium"</span>, <span class="jxr_string">"Tl"</span>, 81, <strong class="jxr_keyword">null</strong>, 204.3833);
+<a class="jxr_linenumber" name="L670" href="#L670">670</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Thallium-203"</span>, 203, 202.9723442));
+<a class="jxr_linenumber" name="L671" href="#L671">671</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Thallium-205"</span>, 205, 204.9744275));
+<a class="jxr_linenumber" name="L672" href="#L672">672</a> 		thallium.setIsotopes(iList);
+<a class="jxr_linenumber" name="L673" href="#L673">673</a> 
+<a class="jxr_linenumber" name="L674" href="#L674">674</a> 		iList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Isotope&gt;();
+<a class="jxr_linenumber" name="L675" href="#L675">675</a> 		Element lead = <strong class="jxr_keyword">new</strong> Element(<span class="jxr_string">"Lead"</span>, <span class="jxr_string">"Pb"</span>, 82, <strong class="jxr_keyword">null</strong>, 207.2);
+<a class="jxr_linenumber" name="L676" href="#L676">676</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Lead-204"</span>, 204, 203.9730436));
+<a class="jxr_linenumber" name="L677" href="#L677">677</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Lead-206"</span>, 206, 205.9744653));
+<a class="jxr_linenumber" name="L678" href="#L678">678</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Lead-207"</span>, 207, 206.9758969));
+<a class="jxr_linenumber" name="L679" href="#L679">679</a> 		iList.add(<strong class="jxr_keyword">new</strong> Isotope(<span class="jxr_string">"Lead-208"</span>, 208, 207.9766521));
+<a class="jxr_linenumber" name="L680" href="#L680">680</a> 		lead.setIsotopes(iList);
+<a class="jxr_linenumber" name="L681" href="#L681">681</a> 
+<a class="jxr_linenumber" name="L682" href="#L682">682</a> 		List&lt;Element&gt; eList = <strong class="jxr_keyword">new</strong> ArrayList&lt;Element&gt;();
+<a class="jxr_linenumber" name="L683" href="#L683">683</a> 		eList.add(hydrogen);
+<a class="jxr_linenumber" name="L684" href="#L684">684</a> 		eList.add(helium);
+<a class="jxr_linenumber" name="L685" href="#L685">685</a> 		eList.add(lithium);
+<a class="jxr_linenumber" name="L686" href="#L686">686</a> 		eList.add(beryllium);
+<a class="jxr_linenumber" name="L687" href="#L687">687</a> 		eList.add(boron);
+<a class="jxr_linenumber" name="L688" href="#L688">688</a> 		eList.add(carbon);
+<a class="jxr_linenumber" name="L689" href="#L689">689</a> 		eList.add(nitrogen);
+<a class="jxr_linenumber" name="L690" href="#L690">690</a> 		eList.add(oxygen);
+<a class="jxr_linenumber" name="L691" href="#L691">691</a> 		eList.add(fluorine);
+<a class="jxr_linenumber" name="L692" href="#L692">692</a> 		eList.add(neon);
+<a class="jxr_linenumber" name="L693" href="#L693">693</a> 		eList.add(sodium);
+<a class="jxr_linenumber" name="L694" href="#L694">694</a> 		eList.add(magnesium);
+<a class="jxr_linenumber" name="L695" href="#L695">695</a> 		eList.add(aluminium);
+<a class="jxr_linenumber" name="L696" href="#L696">696</a> 		eList.add(silicon);
+<a class="jxr_linenumber" name="L697" href="#L697">697</a> 		eList.add(phosphorus);
+<a class="jxr_linenumber" name="L698" href="#L698">698</a> 		eList.add(sulfur);
+<a class="jxr_linenumber" name="L699" href="#L699">699</a> 		eList.add(chlorine);
+<a class="jxr_linenumber" name="L700" href="#L700">700</a> 		eList.add(argon);
+<a class="jxr_linenumber" name="L701" href="#L701">701</a> 		eList.add(potassium);
+<a class="jxr_linenumber" name="L702" href="#L702">702</a> 		eList.add(calcium);
+<a class="jxr_linenumber" name="L703" href="#L703">703</a> 		eList.add(scandium);
+<a class="jxr_linenumber" name="L704" href="#L704">704</a> 		eList.add(titanium);
+<a class="jxr_linenumber" name="L705" href="#L705">705</a> 		eList.add(vanadium);
+<a class="jxr_linenumber" name="L706" href="#L706">706</a> 		eList.add(chromium);
+<a class="jxr_linenumber" name="L707" href="#L707">707</a> 		eList.add(manganese);
+<a class="jxr_linenumber" name="L708" href="#L708">708</a> 		eList.add(iron);
+<a class="jxr_linenumber" name="L709" href="#L709">709</a> 		eList.add(cobalt);
+<a class="jxr_linenumber" name="L710" href="#L710">710</a> 		eList.add(nickel);
+<a class="jxr_linenumber" name="L711" href="#L711">711</a> 		eList.add(copper);
+<a class="jxr_linenumber" name="L712" href="#L712">712</a> 		eList.add(zinc);
+<a class="jxr_linenumber" name="L713" href="#L713">713</a> 		eList.add(gallium);
+<a class="jxr_linenumber" name="L714" href="#L714">714</a> 		eList.add(germanium);
+<a class="jxr_linenumber" name="L715" href="#L715">715</a> 		eList.add(arsenic);
+<a class="jxr_linenumber" name="L716" href="#L716">716</a> 		eList.add(selenium);
+<a class="jxr_linenumber" name="L717" href="#L717">717</a> 		eList.add(bromine);
+<a class="jxr_linenumber" name="L718" href="#L718">718</a> 		eList.add(krypton);
+<a class="jxr_linenumber" name="L719" href="#L719">719</a> 		eList.add(rubidium);
+<a class="jxr_linenumber" name="L720" href="#L720">720</a> 		eList.add(strontium);
+<a class="jxr_linenumber" name="L721" href="#L721">721</a> 		eList.add(yttrium);
+<a class="jxr_linenumber" name="L722" href="#L722">722</a> 		eList.add(zirconium);
+<a class="jxr_linenumber" name="L723" href="#L723">723</a> 		eList.add(niobium);
+<a class="jxr_linenumber" name="L724" href="#L724">724</a> 		eList.add(molybdenum);
+<a class="jxr_linenumber" name="L725" href="#L725">725</a> 		eList.add(technetium);
+<a class="jxr_linenumber" name="L726" href="#L726">726</a> 		eList.add(ruthenium);
+<a class="jxr_linenumber" name="L727" href="#L727">727</a> 		eList.add(rhodium);
+<a class="jxr_linenumber" name="L728" href="#L728">728</a> 		eList.add(palladium);
+<a class="jxr_linenumber" name="L729" href="#L729">729</a> 		eList.add(silver);
+<a class="jxr_linenumber" name="L730" href="#L730">730</a> 		eList.add(cadmium);
+<a class="jxr_linenumber" name="L731" href="#L731">731</a> 		eList.add(indium);
+<a class="jxr_linenumber" name="L732" href="#L732">732</a> 		eList.add(tin);
+<a class="jxr_linenumber" name="L733" href="#L733">733</a> 		eList.add(antimony);
+<a class="jxr_linenumber" name="L734" href="#L734">734</a> 		eList.add(tellurium);
+<a class="jxr_linenumber" name="L735" href="#L735">735</a> 		eList.add(iodine);
+<a class="jxr_linenumber" name="L736" href="#L736">736</a> 		eList.add(xenon);
+<a class="jxr_linenumber" name="L737" href="#L737">737</a> 		eList.add(caesium);
+<a class="jxr_linenumber" name="L738" href="#L738">738</a> 		eList.add(barium);
+<a class="jxr_linenumber" name="L739" href="#L739">739</a> 		eList.add(lanthanum);
+<a class="jxr_linenumber" name="L740" href="#L740">740</a> 		eList.add(cerium);
+<a class="jxr_linenumber" name="L741" href="#L741">741</a> 		eList.add(praseodymium);
+<a class="jxr_linenumber" name="L742" href="#L742">742</a> 		eList.add(neodymium);
+<a class="jxr_linenumber" name="L743" href="#L743">743</a> 		eList.add(promethium);
+<a class="jxr_linenumber" name="L744" href="#L744">744</a> 		eList.add(samarium);
+<a class="jxr_linenumber" name="L745" href="#L745">745</a> 		eList.add(europium);
+<a class="jxr_linenumber" name="L746" href="#L746">746</a> 		eList.add(gadolinium);
+<a class="jxr_linenumber" name="L747" href="#L747">747</a> 		eList.add(terbium);
+<a class="jxr_linenumber" name="L748" href="#L748">748</a> 		eList.add(dysprosium);
+<a class="jxr_linenumber" name="L749" href="#L749">749</a> 		eList.add(holmium);
+<a class="jxr_linenumber" name="L750" href="#L750">750</a> 		eList.add(erbium);
+<a class="jxr_linenumber" name="L751" href="#L751">751</a> 		eList.add(thulium);
+<a class="jxr_linenumber" name="L752" href="#L752">752</a> 		eList.add(ytterbium);
+<a class="jxr_linenumber" name="L753" href="#L753">753</a> 		eList.add(lutetium);
+<a class="jxr_linenumber" name="L754" href="#L754">754</a> 		eList.add(hafnium);
+<a class="jxr_linenumber" name="L755" href="#L755">755</a> 		eList.add(tantalum);
+<a class="jxr_linenumber" name="L756" href="#L756">756</a> 		eList.add(tungsten);
+<a class="jxr_linenumber" name="L757" href="#L757">757</a> 		eList.add(rhenium);
+<a class="jxr_linenumber" name="L758" href="#L758">758</a> 		eList.add(osmium);
+<a class="jxr_linenumber" name="L759" href="#L759">759</a> 		eList.add(iridium);
+<a class="jxr_linenumber" name="L760" href="#L760">760</a> 		eList.add(platinum);
+<a class="jxr_linenumber" name="L761" href="#L761">761</a> 		eList.add(gold);
+<a class="jxr_linenumber" name="L762" href="#L762">762</a> 		eList.add(mercury);
+<a class="jxr_linenumber" name="L763" href="#L763">763</a> 		eList.add(thallium);
+<a class="jxr_linenumber" name="L764" href="#L764">764</a> 		eList.add(lead);
+<a class="jxr_linenumber" name="L765" href="#L765">765</a> 
+<a class="jxr_linenumber" name="L766" href="#L766">766</a> 		ElementTable iTable = <strong class="jxr_keyword">new</strong> ElementTable(eList);
+<a class="jxr_linenumber" name="L767" href="#L767">767</a> 		<em class="jxr_comment">// Get a JAXB Context for the object we created above</em>
+<a class="jxr_linenumber" name="L768" href="#L768">768</a> 		JAXBContext context = JAXBContext.newInstance(iTable.getClass());
+<a class="jxr_linenumber" name="L769" href="#L769">769</a> 		<em class="jxr_comment">// To convert ex to XML, I need a JAXB Marshaller</em>
+<a class="jxr_linenumber" name="L770" href="#L770">770</a> 		Marshaller marshaller = context.createMarshaller();
+<a class="jxr_linenumber" name="L771" href="#L771">771</a> 		<em class="jxr_comment">// Make the output pretty</em>
+<a class="jxr_linenumber" name="L772" href="#L772">772</a> 		marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, <strong class="jxr_keyword">true</strong>);
+<a class="jxr_linenumber" name="L773" href="#L773">773</a> 		StringWriter sw = <strong class="jxr_keyword">new</strong> StringWriter();
+<a class="jxr_linenumber" name="L774" href="#L774">774</a> 		<em class="jxr_comment">// marshall the object to XML</em>
+<a class="jxr_linenumber" name="L775" href="#L775">775</a> 		marshaller.marshal(iTable, sw);
+<a class="jxr_linenumber" name="L776" href="#L776">776</a> 		<em class="jxr_comment">// print it out for this example</em>
+<a class="jxr_linenumber" name="L777" href="#L777">777</a> 		logger.info(<span class="jxr_string">"Marshal to file: {}"</span>, sw.toString());
+<a class="jxr_linenumber" name="L778" href="#L778">778</a> 		File outputFile = <strong class="jxr_keyword">new</strong> File(System.getProperty(<span class="jxr_string">"java.io.tmpdir"</span>),<span class="jxr_string">"ElementMass.xml"</span>);
+<a class="jxr_linenumber" name="L779" href="#L779">779</a> 		outputFile.deleteOnExit();
+<a class="jxr_linenumber" name="L780" href="#L780">780</a> 		BufferedWriter output = <strong class="jxr_keyword">new</strong> BufferedWriter(<strong class="jxr_keyword">new</strong> FileWriter(outputFile));
+<a class="jxr_linenumber" name="L781" href="#L781">781</a> 		output.write(sw.toString());
+<a class="jxr_linenumber" name="L782" href="#L782">782</a> 		output.close();
+<a class="jxr_linenumber" name="L783" href="#L783">783</a> 	}
+<a class="jxr_linenumber" name="L784" href="#L784">784</a> 
+<a class="jxr_linenumber" name="L785" href="#L785">785</a> }
+</pre>
+<hr/>
+<div id="footer">Copyright &#169; 2000&#x2013;2015 <a href="http://www.biojava.org">BioJava</a>. All rights reserved.</div>
+</body>
+</html>

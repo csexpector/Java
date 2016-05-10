@@ -1,0 +1,17 @@
+org/biojava/nbio/sequencing/io/fastq/FastqTest.class
+org/biojava/nbio/sequencing/io/fastq/SangerFastqReaderTest.class
+org/biojava/nbio/sequencing/io/fastq/StreamingFastqParserTest$1.class
+org/biojava/nbio/sequencing/io/fastq/AbstractFastqReaderTest$2.class
+org/biojava/nbio/sequencing/io/fastq/IlluminaFastqWriterTest.class
+org/biojava/nbio/sequencing/io/fastq/SangerFastqWriterTest.class
+org/biojava/nbio/sequencing/io/fastq/SolexaFastqReaderTest.class
+org/biojava/nbio/sequencing/io/fastq/IlluminaFastqReaderTest.class
+org/biojava/nbio/sequencing/io/fastq/FastqToolsTest.class
+org/biojava/nbio/sequencing/io/fastq/FastqVariantTest.class
+org/biojava/nbio/sequencing/io/fastq/AbstractFastqReaderTest$1.class
+org/biojava/nbio/sequencing/io/fastq/AbstractFastqReaderTest.class
+org/biojava/nbio/sequencing/io/fastq/AbstractFastqWriterTest.class
+org/biojava/nbio/sequencing/io/fastq/StreamingFastqParserTest$2.class
+org/biojava/nbio/sequencing/io/fastq/FastqBuilderTest.class
+org/biojava/nbio/sequencing/io/fastq/StreamingFastqParserTest.class
+org/biojava/nbio/sequencing/io/fastq/SolexaFastqWriterTest.class

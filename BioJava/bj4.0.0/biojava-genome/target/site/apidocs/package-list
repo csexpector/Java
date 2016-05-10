@@ -1,0 +1,10 @@
+org.biojava.nbio.genome
+org.biojava.nbio.genome.homology
+org.biojava.nbio.genome.parsers.cytoband
+org.biojava.nbio.genome.parsers.geneid
+org.biojava.nbio.genome.parsers.genename
+org.biojava.nbio.genome.parsers.gff
+org.biojava.nbio.genome.parsers.twobit
+org.biojava.nbio.genome.query
+org.biojava.nbio.genome.uniprot
+org.biojava.nbio.genome.util

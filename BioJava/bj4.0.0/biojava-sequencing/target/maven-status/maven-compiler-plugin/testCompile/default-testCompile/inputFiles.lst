@@ -1,0 +1,13 @@
+/STORAGE/CC/projects/biojava/target/checkout/biojava-sequencing/src/test/java/org/biojava/nbio/sequencing/io/fastq/AbstractFastqReaderTest.java
+/STORAGE/CC/projects/biojava/target/checkout/biojava-sequencing/src/test/java/org/biojava/nbio/sequencing/io/fastq/StreamingFastqParserTest.java
+/STORAGE/CC/projects/biojava/target/checkout/biojava-sequencing/src/test/java/org/biojava/nbio/sequencing/io/fastq/IlluminaFastqReaderTest.java
+/STORAGE/CC/projects/biojava/target/checkout/biojava-sequencing/src/test/java/org/biojava/nbio/sequencing/io/fastq/FastqToolsTest.java
+/STORAGE/CC/projects/biojava/target/checkout/biojava-sequencing/src/test/java/org/biojava/nbio/sequencing/io/fastq/FastqVariantTest.java
+/STORAGE/CC/projects/biojava/target/checkout/biojava-sequencing/src/test/java/org/biojava/nbio/sequencing/io/fastq/SangerFastqWriterTest.java
+/STORAGE/CC/projects/biojava/target/checkout/biojava-sequencing/src/test/java/org/biojava/nbio/sequencing/io/fastq/AbstractFastqWriterTest.java
+/STORAGE/CC/projects/biojava/target/checkout/biojava-sequencing/src/test/java/org/biojava/nbio/sequencing/io/fastq/SolexaFastqReaderTest.java
+/STORAGE/CC/projects/biojava/target/checkout/biojava-sequencing/src/test/java/org/biojava/nbio/sequencing/io/fastq/SolexaFastqWriterTest.java
+/STORAGE/CC/projects/biojava/target/checkout/biojava-sequencing/src/test/java/org/biojava/nbio/sequencing/io/fastq/FastqBuilderTest.java
+/STORAGE/CC/projects/biojava/target/checkout/biojava-sequencing/src/test/java/org/biojava/nbio/sequencing/io/fastq/FastqTest.java
+/STORAGE/CC/projects/biojava/target/checkout/biojava-sequencing/src/test/java/org/biojava/nbio/sequencing/io/fastq/SangerFastqReaderTest.java
+/STORAGE/CC/projects/biojava/target/checkout/biojava-sequencing/src/test/java/org/biojava/nbio/sequencing/io/fastq/IlluminaFastqWriterTest.java

@@ -1,0 +1,8 @@
+This program is to test 'invalid access' interrupt
+It will try to write to an address that is system memory
+
+1,   // load
+100, // 100 to AC
+            
+7,   // store AC
+1800   // to address -1 => interrupt

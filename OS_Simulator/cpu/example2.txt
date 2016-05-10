@@ -1,0 +1,7 @@
+in @1
+add @2 @0 @1
+addc @2 @2 #-1
+out @2 
+ceq @3 @0 @2
+bez @4 @3 #-4
+break @0

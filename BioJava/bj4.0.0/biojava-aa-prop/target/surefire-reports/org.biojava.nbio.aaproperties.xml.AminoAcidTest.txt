@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: org.biojava.nbio.aaproperties.xml.AminoAcidTest
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.11 sec - in org.biojava.nbio.aaproperties.xml.AminoAcidTest

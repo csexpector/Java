@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: org.biojava.nbio.ronn.NonstandardProteinCompoundTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 19.302 sec - in org.biojava.nbio.ronn.NonstandardProteinCompoundTest

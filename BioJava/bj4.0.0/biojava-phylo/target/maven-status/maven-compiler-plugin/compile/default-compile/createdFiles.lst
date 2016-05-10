@@ -1,0 +1,9 @@
+org/biojava/nbio/phylo/CheckTreeAccuracy.class
+org/biojava/nbio/phylo/Comparison.class
+org/biojava/nbio/phylo/TreeType.class
+org/biojava/nbio/phylo/TreeConstructor.class
+org/biojava/nbio/phylo/ResidueProperties.class
+org/biojava/nbio/phylo/ProgressListenerStub.class
+org/biojava/nbio/phylo/ScoreMatrix.class
+org/biojava/nbio/phylo/TreeConstructionAlgorithm.class
+org/biojava/nbio/phylo/NJTreeProgressListener.class

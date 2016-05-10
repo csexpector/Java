@@ -1,0 +1,8 @@
+{
+ "Come Monday":{"title":"Come Monday","mediaType":0,"author":"Jimmy Buffett","album":"Greatest Hits","genre":"Island","filename":"ComeMonday.mp3"},
+ "Fins":{"title":"Fins","mediaType":0,"author":"Jimmy Buffett","album":"Greatest Hits","genre":"Island","filename":"Fins.mp3"},
+ "Bye Bye Love":{"title":"Bye Bye Love","mediaType":0,"author":"Everly Brothers","album":"Oldies-60s","genre":"60s","filename":"ByeByeLove.mp3"},
+ "Crazy":{"title":"Crazy","mediaType":0,"author":"Patsy Cline","album":"Oldies-60s","genre":"60s","filename":"Crazy.mp3"},
+ "OhPrettyWoman":{"title":"OhPrettyWoman","mediaType":0,"author":"Roy Orbison","album":"Best of Orbison","genre":"60s","filename":"OhPrettyWoman.mp3"},
+ "Only The Lonely":{"title":"Only The Lonely","mediaType":0,"author":"Roy Orbison","album":"Best of Orbison","genre":"60s","filename":"OnlyTheLonely.mp3"}
+}

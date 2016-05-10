@@ -1,0 +1,9 @@
+org/biojava/nbio/aaproperties/PeptidePropertiesImplTest.class
+org/biojava/nbio/aaproperties/xml/ElementTest.class
+org/biojava/nbio/aaproperties/profeat/CookBookTest.class
+org/biojava/nbio/aaproperties/xml/GenerateJavaCodesFromTextTest.class
+org/biojava/nbio/aaproperties/GenbankCommandPromptTest.class
+org/biojava/nbio/aaproperties/CommandPromptTest.class
+org/biojava/nbio/aaproperties/xml/AminoAcidTest.class
+org/biojava/nbio/aaproperties/CookBookTest.class
+org/biojava/nbio/aaproperties/ProfeatPropertiesImplTest.class

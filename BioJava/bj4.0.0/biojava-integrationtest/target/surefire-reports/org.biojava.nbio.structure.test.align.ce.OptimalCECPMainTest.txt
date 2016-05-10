@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: org.biojava.nbio.structure.test.align.ce.OptimalCECPMainTest
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 17.954 sec - in org.biojava.nbio.structure.test.align.ce.OptimalCECPMainTest

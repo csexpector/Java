@@ -1,0 +1,34 @@
+Doans-MacBook-Pro:Java_OS dttung$ java ossimulator/OSSimulator sample2.txt 1000
+    ------
+ /         \
+Access error!
+Doans-MacBook-Pro:Java_OS dttung$ java ossimulator/OSSimulator sample3.txt 1000
+A
+0
+A
+0
+A
+0
+A
+0
+A
+0
+A
+0
+A
+0
+A
+0
+A
+0
+A
+0
+Doans-MacBook-Pro:Java_OS dttung$ java ossimulator/OSSimulator sample4.txt 1000
+1000
+999
+1000
+1994
+1993
+1994
+Access error!
+Doans-MacBook-Pro:Java_OS dttung$
